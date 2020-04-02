@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { from } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 export class ProductCategory {
   constructor(
@@ -10,7 +10,7 @@ export class ProductCategory {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProductCategoriesService {
   constructor() {}
@@ -21,10 +21,10 @@ export class ProductCategoriesService {
     for (var i = 0; i < 10; i++) {
       result.push(
         new ProductCategory(`${i + 1}`, `category ${i + 1}`, [
-          'https://styleroom.com.ua/wp-content/uploads/2019/12/404_1-300x300.jpg'
+          "https://styleroom.com.ua/wp-content/uploads/2019/12/404_1-300x300.jpg"
         ])
       );
     }
-    return from(result);
+    return new BehaviorSubject(result);
   }
 }

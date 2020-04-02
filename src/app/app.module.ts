@@ -16,6 +16,8 @@ import { ContanctsComponent } from './contancts/contancts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PartnersComponent } from './main/partners/partners.component';
 import { BascketInfoComponent } from './header/bascket-info/bascket-info.component';
+import { CategoriesListComponent } from './main/categories-list/categories-list.component';
+import { CategoryItemComponent } from './main/category-item/category-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { BascketInfoComponent } from './header/bascket-info/bascket-info.compone
     ContanctsComponent,
     GalleryComponent,
     PartnersComponent,
-    BascketInfoComponent
+    BascketInfoComponent,
+    CategoriesListComponent,
+    CategoryItemComponent
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],

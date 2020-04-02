@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { ProductPart } from './product-parts.service';
-import { ProductOption } from './product-options.service';
-import { from } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { ProductPart } from "./product-parts.service";
+import { ProductOption } from "./product-options.service";
+import { BehaviorSubject } from "rxjs";
 
 export class ProductSize {
   constructor(
@@ -26,7 +26,7 @@ export class Product {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProductsService {
   constructor() {}
@@ -36,18 +36,18 @@ export class ProductsService {
     for (var i = 1; i < 11; i++) {
       result.push(
         new Product(
-          i + '',
+          i + "",
           `product ${i}`,
           `description ${i}`,
           [],
-          '1',
-          new ProductSize(`${10 * i}`, '20', `${30 + i}`),
+          "1",
+          new ProductSize(`${10 * i}`, "20", `${30 + i}`),
           [],
           [],
           100 * i
         )
       );
     }
-    return from(result);
+    return new BehaviorSubject(result);
   }
 }
