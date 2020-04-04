@@ -1,35 +1,45 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { ContactsComponent } from './shared/contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SearchComponent } from './header/search/search.component';
 import { BascketComponent } from './bascket/bascket.component';
+import RouterPaths from './routerPaths.const';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: RouterPaths.BASE,
     component: MainComponent
   },
   {
-    path: 'contacts',
+    path: `${RouterPaths.CATEGORY}/:categoryName`,
+    component: MainComponent
+  },
+  {
+    path: RouterPaths.CONTACTS,
     component: ContactsComponent
   },
   {
-    path: 'gallery',
+    path: `${RouterPaths.PRODUCT}/:productId`,
+    component: ProductDetailsComponent
+  },
+  {
+    path: RouterPaths.GALLERY,
     component: GalleryComponent
   },
   {
-    path: 'delivery',
+    path: RouterPaths.DELIVERY,
     component: DeliveryComponent
   },
   {
-    path: 'search',
+    path: RouterPaths.SEARCH,
     component: SearchComponent
   },
   {
-    path: 'bascket',
+    path: RouterPaths.BASCKET,
     component: BascketComponent
   }
 ];

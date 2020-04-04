@@ -1,1 +1,3 @@
-<p>menu-links works!</p>
+<a *ngFor="let link of menuLinks" [routerLink]="link.path" class="menu-link">{{
+  link.label
+}}</a>

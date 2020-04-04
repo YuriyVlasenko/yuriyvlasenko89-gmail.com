@@ -1,1 +1,6 @@
-<app-partners></app-partners> <app-categories-list></app-categories-list>
+<app-partners *ngIf="showCategoriesList"></app-partners>
+<app-categories-list *ngIf="showCategoriesList"></app-categories-list>
+<app-products-list
+  [products]="products"
+  *ngIf="!showCategoriesList"
+></app-products-list>

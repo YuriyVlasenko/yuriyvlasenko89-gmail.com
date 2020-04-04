@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .menu-link {
+    padding: 1.2em;
+  }
+}

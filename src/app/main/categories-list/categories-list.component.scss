@@ -1,0 +1,15 @@
+$items-on-page-count: 3;
+
+:host {
+  margin: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .category-item {
+    max-width: 28%;
+    padding: 10px 1.5%;
+    overflow: hidden;
+  }
+}

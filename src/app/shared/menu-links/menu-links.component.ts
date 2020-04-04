@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import routerPaths from '../../routerPaths.const';
+
+class MenuLink {
+  constructor(public label: string, public path: string[]) {}
+}
 
 @Component({
   selector: 'app-menu-links',
   templateUrl: './menu-links.component.html',
-  styleUrls: ['./menu-links.component.scss']
+  styleUrls: ['./menu-links.component.scss'],
+  host: { class: 'menu-links' }
 })
 export class MenuLinksComponent implements OnInit {
-
-  constructor() { }
+  public menuLinks: MenuLink[] = [];
+  constructor() {}
 
   ngOnInit(): void {
+    this.menuLinks.push(new MenuLink('Главная', [`${routerPaths.BASE}`]));
+    this.menuLinks.push(new MenuLink('Галерея', [`${routerPaths.GALLERY}`]));
+    this.menuLinks.push(new MenuLink('Доставка', [`${routerPaths.DELIVERY}`]));
+    this.menuLinks.push(new MenuLink('Контакты', [`${routerPaths.CONTACTS}`]));
   }
-
 }

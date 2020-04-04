@@ -1,4 +1,5 @@
 <app-category-item
   *ngFor="let item of categories"
   [data]="item"
+  (choose)="onChooseCategory($event)"
 ></app-category-item>

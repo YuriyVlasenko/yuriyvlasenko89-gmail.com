@@ -1,4 +1,2 @@
-{{ data.id }}
-{{ data.name }}
-
-<img src="{{ imageUrl }}" />
+<img src="{{ imageUrl }}" class="category-image" (click)="onClick()" />
+<div class="category-name" (click)="onClick()">{{ data.title }}</div>

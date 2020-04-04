@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ProductPart } from "./product-parts.service";
 import { ProductOption } from "./product-options.service";
-import { BehaviorSubject } from "rxjs";
+import { from, Observable } from "rxjs";
 
 export class ProductSize {
   constructor(
@@ -14,7 +14,7 @@ export class ProductSize {
 export class Product {
   constructor(
     public id: string,
-    public name: string,
+    public title: string,
     public description: string,
     public imageUrls: string[],
     public categoryId: string,
@@ -31,7 +31,7 @@ export class Product {
 export class ProductsService {
   constructor() {}
 
-  getItems() {
+  getItems(): Observable<Product> {
     var result = [];
     for (var i = 1; i < 11; i++) {
       result.push(
@@ -39,7 +39,7 @@ export class ProductsService {
           i + "",
           `product ${i}`,
           `description ${i}`,
-          [],
+          ["https://styleroom.com.ua/wp-content/uploads/2020/02/097-6.jpg"],
           "1",
           new ProductSize(`${10 * i}`, "20", `${30 + i}`),
           [],
@@ -48,6 +48,6 @@ export class ProductsService {
         )
       );
     }
-    return new BehaviorSubject(result);
+    return from(result);
   }
 }
