@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgxImageGalleryModule } from 'ngx-image-gallery';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +44,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductItemComponent,
     ProductDetailsComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgxImageGalleryModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0 auto;
   display: flex;
-  width: 80vw;
-  max-width: 80vw;
+  width: 100%;
   overflow: scroll;
   flex-direction: column;
   justify-content: center;

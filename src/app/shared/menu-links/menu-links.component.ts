@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import routerPaths from '../../routerPaths.const';
 
 class MenuLink {
@@ -9,9 +9,11 @@ class MenuLink {
   selector: 'app-menu-links',
   templateUrl: './menu-links.component.html',
   styleUrls: ['./menu-links.component.scss'],
-  host: { class: 'menu-links' }
+  host: { class: 'menu-links', '[class.vertical]': 'vertical' },
 })
 export class MenuLinksComponent implements OnInit {
+  @Input('vertical') vertical: boolean = false;
+
   public menuLinks: MenuLink[] = [];
   constructor() {}
 

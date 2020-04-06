@@ -1,25 +1,43 @@
-<div *ngIf="product">
-  <div class="product-images"></div>
-  <div class="product-view">
-    <div>{{ product.price }}</div>
-    <div>{{ product.title }}</div>
-    <div *ngIf="product.size">
-      <div>Габариты:</div>
-      <div>{{ product.size.length }}</div>
-      <div>{{ product.size.height }}</div>
-      <div>{{ product.size.width }}</div>
+<ngx-image-gallery
+  class="product-gallery"
+  *ngIf="product"
+  [images]="galleryImages"
+  [conf]="galleryConfig"
+>
+</ngx-image-gallery>
+<div class="product-view" *ngIf="product">
+  <div class="product-description-price">{{ getProductPrice() }}</div>
+  <div class="product-description-title">{{ product.title }}</div>
+  <div *ngIf="product.size">
+    <div class="product-description-header">Габариты:</div>
+    <div>
+      <span class="product-description-label">length:</span>
+      <span class="product-description-value">{{ product.size.length }}</span>
     </div>
-    <div *ngIf="product.parts.length">
-      <div>Стандартная комплектация:</div>
-      <div *ngFor="let part of product.parts">
-        <div>{{ part.name }}</div>
-      </div>
+    <div>
+      <span class="product-description-label">height:</span>
+      <span class="product-description-value">{{ product.size.height }}</span>
     </div>
-    <div *ngIf="product.options.length">
-      <div>Дополнительные опции под заказ:</div>
-      <div *ngFor="let option of product.options">
-        <div>{{ option.name }}</div>
-      </div>
+    <div>
+      <span class="product-description-label">width:</span>
+      <span class="product-description-value">{{ product.size.width }}</span>
+    </div>
+  </div>
+  <div *ngIf="product.parts.length">
+    <div class="product-description-header">Стандартная комплектация:</div>
+    <div class="product-description-value" *ngFor="let part of product.parts">
+      <div>{{ part.name }}</div>
+    </div>
+  </div>
+  <div *ngIf="product.options.length">
+    <div class="product-description-header">
+      Дополнительные опции под заказ:
+    </div>
+    <div
+      class="product-description-value"
+      *ngFor="let option of product.options"
+    >
+      <div>{{ option.name }}</div>
     </div>
   </div>
 </div>
