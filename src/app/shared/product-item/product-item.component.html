@@ -1,3 +1,4 @@
-<img class="product-image" src="{{ imageUrl }}" />
-<div class="product-name">{{ data.title }}</div>
+<img class="product-image" src="{{ imageUrl }}" (click)="chooseProduct()" />
+<div class="product-name" (click)="chooseProduct()">{{ data.title }}</div>
 <div class="product-price">{{ data.price }} {{ currency }}</div>
+<div class="product-buy-action" (click)="buyProduct()">купить</div>

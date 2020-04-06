@@ -1,4 +1,6 @@
 <app-product-item
   *ngFor="let product of products"
   [data]="product"
+  (choose)="onChoose($event)"
+  (buy)="onBuy($event)"
 ></app-product-item>

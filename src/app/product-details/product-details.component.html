@@ -1,1 +1,25 @@
-<p>product-details works!</p>
+<div *ngIf="product">
+  <div class="product-images"></div>
+  <div class="product-view">
+    <div>{{ product.price }}</div>
+    <div>{{ product.title }}</div>
+    <div *ngIf="product.size">
+      <div>Габариты:</div>
+      <div>{{ product.size.length }}</div>
+      <div>{{ product.size.height }}</div>
+      <div>{{ product.size.width }}</div>
+    </div>
+    <div *ngIf="product.parts.length">
+      <div>Стандартная комплектация:</div>
+      <div *ngFor="let part of product.parts">
+        <div>{{ part.name }}</div>
+      </div>
+    </div>
+    <div *ngIf="product.options.length">
+      <div>Дополнительные опции под заказ:</div>
+      <div *ngFor="let option of product.options">
+        <div>{{ option.name }}</div>
+      </div>
+    </div>
+  </div>
+</div>

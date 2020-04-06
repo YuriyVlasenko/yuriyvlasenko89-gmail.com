@@ -1,14 +1,24 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Product } from 'src/app/services/repositories/products.service';
 
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss'],
-  host: { class: 'product-item' }
+  host: { class: 'product-item' },
 })
 export class ProductItemComponent implements OnInit, OnChanges {
   @Input('data') data: Product;
+  @Output() choose = new EventEmitter<Product>();
+  @Output() buy = new EventEmitter<Product>();
+
   public imageUrl: string;
   public currency: string = 'грн';
 
@@ -21,4 +31,12 @@ export class ProductItemComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {}
+
+  chooseProduct() {
+    this.choose.emit(this.data);
+  }
+
+  buyProduct() {
+    this.buy.emit(this.data);
+  }
 }
