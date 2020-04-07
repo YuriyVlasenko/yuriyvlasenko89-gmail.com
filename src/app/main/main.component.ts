@@ -44,11 +44,8 @@ export class MainComponent implements OnInit {
   }
 
   private loadProducts(categoryId) {
-    this.products = [];
-    this.productManager
-      .getProductsByCategory(categoryId)
-      .subscribe((product) => {
-        this.products.push(product);
-      });
+    this.productManager.getProductsByCategory(categoryId).then((products) => {
+      this.products = products;
+    });
   }
 }

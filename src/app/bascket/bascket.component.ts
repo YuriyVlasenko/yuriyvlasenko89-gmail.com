@@ -12,13 +12,12 @@ import {
 })
 export class BascketComponent implements OnInit {
   public bascketItems: BascketItem[] = [];
-  public bascket: Bascket;
 
   constructor(private bascketService: BascketService) {}
 
   ngOnInit(): void {
-    this.bascket = this.bascketService.getBasket();
-    console.log('this.bascket', this.bascket);
-    // this.bascketItems = this.bascket.getItems();
+    this.bascketService.getBasket().then((bascket) => {
+      this.bascketItems = bascket.getItems();
+    });
   }
 }

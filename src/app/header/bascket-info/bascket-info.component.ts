@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import routerPaths from '../../routerPaths.const';
 import { BascketService, Bascket } from 'src/app/services/bascket.service';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-bascket-info',
@@ -15,7 +14,9 @@ export class BascketInfoComponent implements OnInit {
   constructor(private router: Router, private basketService: BascketService) {}
 
   ngOnInit(): void {
-    this.bascket = this.basketService.getBasket();
+    this.basketService.getBasket().then((bascket) => {
+      this.bascket = bascket;
+    });
   }
 
   getTotalPrice() {

@@ -23,6 +23,10 @@ export class Product {
     public options: ProductOption[],
     public price: number
   ) {}
+
+  getFormatedPrice() {
+    return `${this.price.toFixed(2)} грн.`;
+  }
 }
 
 @Injectable({
@@ -31,7 +35,7 @@ export class Product {
 export class ProductsService {
   constructor() {}
 
-  getItems(): Observable<Product> {
+  getItems(): Promise<Product[]> {
     const productParts = [
       new ProductPart("1", "Зеркальное полотно AGC Mirox Ecological"),
       new ProductPart("2", "Трансформатор 220В/12В."),
@@ -47,8 +51,8 @@ export class ProductsService {
     for (var i = 1; i < 11; i++) {
       result.push(
         new Product(
+          `${i}`,
           `Зеркало с LED подсветкой D${i}`,
-          `product ${i}`,
           `description ${i}`,
           [
             "https://styleroom.com.ua/wp-content/uploads/2020/02/097-6.jpg",
@@ -64,6 +68,6 @@ export class ProductsService {
         )
       );
     }
-    return from(result);
+    return Promise.resolve(result);
   }
 }

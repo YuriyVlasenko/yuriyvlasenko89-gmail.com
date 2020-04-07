@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +24,9 @@ import { CategoryItemComponent } from './main/category-item/category-item.compon
 import { ProductsListComponent } from './shared/products-list/products-list.component';
 import { ProductItemComponent } from './shared/product-item/product-item.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { BascketItemComponent } from './bascket/bascket-item/bascket-item.component';
+import { BascketComponent } from './bascket/bascket.component';
+import { CounterComponent } from './shared/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -42,10 +47,21 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     CategoryItemComponent,
     ProductsListComponent,
     ProductItemComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BascketItemComponent,
+    BascketComponent,
+    CounterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgxImageGalleryModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgxImageGalleryModule,
+    FormsModule,
+    FontAwesomeModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

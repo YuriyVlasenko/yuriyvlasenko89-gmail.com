@@ -12,14 +12,14 @@ import { BascketService, Bascket } from 'src/app/services/bascket.service';
 })
 export class ProductsListComponent implements OnInit, OnChanges {
   @Input('products') products: Product[];
-  private basket: Bascket;
+  private bascket: Bascket;
 
   constructor(private router: Router, private basketService: BascketService) {}
 
   ngOnChanges() {}
 
   ngOnInit(): void {
-    this.basket = this.basketService.getBasket();
+    this.basketService.getBasket().then((bascket) => (this.bascket = bascket));
   }
 
   onChoose(product: Product) {
@@ -27,6 +27,6 @@ export class ProductsListComponent implements OnInit, OnChanges {
   }
 
   onBuy(product: Product) {
-    this.basket.addItem(product, 1);
+    this.bascket.addItem(product, 1);
   }
 }

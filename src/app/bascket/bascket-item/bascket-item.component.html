@@ -1,0 +1,6 @@
+<img src="{{ data.product.getFormatedPrice() }}" />
+<div class="product-title">{{ data.product.title }}</div>
+<div class="product-price">{{ data.product.getFormatedPrice() }}</div>
+<div class="product-count">
+  <app-counter [data]="data.count"></app-counter>
+</div>

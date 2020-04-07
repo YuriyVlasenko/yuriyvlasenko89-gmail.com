@@ -14,30 +14,60 @@ export class BascketItem {
 }
 
 export class Bascket {
-  constructor(private items: BascketItem[] = []) {}
+  private onChangeHandlers = [() => this.recalculateTotals()];
+  private totalPrice: number = 0;
+  private totalCount: number = 0;
 
+  constructor(private items: BascketItem[] = []) {
+    this.onChangeHandlers.forEach((handler) => handler());
+  }
   public getTotalPrice(): number {
-    if (this.items.length === 0) {
-      return 0;
-    }
-    return this.items
-      .map((i) => i.getPrice())
-      .reduce((accumulator, currentValue) => accumulator + currentValue);
+    return this.totalPrice;
   }
   public getItems(): BascketItem[] {
     return [...this.items];
   }
   public getTotalCount() {
-    return this.items.length;
+    return this.totalCount;
   }
   public addItem(product: Product, count: number) {
-    this.items.push(new BascketItem(product, count));
+    let productItem = this.items.find((i) => i.product.id === product.id);
+    if (productItem) {
+      productItem.count += count;
+    } else {
+      this.items.push(new BascketItem(product, count));
+    }
+    this.onChangeHandlers.forEach((handler) => handler());
   }
   public removeItem(productId: string) {
     this.items = this.items.filter((i) => i.product.id !== productId);
+    this.onChangeHandlers.forEach((handler) => handler());
   }
   public changeCount(productId: string, count: number) {
     this.items.find((i) => i.product.id === productId).count = count;
+    this.onChangeHandlers.forEach((handler) => handler());
+  }
+  public addOnChangeHandler(handler) {
+    this.onChangeHandlers.push(handler);
+    return () => {
+      let index = this.onChangeHandlers.findIndex(handler);
+      if (index != -1) {
+        this.onChangeHandlers.splice(index, 1);
+      }
+    };
+  }
+  private recalculateTotals() {
+    if (this.items.length === 0) {
+      this.totalPrice = 0;
+      this.totalCount = 0;
+      return;
+    }
+    this.totalPrice = this.items
+      .map((i) => i.getPrice())
+      .reduce((accumulator, currentValue) => accumulator + currentValue);
+    this.totalCount = this.items
+      .map((i) => i.count)
+      .reduce((accumulator, currentValue) => accumulator + currentValue);
   }
 }
 
@@ -51,52 +81,56 @@ export class BascketService {
     private productsService: ProductsService
   ) {}
 
-  getBasket() {
+  getBasket(): Promise<Bascket> {
     if (this.bascket) {
-      return this.bascket;
+      return Promise.resolve(this.bascket);
     }
     let bascketRaw = this.localStorage.getItem(StorageKeys.BASCKET);
-    if (!bascketRaw) {
-      this.bascket = new Bascket();
-      this.localStorage.setItem(StorageKeys.BASCKET, this.bascket);
-    }
-    // this.bascket = this.convertRawDataToBasket(bascketRaw);
-    return this.bascket;
+    return this.parseBascketFromStorageFormat(bascketRaw).then((bascket) => {
+      this.bascket = bascket;
+      this.bascket.addOnChangeHandler(() => this.saveBascket());
+      return bascket;
+    });
   }
-  /*
+
+  private saveBascket() {
+    console.log('saveBascket', this.bascket);
+    this.localStorage.setItem(
+      StorageKeys.BASCKET,
+      this.converBascketToStorageFormat(this.bascket)
+    );
+  }
+
+  private parseBascketFromStorageFormat(rawData): Promise<Bascket> {
+    if (!rawData || !rawData.items) {
+      return Promise.resolve(new Bascket());
+    }
+    return this.productsService.getItems().then((products) => {
+      let bascketItems = rawData.items
+        .map((item) => {
+          let product = products.find((p) => p.id === item.productId);
+          return {
+            product,
+            count: item.count,
+          };
+        })
+        .filter((item) => item.product)
+        .map((item) => {
+          return new BascketItem(item.product, item.count);
+        });
+      return new Bascket(bascketItems);
+    });
+  }
+
   private converBascketToStorageFormat(bascket: Bascket) {
     let formatedBascket = {
       items: bascket.getItems().map((item) => {
         return {
-          id: item.product.id,
+          productId: item.product.id,
           count: item.count,
         };
       }),
     };
     return formatedBascket;
   }
-
-  private parseBascketFromStorageFormat(rawData): Promise<Bascket> {
-    this.productsService.getItems()
-    if (!rawData || !rawData.items) {
-      return Promise.resolve(new Bascket());
-    }
-
-    return this.productsService.getItems().subscribe(() => {
-
-    })
-
-    let bascketItems = rawData.items.map((item) => {
-      let product = new Product();
-      return new BascketItem(product, item.count);
-    });
-  }
-
-  private convertRawDataToBasket(rawBascket: Object): Bascket {
-    let items = (rawBascket['items'] || []).map((item) => {
-      return new BascketItem(new Product());
-    });
-    //let bascket = new Bascket();
-  }
-  */
 }

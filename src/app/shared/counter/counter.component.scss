@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .counter-down,
+  .counter-value,
+  .counter-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 30px;
+    border: 1px solid lightblue;
+  }
+  .counter-down,
+  .counter-up {
+    cursor: pointer;
+  }
+  .counter-value {
+    border-left: none;
+    border-right: none;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1.2em;
+  }
+  .counter-up {
+  }
+}

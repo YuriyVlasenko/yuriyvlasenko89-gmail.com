@@ -38,7 +38,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let productId = this.activatedRoute.snapshot.paramMap.get('productId');
-    this.productsManager.getProduct(productId).subscribe((product) => {
+    this.productsManager.getProduct(productId).then((product) => {
       if (!product) {
         // TODO: show message
         console.log('product not found', productId);

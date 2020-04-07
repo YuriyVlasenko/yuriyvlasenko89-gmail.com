@@ -20,7 +20,6 @@ export class ProductItemComponent implements OnInit, OnChanges {
   @Output() buy = new EventEmitter<Product>();
 
   public imageUrl: string;
-  public currency: string = 'грн';
 
   constructor() {}
 
