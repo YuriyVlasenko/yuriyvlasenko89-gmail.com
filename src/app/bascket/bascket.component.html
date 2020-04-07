@@ -1,1 +1,8 @@
-<p>bascket works!</p>
+<div *ngFor="let item of bascketItems" class="product-item">
+  <div>{{ item.product.title }}</div>
+  <div>
+    <div>-</div>
+    <div>{{ item.count }}</div>
+    <div>+</div>
+  </div>
+</div>

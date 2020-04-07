@@ -1,0 +1,22 @@
+:host {
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    .bascket-picture {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bascket-total {
+      padding-left: 0.3em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .bascket-amount {
+      padding-left: 0.3em;
+    }
+  }
+}

@@ -9,7 +9,7 @@ import { Product } from '../services/repositories/products.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
   public showCategoriesList: boolean = true;
@@ -30,9 +30,9 @@ export class MainComponent implements OnInit {
       this.categoriesManager
         .getCategory({
           name: categoryName,
-          id: null
+          id: null,
         })
-        .subscribe(category => {
+        .subscribe((category) => {
           if (!category) {
             this.router.navigateByUrl(`/${RouterPaths.BASE}`);
             return;
@@ -44,8 +44,11 @@ export class MainComponent implements OnInit {
   }
 
   private loadProducts(categoryId) {
-    this.productManager.getProductsByCategory(categoryId).subscribe(product => {
-      this.products.push(product);
-    });
+    this.products = [];
+    this.productManager
+      .getProductsByCategory(categoryId)
+      .subscribe((product) => {
+        this.products.push(product);
+      });
   }
 }
