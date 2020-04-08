@@ -1,7 +1,7 @@
 <div class="counter-down" (click)="onDownCounter()">
   <fa-icon [icon]="faArrowLeft"></fa-icon>
 </div>
-<input class="counter-value" [(ngModel)]="count" />
+<input readonly class="counter-value" [(ngModel)]="count" />
 <div class="counter-up" (click)="onUpCounter()">
   <fa-icon [icon]="faArrowRight"></fa-icon>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,26 +6,24 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss'],
 })
-export class CounterComponent implements OnInit, OnChanges {
+export class CounterComponent implements OnInit {
   public faArrowLeft = faArrowLeft;
   public faArrowRight = faArrowRight;
-  public count: number = 1;
 
-  @Input('data') data: number;
+  @Output('change') change = new EventEmitter<number>();
+  @Input('count') count: number;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  ngOnChanges(): void {
-    this.count = this.data || 1;
-  }
-
   onDownCounter() {
     this.count = this.count > 1 ? this.count - 1 : 1;
+    this.change.emit(this.count);
   }
 
   onUpCounter() {
     this.count = this.count + 1;
+    this.change.emit(this.count);
   }
 }

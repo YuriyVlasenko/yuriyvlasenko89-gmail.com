@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { BascketItem } from 'src/app/services/bascket.service';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { BascketItem, BascketService } from 'src/app/services/bascket.service';
 
 @Component({
   selector: 'app-bascket-item',
@@ -10,6 +10,8 @@ import { BascketItem } from 'src/app/services/bascket.service';
 export class BascketItemComponent implements OnInit, OnChanges {
   public imageUrl: string;
   @Input('data') data: BascketItem;
+  @Output('changeCount') changeCount= new EventEmitter<object>();
+  @Output('remove') remove = new EventEmitter<string>()
 
   constructor() {}
 
@@ -23,7 +25,11 @@ export class BascketItemComponent implements OnInit, OnChanges {
     }
   }
 
-  removeItem(id) {}
+  removeProduct() {
+    this.remove.emit(this.data.product.id)
+  }
 
-  changeCount(productId, count) {}
+  onChangeCount(count) {
+    this.changeCount.emit({ productId: this.data.product.id, count: count })
+  }
 }

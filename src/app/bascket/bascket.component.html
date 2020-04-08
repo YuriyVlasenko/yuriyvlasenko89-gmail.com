@@ -1,2 +1,8 @@
-<app-bascket-item *ngFor="let item of bascketItems" [data]="item">
+<app-bascket-item *ngFor="let item of bascketItems" [data]="item"
+  (changeCount)="onChangeCount($event)"
+  (remove)="onRemoveProduct($event)">
 </app-bascket-item>
+<div class="bascket-total">
+  <div>Сумма заказов: {{ getTotalPrice() }}</div>
+  <div *ngIf="!showOrderForm" (click)="createOrder()">Оформить заказ</div>
+</div>

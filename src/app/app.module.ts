@@ -27,6 +27,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { BascketItemComponent } from './bascket/bascket-item/bascket-item.component';
 import { BascketComponent } from './bascket/bascket.component';
 import { CounterComponent } from './shared/counter/counter.component';
+import { CreateOrderComponent } from './bascket/create-order/create-order.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CounterComponent } from './shared/counter/counter.component';
     BascketItemComponent,
     BascketComponent,
     CounterComponent,
+    CreateOrderComponent,
   ],
   imports: [
     CommonModule,

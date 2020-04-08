@@ -12,12 +12,31 @@ import {
 })
 export class BascketComponent implements OnInit {
   public bascketItems: BascketItem[] = [];
+  private bascket: Bascket;
+  public showOrderForm: boolean = false;
 
   constructor(private bascketService: BascketService) {}
 
   ngOnInit(): void {
     this.bascketService.getBasket().then((bascket) => {
+      this.bascket = bascket;
       this.bascketItems = bascket.getItems();
     });
+  }
+
+  getTotalPrice(){
+    return this.bascket && this.bascket.getTotalPrice() || 0;
+  }
+  onChangeCount(data){
+    this.bascket.changeCount(data.productId, data.count)
+  }
+
+  onRemoveProduct(productId){
+    this.bascket.removeItem(productId)
+    this.bascketItems = this.bascket.getItems();
+  }
+
+  createOrder(){
+    this.showOrderForm = true;
   }
 }
