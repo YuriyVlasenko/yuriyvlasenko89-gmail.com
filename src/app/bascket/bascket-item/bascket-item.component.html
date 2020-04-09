@@ -1,9 +1,13 @@
-<img src="{{ data.product.getFormatedPrice() }}" />
-<div class="product-title">{{ data.product.title }}</div>
-<div class="product-price">{{ data.product.getFormatedPrice() }}</div>
-<div class="product-count">
-  <app-counter [count]="data.count" (change)="onChangeCount($event)"></app-counter>
+<div class="product-description">
+  <img src="{{ data.product.getFormatedPrice() }}" />
+  <div class="product-title">{{ data.product.title }}</div>
+  <div class="product-price">{{ data.product.getFormatedPrice() }}</div>
 </div>
-<div (click)="removeProduct()">
-  remove
+<div class="product-actions">
+  <div class="product-count">
+    <app-counter [count]="data.count" (change)="onChangeCount($event)"></app-counter>
+  </div>
+  <div class="product-remove" (click)="removeProduct()">
+    <fa-icon [icon]="faTrash"></fa-icon>
+  </div>
 </div>

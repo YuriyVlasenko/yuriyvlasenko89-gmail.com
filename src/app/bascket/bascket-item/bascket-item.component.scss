@@ -5,4 +5,14 @@
 
   border: 1px solid lightblue;
   padding: 1em;
+  width: 100%;
+
+  .product-count{
+    padding-left: 10px;
+  }
+  .product-remove{
+    padding-left: 10px;
+    color: red;
+    cursor: pointer;
+  }
 }

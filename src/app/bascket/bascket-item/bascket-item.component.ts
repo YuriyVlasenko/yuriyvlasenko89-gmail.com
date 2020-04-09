@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { BascketItem, BascketService } from 'src/app/services/bascket.service';
+import { BascketItem } from 'src/app/services/bascket.service';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-bascket-item',
@@ -9,6 +11,7 @@ import { BascketItem, BascketService } from 'src/app/services/bascket.service';
 })
 export class BascketItemComponent implements OnInit, OnChanges {
   public imageUrl: string;
+  public faTrash = faTrash;
   @Input('data') data: BascketItem;
   @Output('changeCount') changeCount= new EventEmitter<object>();
   @Output('remove') remove = new EventEmitter<string>()
