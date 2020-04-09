@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>Оформление заказа</mat-card-title>
+  <mat-card-content>
+    <form
+      [formGroup]="checkoutForm"
+      (ngSubmit)="onSubmit(checkoutForm.value)"
+      class="order-form"
+    >
+      <mat-form-field>
+        <mat-label>Имя и фамилия</mat-label>
+        <input matInput id="buyer" type="text" formControlName="buyer" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Телефон</mat-label>
+        <input matInput id="phone" type="text" formControlName="phone" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput id="email" type="text" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Город</mat-label>
+        <input matInput id="city" type="text" formControlName="city" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Область</mat-label>
+        <input matInput id="region" type="text" formControlName="region" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Город</mat-label>
+        <input matInput id="city" type="text" formControlName="city" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Отделение доставки</mat-label>
+        <input
+          matInput
+          id="deliveryDepartment"
+          type="text"
+          formControlName="deliveryDepartment"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Примечание</mat-label>
+        <input matInput id="notes" type="text" formControlName="notes" />
+      </mat-form-field>
+
+      <button class="button" type="submit">Подтвердить заказ</button>
+    </form>
+  </mat-card-content>
+</mat-card>

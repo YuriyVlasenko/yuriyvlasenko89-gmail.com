@@ -1,11 +1,14 @@
 <div class="product-description">
-  <img src="{{ data.product.getFormatedPrice() }}" />
+  <app-image (click)="goToProduct()" [src]="data.product.imageUrls"></app-image>
   <div class="product-title">{{ data.product.title }}</div>
   <div class="product-price">{{ data.product.getFormatedPrice() }}</div>
 </div>
 <div class="product-actions">
   <div class="product-count">
-    <app-counter [count]="data.count" (change)="onChangeCount($event)"></app-counter>
+    <app-counter
+      [count]="data.count"
+      (change)="onChangeCount($event)"
+    ></app-counter>
   </div>
   <div class="product-remove" (click)="removeProduct()">
     <fa-icon [icon]="faTrash"></fa-icon>

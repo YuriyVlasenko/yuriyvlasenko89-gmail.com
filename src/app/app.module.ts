@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
@@ -27,7 +32,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { BascketItemComponent } from './bascket/bascket-item/bascket-item.component';
 import { BascketComponent } from './bascket/bascket.component';
 import { CounterComponent } from './shared/counter/counter.component';
-import { CreateOrderComponent } from './bascket/create-order/create-order.component';
+import { ImageComponent } from './shared/image/image.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +58,8 @@ import { CreateOrderComponent } from './bascket/create-order/create-order.compon
     BascketItemComponent,
     BascketComponent,
     CounterComponent,
-    CreateOrderComponent,
+    ImageComponent,
+    OrderComponent,
   ],
   imports: [
     CommonModule,
@@ -62,6 +69,11 @@ import { CreateOrderComponent } from './bascket/create-order/create-order.compon
     NgxImageGalleryModule,
     FormsModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatInputModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,6 +5,7 @@ export default {
   CONTACTS: 'contacts',
   DELIVERY: 'delivery',
   GALLERY: 'gallery',
+  ORDER: 'order',
   PRODUCT: 'product',
-  SEARCH: 'search'
+  SEARCH: 'search',
 };

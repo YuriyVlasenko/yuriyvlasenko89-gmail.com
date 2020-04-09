@@ -4,6 +4,8 @@ import {
   Bascket,
   BascketItem,
 } from '../services/bascket.service';
+import { Router } from '@angular/router';
+import routerPaths from '../routerPaths.const';
 
 @Component({
   selector: 'app-bascket',
@@ -15,7 +17,7 @@ export class BascketComponent implements OnInit {
   private bascket: Bascket;
   public showOrderForm: boolean = false;
 
-  constructor(private bascketService: BascketService) {}
+  constructor(private bascketService: BascketService, private router: Router) {}
 
   ngOnInit(): void {
     this.bascketService.getBasket().then((bascket) => {
@@ -24,19 +26,19 @@ export class BascketComponent implements OnInit {
     });
   }
 
-  getTotalPrice(){
-    return this.bascket && this.bascket.getTotalPrice() || 0;
+  getTotalPrice() {
+    return (this.bascket && this.bascket.getTotalPrice()) || 0;
   }
-  onChangeCount(data){
-    this.bascket.changeCount(data.productId, data.count)
+  onChangeCount(data) {
+    this.bascket.changeCount(data.productId, data.count);
   }
 
-  onRemoveProduct(productId){
-    this.bascket.removeItem(productId)
+  onRemoveProduct(productId) {
+    this.bascket.removeItem(productId);
     this.bascketItems = this.bascket.getItems();
   }
 
-  createOrder(){
-    this.showOrderForm = true;
+  createOrder() {
+    this.router.navigateByUrl(routerPaths.ORDER);
   }
 }

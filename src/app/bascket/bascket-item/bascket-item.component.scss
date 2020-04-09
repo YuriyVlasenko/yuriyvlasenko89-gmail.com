@@ -2,17 +2,43 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 
   border: 1px solid lightblue;
   padding: 1em;
   width: 100%;
 
-  .product-count{
-    padding-left: 10px;
+  .product-description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .image {
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+    }
+    .product-title {
+      padding-left: 10px;
+      font-size: 1.1em;
+    }
   }
-  .product-remove{
-    padding-left: 10px;
-    color: red;
-    cursor: pointer;
+  .product-actions {
+    display: flex;
+    flex-direction: row;
+
+    .product-count {
+      padding-left: 10px;
+    }
+    .product-remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 10px;
+      height: 25px;
+      width: 30px;
+      color: red;
+      cursor: pointer;
+    }
   }
 }

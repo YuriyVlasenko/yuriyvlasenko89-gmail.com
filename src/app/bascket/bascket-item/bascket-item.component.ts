@@ -1,8 +1,15 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { BascketItem } from 'src/app/services/bascket.service';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
-
+import routerPaths from '../../routerPaths.const';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-bascket-item',
   templateUrl: './bascket-item.component.html',
@@ -13,10 +20,10 @@ export class BascketItemComponent implements OnInit, OnChanges {
   public imageUrl: string;
   public faTrash = faTrash;
   @Input('data') data: BascketItem;
-  @Output('changeCount') changeCount= new EventEmitter<object>();
-  @Output('remove') remove = new EventEmitter<string>()
+  @Output('changeCount') changeCount = new EventEmitter<object>();
+  @Output('remove') remove = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -29,10 +36,14 @@ export class BascketItemComponent implements OnInit, OnChanges {
   }
 
   removeProduct() {
-    this.remove.emit(this.data.product.id)
+    this.remove.emit(this.data.product.id);
   }
 
   onChangeCount(count) {
-    this.changeCount.emit({ productId: this.data.product.id, count: count })
+    this.changeCount.emit({ productId: this.data.product.id, count: count });
+  }
+
+  goToProduct() {
+    this.router.navigateByUrl(`${routerPaths.PRODUCT}/${this.data.product.id}`);
   }
 }

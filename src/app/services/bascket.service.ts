@@ -21,6 +21,10 @@ export class Bascket {
   constructor(private items: BascketItem[] = []) {
     this.onChangeHandlers.forEach((handler) => handler());
   }
+
+  public clear() {
+    this.items = [];
+  }
   public getTotalPrice(): number {
     return this.totalPrice;
   }
