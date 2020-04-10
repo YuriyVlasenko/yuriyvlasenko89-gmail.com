@@ -19,11 +19,16 @@ export class Bascket {
   private totalCount: number = 0;
 
   constructor(private items: BascketItem[] = []) {
+    this.notifyThatBasckerChanged()
+  }
+
+  private notifyThatBasckerChanged() {
     this.onChangeHandlers.forEach((handler) => handler());
   }
 
   public clear() {
     this.items = [];
+    this.notifyThatBasckerChanged()
   }
   public getTotalPrice(): number {
     return this.totalPrice;
@@ -41,15 +46,15 @@ export class Bascket {
     } else {
       this.items.push(new BascketItem(product, count));
     }
-    this.onChangeHandlers.forEach((handler) => handler());
+    this.notifyThatBasckerChanged()
   }
   public removeItem(productId: string) {
     this.items = this.items.filter((i) => i.product.id !== productId);
-    this.onChangeHandlers.forEach((handler) => handler());
+    this.notifyThatBasckerChanged()
   }
   public changeCount(productId: string, count: number) {
     this.items.find((i) => i.product.id === productId).count = count;
-    this.onChangeHandlers.forEach((handler) => handler());
+    this.notifyThatBasckerChanged()
   }
   public addOnChangeHandler(handler) {
     this.onChangeHandlers.push(handler);

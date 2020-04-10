@@ -2,6 +2,7 @@
   <mat-card-title>Оформление заказа</mat-card-title>
   <mat-card-content>
     <form
+      *ngIf="orderItems.length"
       [formGroup]="checkoutForm"
       (ngSubmit)="onSubmit(checkoutForm.value)"
       class="order-form"
@@ -40,12 +41,20 @@
         <mat-label>Примечание</mat-label>
         <input matInput id="notes" type="text" formControlName="notes" />
       </mat-form-field>
-
-      <button class="button" type="submit">Подтвердить заказ</button>
+      <button class="button" mat-raised-button color="primary" type="submit">
+        Подтвердить заказ
+      </button>
     </form>
+    <div *ngIf="!orderItems.length && !orderId" class="order-is-empty">
+      Сначала добавьте товары в корзину
+    </div>
+    <div *ngIf="orderId" class="order-created">
+      Ваш заказ {{ orderId }} успешно оформлени. <br />
+      Ожидайте звонка менеджера.
+    </div>
   </mat-card-content>
 </mat-card>
-<mat-card class="order-details">
+<mat-card class="order-details" *ngIf="orderItems.length">
   <mat-card-title>Ваш заказ</mat-card-title>
   <mat-card-content>
     <div *ngFor="let orderItem of orderItems" class="order-item">

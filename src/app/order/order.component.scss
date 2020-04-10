@@ -13,6 +13,11 @@
       display: flex;
       flex-direction: column;
     }
+    .order-is-empty,
+    .order-created {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
   }
   .order-details {
     margin: 30px;
