@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="order-customer">
   <mat-card-title>Оформление заказа</mat-card-title>
   <mat-card-content>
     <form
@@ -12,15 +12,11 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Телефон</mat-label>
-        <input matInput id="phone" type="text" formControlName="phone" />
+        <input matInput id="phone" type="tel" formControlName="phone" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput id="email" type="text" formControlName="email" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Город</mat-label>
-        <input matInput id="city" type="text" formControlName="city" />
+        <input type="email" matInput id="email" formControlName="email" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Область</mat-label>
@@ -30,6 +26,7 @@
         <mat-label>Город</mat-label>
         <input matInput id="city" type="text" formControlName="city" />
       </mat-form-field>
+
       <mat-form-field>
         <mat-label>Отделение доставки</mat-label>
         <input
@@ -46,5 +43,23 @@
 
       <button class="button" type="submit">Подтвердить заказ</button>
     </form>
+  </mat-card-content>
+</mat-card>
+<mat-card class="order-details">
+  <mat-card-title>Ваш заказ</mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let orderItem of orderItems" class="order-item">
+      <div>
+        <strong>{{ orderItem.product.title }}</strong>
+      </div>
+      <div>
+        {{ orderItem.count }} од. x
+        {{ orderItem.product.price.toFixed(2) }} грн. =
+        {{ orderItem.getPrice().toFixed(2) }} грн
+      </div>
+    </div>
+    <div class="order-details-summary">
+      Сумма заказа: {{ totalPrice.toFixed(2) }} грн.
+    </div>
   </mat-card-content>
 </mat-card>

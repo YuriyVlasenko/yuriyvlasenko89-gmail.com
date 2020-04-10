@@ -1,7 +1,38 @@
 :host {
   width: 100%;
-  .order-form {
+  display: flex;
+  flex-direction: row;
+
+  .order-customer {
     display: flex;
     flex-direction: column;
+    flex-grow: 3;
+    margin: 30px;
+    .order-form {
+      font-size: 1.1em;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .order-details {
+    margin: 30px;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    .order-item {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      font-size: 1.2em;
+      padding: 5px;
+      border: 1px solid lightblue;
+      margin: 5px 0;
+    }
+    .order-details-summary {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: end;
+    }
   }
 }

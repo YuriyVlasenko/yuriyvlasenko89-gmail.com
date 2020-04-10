@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { BascketService, Bascket } from '../services/bascket.service';
+import {
+  BascketService,
+  Bascket,
+  BascketItem,
+} from '../services/bascket.service';
 
 @Component({
   selector: 'app-order',
@@ -9,6 +13,8 @@ import { BascketService, Bascket } from '../services/bascket.service';
 })
 export class OrderComponent implements OnInit {
   public checkoutForm;
+  public orderItems: BascketItem[] = [];
+  public totalPrice: number = 0;
   private basket: Bascket;
 
   constructor(
@@ -29,13 +35,15 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.basketService.getBasket().then((basket) => {
       this.basket = basket;
+      this.orderItems = this.basket.getItems();
+      this.totalPrice = this.basket.getTotalPrice();
     });
   }
 
   onSubmit(customerData) {
     // Process checkout data here
     this.basket.clear();
-    this.checkoutForm.reset();
+    // this.checkoutForm.reset();
 
     console.warn('Your order has been submitted', customerData);
   }
