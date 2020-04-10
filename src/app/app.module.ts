@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
@@ -76,6 +77,7 @@ import { OrderComponent } from './order/order.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

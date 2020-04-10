@@ -1,4 +1,6 @@
 <img class="product-image" src="{{ imageUrl }}" (click)="chooseProduct()" />
 <div class="product-name" (click)="chooseProduct()">{{ data.title }}</div>
 <div class="product-price">{{ data.getFormatedPrice() }}</div>
-<div class="product-buy-action" (click)="buyProduct()">купить</div>
+<button mat-icon-button class="product-buy-action" (click)="buyProduct()">
+  <mat-icon>add_shopping_cart</mat-icon>
+</button>
