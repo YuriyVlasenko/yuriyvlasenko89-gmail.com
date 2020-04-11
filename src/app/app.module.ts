@@ -36,6 +36,7 @@ import { BascketComponent } from './bascket/bascket.component';
 import { CounterComponent } from './shared/counter/counter.component';
 import { ImageComponent } from './shared/image/image.component';
 import { OrderComponent } from './order/order.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { OrderComponent } from './order/order.component';
     CounterComponent,
     ImageComponent,
     OrderComponent,
+    SearchResultComponent,
   ],
   imports: [
     CommonModule,

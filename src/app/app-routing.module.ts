@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { DeliveryComponent } from './delivery/delivery.component';
-import { ContactsComponent } from './shared/contacts/contacts.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { SearchComponent } from './header/search/search.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 import { BascketComponent } from './bascket/bascket.component';
 import RouterPaths from './routerPaths.const';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -12,20 +11,12 @@ import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   {
-    path: RouterPaths.BASE,
-    component: MainComponent,
-  },
-  {
     path: RouterPaths.ORDER,
     component: OrderComponent,
   },
   {
     path: `${RouterPaths.CATEGORY}/:categoryName`,
     component: MainComponent,
-  },
-  {
-    path: RouterPaths.CONTACTS,
-    component: ContactsComponent,
   },
   {
     path: `${RouterPaths.PRODUCT}/:productId`,
@@ -40,12 +31,17 @@ const routes: Routes = [
     component: DeliveryComponent,
   },
   {
-    path: RouterPaths.SEARCH,
-    component: SearchComponent,
+    path: `${RouterPaths.SEARCH}/:searchPhrase`,
+    component: SearchResultComponent,
   },
   {
     path: RouterPaths.BASCKET,
     component: BascketComponent,
+  },
+  {
+    path: RouterPaths.BASE,
+    component: MainComponent,
+    pathMatch: 'full',
   },
 ];
 

@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .search-input {
+    width: 20vw;
+    min-width: 100px;
+    font-size: 1.2em;
+    text-align: end;
+    border: none;
+    outline: none;
+  }
+  .search-button {
+    margin: 5px;
+  }
+}

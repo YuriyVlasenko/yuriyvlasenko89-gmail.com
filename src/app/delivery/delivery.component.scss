@@ -1,0 +1,18 @@
+:host {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  .delivery-header {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  .delivery-info {
+  }
+  .delivery-payments {
+    margin-left: 20px;
+  }
+  p {
+    font-size: 1.2em;
+    padding-top: 10px;
+  }
+}

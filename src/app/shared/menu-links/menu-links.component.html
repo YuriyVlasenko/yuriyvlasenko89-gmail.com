@@ -2,6 +2,8 @@
   *ngFor="let link of menuLinks"
   mat-button
   class="menu-link"
+  routerLinkActive="active-link"
+  [routerLinkActiveOptions]="{ exact: true }"
   [routerLink]="link.path"
   >{{ link.label }}</a
 >

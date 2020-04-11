@@ -1,1 +1,9 @@
-<p>search works!</p>
+<input class="search-input" [(ngModel)]="searchString" />
+<button
+  class="search-button"
+  mat-icon-button
+  disabled="{{ searchString.length == 0 }}"
+  (click)="onSearch()"
+>
+  <mat-icon>search</mat-icon>
+</button>

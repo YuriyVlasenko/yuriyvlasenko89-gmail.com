@@ -4,5 +4,6 @@
   <app-bascket-info></app-bascket-info>
 </div>
 <div class="menu">
-  <app-menu-links></app-menu-links><app-search></app-search>
+  <app-menu-links></app-menu-links>
+  <app-search (search)="onSearch($event)"></app-search>
 </div>

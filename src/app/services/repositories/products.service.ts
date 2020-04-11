@@ -27,6 +27,13 @@ export class Product {
   getFormatedPrice() {
     return `${this.price.toFixed(2)} грн.`;
   }
+
+  isMatchSearch(searchPhrase) {
+    return (
+      this.title.toLowerCase().includes(searchPhrase.toLowerCase()) ||
+      this.description.toLowerCase().includes(searchPhrase.toLowerCase())
+    );
+  }
 }
 
 @Injectable({
@@ -35,6 +42,12 @@ export class Product {
 export class ProductsService {
   constructor() {}
 
+  findItems(searchPhrase): Promise<Product[]> {
+    // TODO: implement
+    return this.getItems().then((products) => {
+      return products.filter((product) => product.isMatchSearch(searchPhrase));
+    });
+  }
   getItems(): Promise<Product[]> {
     const productParts = [
       new ProductPart("1", "Зеркальное полотно AGC Mirox Ecological"),

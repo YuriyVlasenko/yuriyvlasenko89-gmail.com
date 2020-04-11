@@ -8,7 +8,10 @@
     align-items: flex-start;
 
     .menu-link {
-      padding: 0 0 1em 0;
+      //padding: 0 0 1em 0;
     }
+  }
+  .active-link {
+    text-decoration: underline;
   }
 }
