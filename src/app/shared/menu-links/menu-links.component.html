@@ -1,3 +1,7 @@
-<a *ngFor="let link of menuLinks" class="menu-link" [routerLink]="link.path">{{
-  link.label
-}}</a>
+<a
+  *ngFor="let link of menuLinks"
+  mat-button
+  class="menu-link"
+  [routerLink]="link.path"
+  >{{ link.label }}</a
+>
