@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
 import { CommonModule } from '@angular/common';
@@ -37,6 +38,7 @@ import { CounterComponent } from './shared/counter/counter.component';
 import { ImageComponent } from './shared/image/image.component';
 import { OrderComponent } from './order/order.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    Angular2ImageGalleryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
