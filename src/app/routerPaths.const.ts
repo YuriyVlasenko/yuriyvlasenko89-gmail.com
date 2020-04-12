@@ -6,6 +6,7 @@ export default {
   DELIVERY: 'delivery',
   GALLERY: 'gallery',
   ORDER: 'order',
+  PARTNERS: 'partners',
   PRODUCT: 'product',
   SEARCH: 'search',
 };

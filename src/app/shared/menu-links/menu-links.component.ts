@@ -21,6 +21,9 @@ export class MenuLinksComponent implements OnInit {
     this.menuLinks.push(new MenuLink('Главная', [`${routerPaths.BASE}`]));
     this.menuLinks.push(new MenuLink('Галерея', [`${routerPaths.GALLERY}`]));
     this.menuLinks.push(
+      new MenuLink('Наши партнеры', [`${routerPaths.PARTNERS}`])
+    );
+    this.menuLinks.push(
       new MenuLink('Доставка и оплата', [`${routerPaths.DELIVERY}`])
     );
   }

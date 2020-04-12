@@ -26,7 +26,7 @@ import { SearchComponent } from './header/search/search.component';
 import { MainComponent } from './main/main.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { PartnersComponent } from './main/partners/partners.component';
+import { PartnersComponent } from './partners/partners.component';
 import { BascketInfoComponent } from './header/bascket-info/bascket-info.component';
 import { CategoriesListComponent } from './main/categories-list/categories-list.component';
 import { CategoryItemComponent } from './main/category-item/category-item.component';

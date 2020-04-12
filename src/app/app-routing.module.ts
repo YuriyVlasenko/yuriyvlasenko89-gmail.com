@@ -9,6 +9,7 @@ import RouterPaths from './routerPaths.const';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderComponent } from './order/order.component';
 import { AdminComponent } from './admin/admin.component';
+import { PartnersComponent } from './partners/partners.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: RouterPaths.BASCKET,
     component: BascketComponent,
+  },
+  {
+    path: RouterPaths.PARTNERS,
+    component: PartnersComponent,
   },
   {
     path: RouterPaths.BASE,
