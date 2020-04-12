@@ -8,7 +8,7 @@ import RouterPaths from '../../routerPaths.const';
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.scss'],
-  host: { class: 'categories-list' }
+  host: { class: 'categories-list' },
 })
 export class CategoriesListComponent implements OnInit {
   public categories: ProductCategory[] = [];
@@ -19,7 +19,9 @@ export class CategoriesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.manager.getCategories().subscribe(item => this.categories.push(item));
+    this.manager
+      .getCategories()
+      .then((categories) => (this.categories = categories));
   }
 
   onChooseCategory(category: ProductCategory) {

@@ -1,0 +1,16 @@
+:host {
+  table {
+    width: 100%;
+    .mat-column-actions {
+      width: 100px;
+      text-align: center;
+
+      .action-edit {
+        color: blue;
+      }
+      .action-remove {
+        color: red;
+      }
+    }
+  }
+}

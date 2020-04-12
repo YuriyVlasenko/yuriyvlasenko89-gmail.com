@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -40,6 +41,14 @@ import { ImageComponent } from './shared/image/image.component';
 import { OrderComponent } from './order/order.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminGalleryComponent } from './admin/admin-gallery/admin-gallery.component';
+import { AdminPartnersComponent } from './admin/admin-partners/admin-partners.component';
+import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
+import { AdminProductOptionsComponent } from './admin/admin-product-options/admin-product-options.component';
+import { AdminProductPartsComponent } from './admin/admin-product-parts/admin-product-parts.component';
+import { TableComponent } from './admin/table/table.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +77,14 @@ import { AdminComponent } from './admin/admin.component';
     OrderComponent,
     SearchResultComponent,
     AdminComponent,
+    AdminOrdersComponent,
+    AdminProductsComponent,
+    AdminGalleryComponent,
+    AdminPartnersComponent,
+    AdminCategoriesComponent,
+    AdminProductOptionsComponent,
+    AdminProductPartsComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
@@ -86,6 +103,7 @@ import { AdminComponent } from './admin/admin.component';
     MatIconModule,
     Angular2ImageGalleryModule,
     MatTabsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

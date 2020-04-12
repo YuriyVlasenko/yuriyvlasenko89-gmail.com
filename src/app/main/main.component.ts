@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
           name: categoryName,
           id: null,
         })
-        .subscribe((category) => {
+        .then((category) => {
           if (!category) {
             this.router.navigateByUrl(`/${RouterPaths.BASE}`);
             return;

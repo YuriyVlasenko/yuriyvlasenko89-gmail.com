@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 
-export class ProductCategory {
+export class Gallery {
   constructor(
     public id: string,
-    public title: string,
     public name: string,
     public imageUrl: string
   ) {}
@@ -12,22 +11,30 @@ export class ProductCategory {
 @Injectable({
   providedIn: "root",
 })
-export class ProductCategoriesService {
+export class GalleryService {
   constructor() {}
 
-  getItems(): Promise<ProductCategory[]> {
+  getItems(): Promise<Gallery[]> {
     // TODO: implement data loading
     var result = [];
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 15; i++) {
       result.push(
-        new ProductCategory(
+        new Gallery(
           `${i + 1}`,
-          `category ${i + 1}`,
-          `category-${i + 1}`,
+          `Gallery ${i + 1}`,
           "https://styleroom.com.ua/wp-content/uploads/2019/12/404_1-300x300.jpg"
         )
       );
     }
     return Promise.resolve(result);
+  }
+  onEdit(item) {
+    console.log("edit", item);
+  }
+  onRemove(item) {
+    console.log("remove", item);
+  }
+  onCreate(item) {
+    console.log("create", item);
   }
 }

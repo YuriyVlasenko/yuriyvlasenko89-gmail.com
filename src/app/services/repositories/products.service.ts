@@ -12,6 +12,7 @@ export class ProductSize {
 }
 
 export class Product {
+  public category: string; // TODO: get category name by id
   constructor(
     public id: string,
     public title: string,

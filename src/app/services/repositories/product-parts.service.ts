@@ -1,12 +1,11 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 
 export class ProductPart {
   constructor(public id: string, public name: string) {}
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ProductPartsService {
   constructor() {}
@@ -18,8 +17,8 @@ export class ProductPartsService {
       new ProductPart("2", "Трансформатор 220В/12В"),
       new ProductPart("3", "Led подсветка"),
       new ProductPart("4", "Цвет свечения нейтральный белый"),
-      new ProductPart("5", "Выключатель кнопочный.")
+      new ProductPart("5", "Выключатель кнопочный."),
     ];
-    return new BehaviorSubject(result);
+    return Promise.resolve(result);
   }
 }

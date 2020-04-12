@@ -1,2 +1,6 @@
-<img src="{{ imageUrl }}" class="category-image" (click)="onClick()" />
+<img
+  src="{{ data && data.imageUrl }}"
+  class="category-image"
+  (click)="onClick()"
+/>
 <div class="category-name" (click)="onClick()">{{ data.title }}</div>
