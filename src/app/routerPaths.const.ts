@@ -1,4 +1,5 @@
 export default {
+  ADMIN: 'admin',
   BASE: '',
   BASCKET: 'bascket',
   CATEGORY: 'category',

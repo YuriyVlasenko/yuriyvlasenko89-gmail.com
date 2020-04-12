@@ -8,8 +8,13 @@ import { BascketComponent } from './bascket/bascket.component';
 import RouterPaths from './routerPaths.const';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderComponent } from './order/order.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
+  {
+    path: RouterPaths.ADMIN,
+    component: AdminComponent,
+  },
   {
     path: RouterPaths.ORDER,
     component: OrderComponent,

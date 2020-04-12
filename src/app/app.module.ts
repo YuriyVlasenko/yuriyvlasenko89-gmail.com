@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -38,7 +39,7 @@ import { CounterComponent } from './shared/counter/counter.component';
 import { ImageComponent } from './shared/image/image.component';
 import { OrderComponent } from './order/order.component';
 import { SearchResultComponent } from './search-result/search-result.component';
-import { from } from 'rxjs';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { from } from 'rxjs';
     ImageComponent,
     OrderComponent,
     SearchResultComponent,
+    AdminComponent,
   ],
   imports: [
     CommonModule,
@@ -83,6 +85,7 @@ import { from } from 'rxjs';
     MatButtonModule,
     MatIconModule,
     Angular2ImageGalleryModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

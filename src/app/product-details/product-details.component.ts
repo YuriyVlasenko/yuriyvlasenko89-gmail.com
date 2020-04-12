@@ -8,6 +8,7 @@ import {
   NgxImageGalleryComponent,
   GALLERY_IMAGE,
 } from 'ngx-image-gallery';
+import { BascketService, Bascket } from '../services/bascket.service';
 
 @Component({
   selector: 'app-product-details',
@@ -16,6 +17,7 @@ import {
 })
 export class ProductDetailsComponent implements OnInit {
   public product: Product;
+  private bascket: Bascket;
   public galleryImages: GALLERY_IMAGE[] = [];
   public galleryConfig: GALLERY_CONF = {
     imageOffset: '0px',
@@ -33,10 +35,14 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private productsManager: ProductsManagerService
+    private productsManager: ProductsManagerService,
+    private bascketService: BascketService
   ) {}
 
   ngOnInit(): void {
+    this.bascketService.getBasket().then((bascket) => {
+      this.bascket = bascket;
+    });
     let productId = this.activatedRoute.snapshot.paramMap.get('productId');
     this.productsManager.getProduct(productId).then((product) => {
       if (!product) {
@@ -57,6 +63,10 @@ export class ProductDetailsComponent implements OnInit {
   public getProductPrice() {
     let price = (this.product && this.product.price) || 0;
     return `${price.toFixed(2)} грн.`;
+  }
+
+  public buyProduct() {
+    this.bascket.addItem(this.product, 1);
   }
 
   private initProductData(product: Product) {

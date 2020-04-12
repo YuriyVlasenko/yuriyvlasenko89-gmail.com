@@ -6,7 +6,18 @@
 >
 </ngx-image-gallery>
 <div class="product-view" *ngIf="product">
-  <div class="product-description-price">{{ getProductPrice() }}</div>
+  <div class="product-description-price">
+    <span>{{ getProductPrice() }} </span>
+    <button
+      mat-raised-button
+      color="primary"
+      class="product-buy-action"
+      (click)="buyProduct()"
+    >
+      купить
+    </button>
+  </div>
+
   <div class="product-description-title">{{ product.title }}</div>
   <div *ngIf="product.size">
     <div class="product-description-header">Габариты:</div>
