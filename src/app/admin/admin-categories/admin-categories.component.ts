@@ -5,7 +5,10 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { ProductCategory } from 'src/app/services/repositories/product-categories.service';
+import {
+  ProductCategory,
+  ProductCategoriesService,
+} from 'src/app/services/repositories/product-categories.service';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 
 export interface CategoryDialogData {
@@ -19,24 +22,21 @@ export interface CategoryDialogData {
 })
 export class AdminCategoriesComponent implements OnInit {
   public tableSettings: TableSettings;
-  public dataSource: object[] = [];
-  constructor(public dialog: MatDialog) {}
+  public dataSource: ProductCategory[] = [];
+  constructor(
+    public dialog: MatDialog,
+    public productCategoriesService: ProductCategoriesService
+  ) {}
+
+  private loadData() {
+    this.productCategoriesService.getItems().then((productCategories) => {
+      this.dataSource = productCategories;
+    });
+  }
 
   ngOnInit(): void {
-    this.dataSource = [
-      {
-        id: '1',
-        title: 'title 1',
-        name: 'url-title-1',
-        imageUrls: [],
-      },
-      {
-        id: '2',
-        title: 'title 2',
-        name: 'url-title-2',
-        imageUrls: [],
-      },
-    ];
+    this.loadData();
+
     let columns = [
       new TableColumnSettings('Название', 'title'),
       new TableColumnSettings('Имя в адресной строке', 'name'),
@@ -45,28 +45,58 @@ export class AdminCategoriesComponent implements OnInit {
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {
-    const dialogRef = this.dialog.open(CategoryDialogComponent, {
-      width: '250px',
-      data: { category: ProductCategory.clone(item) },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      console.log(result);
+    this.showDialog(ProductCategory.clone(item)).then((category) => {
+      if (category) {
+        this.productCategoriesService
+          .editItem(category as ProductCategory)
+          .then(() => {
+            this.loadData();
+          })
+          .catch((error) => {
+            // TODO: show alert
+            console.log('error', error);
+          });
+      }
     });
   }
   onRemove(item) {
-    console.log('remove', item);
+    console.log('item', item.id);
+    this.productCategoriesService
+      .deleteItem(item.id)
+      .then(() => {
+        this.dataSource = this.dataSource.filter((cat) => cat.id !== item.id);
+      })
+      .catch((error) => {
+        // TODO: show alert
+        console.log('error', error);
+      });
   }
   onCreate() {
-    const dialogRef = this.dialog.open(CategoryDialogComponent, {
-      width: '250px',
-      data: { category: new ProductCategory('', '', '', '') },
+    this.showDialog(new ProductCategory('', '', '', '')).then((category) => {
+      if (category) {
+        this.productCategoriesService
+          .createItem(category as ProductCategory)
+          .then(() => {
+            this.loadData();
+          })
+          .catch((error) => {
+            // TODO: show alert
+            console.log('error', error);
+          });
+      }
+    });
+  }
+
+  private showDialog(category) {
+    let dialogRef = this.dialog.open(CategoryDialogComponent, {
+      width: '400px',
+      data: { category },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      console.log(result);
+    return new Promise((resolve, reject) => {
+      dialogRef.afterClosed().subscribe((category) => {
+        category ? resolve(category) : resolve(null);
+      });
     });
   }
 }

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ProductCategoriesService } from '../repositories/product-categories.service';
+import {
+  ProductCategoriesService,
+  ProductCategory,
+} from '../repositories/product-categories.service';
 import { filter, take, first } from 'rxjs/operators';
 import { from } from 'rxjs';
 
@@ -9,6 +12,9 @@ import { from } from 'rxjs';
 export class ProductCategoriesManagerService {
   constructor(private productCategoriesRepository: ProductCategoriesService) {}
 
+  createCategory(category: ProductCategory) {
+    return this.productCategoriesRepository.createItem(category);
+  }
   getCategories() {
     return this.productCategoriesRepository.getItems();
   }

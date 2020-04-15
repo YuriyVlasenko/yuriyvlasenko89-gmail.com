@@ -13,8 +13,8 @@ export class CategoryDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: CategoryDialogData
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close(this.data.category);
+  onCancelClick(): void {
+    this.dialogRef.close(null);
   }
 
   ngOnInit(): void {}
