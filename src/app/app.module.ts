@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -49,6 +50,7 @@ import { AdminCategoriesComponent } from './admin/admin-categories/admin-categor
 import { AdminProductOptionsComponent } from './admin/admin-product-options/admin-product-options.component';
 import { AdminProductPartsComponent } from './admin/admin-product-parts/admin-product-parts.component';
 import { TableComponent } from './admin/table/table.component';
+import { CategoryDialogComponent } from './admin/admin-categories/category-dialog/category-dialog.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { TableComponent } from './admin/table/table.component';
     AdminProductOptionsComponent,
     AdminProductPartsComponent,
     TableComponent,
+    CategoryDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -104,6 +107,7 @@ import { TableComponent } from './admin/table/table.component';
     Angular2ImageGalleryModule,
     MatTabsModule,
     MatTableModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TableSettings, TableColumnSettings } from '../table/table.component';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { ProductCategory } from 'src/app/services/repositories/product-categories.service';
+import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
+
+export interface CategoryDialogData {
+  category: ProductCategory;
+}
 
 @Component({
   selector: 'app-admin-categories',
@@ -9,7 +20,7 @@ import { TableSettings, TableColumnSettings } from '../table/table.component';
 export class AdminCategoriesComponent implements OnInit {
   public tableSettings: TableSettings;
   public dataSource: object[] = [];
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.dataSource = [
@@ -34,12 +45,28 @@ export class AdminCategoriesComponent implements OnInit {
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {
-    console.log('edit', item);
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
+      width: '250px',
+      data: { category: ProductCategory.clone(item) },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
   onRemove(item) {
     console.log('remove', item);
   }
-  onCreate(item) {
-    console.log('create', item);
+  onCreate() {
+    const dialogRef = this.dialog.open(CategoryDialogComponent, {
+      width: '250px',
+      data: { category: new ProductCategory('', '', '', '') },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 }

@@ -7,6 +7,15 @@ export class ProductCategory {
     public name: string,
     public imageUrl: string
   ) {}
+
+  static clone(source: ProductCategory): ProductCategory {
+    return new ProductCategory(
+      source.id,
+      source.title,
+      source.name,
+      source.imageUrl
+    );
+  }
 }
 
 @Injectable({
