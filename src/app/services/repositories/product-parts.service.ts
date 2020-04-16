@@ -4,6 +4,13 @@ import { HttpClient } from "@angular/common/http";
 
 export class ProductPart {
   constructor(public id: string, public name: string) {}
+
+  static clone(source: ProductPart): ProductPart {
+    return new ProductPart(
+      source.id,
+      source.name
+    );
+  }
 }
 
 @Injectable({
@@ -15,13 +22,24 @@ export class ProductPartsService {
   constructor(private settings: SettingsService, private client: HttpClient) {
     this.endpoint = `${this.settings.apiUrl}/${this.endpointName}`;
   }
+  createItem(data: ProductPart) {
+    return this.client.post(this.endpoint, data).toPromise();
+  }
 
-  getItems(): Promise<ProductPart> {
+  editItem(data: ProductPart) {
+    return this.client.put(this.endpoint, data).toPromise();
+  }
+
+  deleteItem(id: string) {
+    return this.client.delete(`${this.endpoint}/${id}`).toPromise();
+  }
+
+  getItems(): Promise<ProductPart[]> {
     return this.client
       .get(this.endpoint)
       .toPromise()
       .then((items) => {
-        return items.map((item) => new ProductPart(item.id, item.name));
+        return items['map']((item) => new ProductPart(item.id, item.name));
       });
   }
 }

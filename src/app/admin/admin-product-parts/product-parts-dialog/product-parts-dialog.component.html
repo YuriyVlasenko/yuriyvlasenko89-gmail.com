@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Компонент {{ data.productPart.id }}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Название компонента </mat-label>
+    <input matInput [(ngModel)]="data.productPart.name" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Отмена</button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="!data.productPart.name"
+    [mat-dialog-close]="data.productPart"
+    cdkFocusInitial
+  >
+    {{ data.productPart.id ? "Сохранить" : "Создать" }}
+  </button>
+</div>

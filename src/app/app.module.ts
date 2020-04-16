@@ -51,6 +51,7 @@ import { AdminProductOptionsComponent } from './admin/admin-product-options/admi
 import { AdminProductPartsComponent } from './admin/admin-product-parts/admin-product-parts.component';
 import { TableComponent } from './admin/table/table.component';
 import { CategoryDialogComponent } from './admin/admin-categories/category-dialog/category-dialog.component';
+import { ProductPartsDialogComponent } from './admin/admin-product-parts/product-parts-dialog/product-parts-dialog.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { CategoryDialogComponent } from './admin/admin-categories/category-dialo
     AdminProductPartsComponent,
     TableComponent,
     CategoryDialogComponent,
+    ProductPartsDialogComponent,
   ],
   imports: [
     CommonModule,

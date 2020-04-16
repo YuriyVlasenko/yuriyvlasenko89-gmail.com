@@ -35,7 +35,6 @@ export class ProductCategoriesService {
   }
 
   editItem(data: ProductCategory) {
-    console.log("data", data);
     return this.client.put(this.endpoint, data).toPromise();
   }
 
@@ -48,7 +47,7 @@ export class ProductCategoriesService {
       .get(this.endpoint)
       .toPromise()
       .then((items) => {
-        return items.map(
+        return items['map'](
           (item) =>
             new ProductCategory(item.id, item.title, item.name, item.imageUrl)
         );
