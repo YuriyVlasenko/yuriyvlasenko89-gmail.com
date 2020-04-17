@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Опция {{ data.itemData.id }}</h1>
+<div mat-dialog-content>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Название опции </mat-label>
+      <input matInput [(ngModel)]="data.itemData.name" name="name" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Отмена</button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="!data.itemData.name"
+    [mat-dialog-close]="data.itemData"
+    cdkFocusInitial
+  >
+    {{ data.itemData.id ? "Сохранить" : "Создать" }}
+  </button>
+</div>

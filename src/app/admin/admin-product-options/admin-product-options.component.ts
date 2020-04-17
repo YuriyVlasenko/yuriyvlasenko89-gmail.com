@@ -1,33 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { TableSettings, TableColumnSettings } from '../table/table.component';
-import { ProductOptionsService } from 'src/app/services/repositories/product-options.service';
+import {
+  ProductOptionsService,
+  ProductOption,
+} from 'src/app/services/repositories/product-options.service';
+import { EntityBaseOperation } from '../entity-base-operation';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductOptionsDialogComponent } from './product-options-dialog/product-options-dialog.component';
+
+export interface ProductOptionDialogData {
+  itemData: ProductOption;
+}
 
 @Component({
   selector: 'app-admin-product-options',
   templateUrl: './admin-product-options.component.html',
   styleUrls: ['./admin-product-options.component.scss'],
 })
-export class AdminProductOptionsComponent implements OnInit {
-  public tableSettings: TableSettings;
-  public dataSource: object[] = [];
-
-  constructor(private productOptionService: ProductOptionsService) {}
+export class AdminProductOptionsComponent
+  extends EntityBaseOperation<ProductOption>
+  implements OnInit {
+  constructor(
+    public dialog: MatDialog,
+    private productOptionsService: ProductOptionsService
+  ) {
+    super(dialog, productOptionsService, ProductOptionsDialogComponent);
+  }
 
   ngOnInit(): void {
-    this.productOptionService.getItems().then((productOptions) => {
-      this.dataSource = productOptions;
-    });
+    this.loadData();
 
     let columns = [new TableColumnSettings('Название опции', 'name')];
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {
-    console.log('edit', item);
+    this.edit(ProductOption.clone(item));
   }
+
   onRemove(item) {
-    console.log('remove', item);
+    this.remove(item.id);
   }
-  onCreate(item) {
-    console.log('create', item);
+  onCreate() {
+    this.create(new ProductOption('', ''));
   }
 }
