@@ -19,8 +19,8 @@ export class EntityBaseOperation<T> {
   }
 
   protected edit(item) {
+    console.log('show', item);
     this.showDialog(item).then((dialogResult) => {
-      console.log('dialogResult', dialogResult);
       if (dialogResult) {
         this.dataService
           .editItem(dialogResult as T)
@@ -65,15 +65,15 @@ export class EntityBaseOperation<T> {
     });
   }
 
-  private showDialog(productPart) {
+  private showDialog(itemData) {
     let dialogRef = this.dialog.open(this.dialogComponent, {
       width: '400px',
-      data: { productPart },
+      data: { itemData },
     });
 
     return new Promise((resolve, reject) => {
-      dialogRef.afterClosed().subscribe((productPart) => {
-        productPart ? resolve(productPart) : resolve(null);
+      dialogRef.afterClosed().subscribe((itemData) => {
+        itemData ? resolve(itemData) : resolve(null);
       });
     });
   }

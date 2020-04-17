@@ -18,4 +18,8 @@ export class CategoryDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  onSubmit() {
+    this.dialogRef.close(this.data.itemData);
+  }
 }

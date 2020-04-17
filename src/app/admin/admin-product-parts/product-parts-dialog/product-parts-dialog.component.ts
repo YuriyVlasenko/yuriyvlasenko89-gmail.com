@@ -20,6 +20,6 @@ export class ProductPartsDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.dialogRef.close(this.data.productPart);
+    this.dialogRef.close(this.data.itemData);
   }
 }

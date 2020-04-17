@@ -10,9 +10,10 @@ import {
   ProductCategoriesService,
 } from 'src/app/services/repositories/product-categories.service';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
+import { EntityBaseOperation } from '../entity-base-operation';
 
 export interface CategoryDialogData {
-  category: ProductCategory;
+  itemData: ProductCategory;
 }
 
 @Component({
@@ -20,18 +21,16 @@ export interface CategoryDialogData {
   templateUrl: './admin-categories.component.html',
   styleUrls: ['./admin-categories.component.scss'],
 })
-export class AdminCategoriesComponent implements OnInit {
+export class AdminCategoriesComponent
+  extends EntityBaseOperation<ProductCategory>
+  implements OnInit {
   public tableSettings: TableSettings;
   public dataSource: ProductCategory[] = [];
   constructor(
     public dialog: MatDialog,
     public productCategoriesService: ProductCategoriesService
-  ) {}
-
-  private loadData() {
-    this.productCategoriesService.getItems().then((productCategories) => {
-      this.dataSource = productCategories;
-    });
+  ) {
+    super(dialog, productCategoriesService, CategoryDialogComponent);
   }
 
   ngOnInit(): void {
@@ -45,58 +44,13 @@ export class AdminCategoriesComponent implements OnInit {
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {
-    this.showDialog(ProductCategory.clone(item)).then((category) => {
-      if (category) {
-        this.productCategoriesService
-          .editItem(category as ProductCategory)
-          .then(() => {
-            this.loadData();
-          })
-          .catch((error) => {
-            // TODO: show alert
-            console.log('error', error);
-          });
-      }
-    });
+    console.log('ProductCategory.clone(item)', ProductCategory.clone(item));
+    this.edit(ProductCategory.clone(item));
   }
   onRemove(item) {
-    console.log('item', item.id);
-    this.productCategoriesService
-      .deleteItem(item.id)
-      .then(() => {
-        this.dataSource = this.dataSource.filter((cat) => cat.id !== item.id);
-      })
-      .catch((error) => {
-        // TODO: show alert
-        console.log('error', error);
-      });
+    this.remove(item.id);
   }
   onCreate() {
-    this.showDialog(new ProductCategory('', '', '', '')).then((category) => {
-      if (category) {
-        this.productCategoriesService
-          .createItem(category as ProductCategory)
-          .then(() => {
-            this.loadData();
-          })
-          .catch((error) => {
-            // TODO: show alert
-            console.log('error', error);
-          });
-      }
-    });
-  }
-
-  private showDialog(category) {
-    let dialogRef = this.dialog.open(CategoryDialogComponent, {
-      width: '400px',
-      data: { category },
-    });
-
-    return new Promise((resolve, reject) => {
-      dialogRef.afterClosed().subscribe((category) => {
-        category ? resolve(category) : resolve(null);
-      });
-    });
+    this.create(new ProductCategory('', '', '', ''));
   }
 }

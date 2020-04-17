@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductPartsDialogComponent } from './product-parts-dialog/product-parts-dialog.component';
 import { EntityBaseOperation } from '../entity-base-operation';
 export interface ProductPartDialogData {
-  productPart: ProductPart;
+  itemData: ProductPart;
 }
 
 @Component({
@@ -32,7 +32,6 @@ export class AdminProductPartsComponent extends EntityBaseOperation<ProductPart>
   }
 
   onEdit(item) {
-    console.log('onEdit', item);
     this.edit(ProductPart.clone(item));
   }
 
