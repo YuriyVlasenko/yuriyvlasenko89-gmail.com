@@ -47,7 +47,7 @@ export class ProductCategoriesService {
       .get(this.endpoint)
       .toPromise()
       .then((items) => {
-        return items['map'](
+        return items["map"](
           (item) =>
             new ProductCategory(item.id, item.title, item.name, item.imageUrl)
         );

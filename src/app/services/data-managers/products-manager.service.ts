@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ProductsService, Product } from '../repositories/products.service';
-import { Observable } from 'rxjs';
-import { filter, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

@@ -1,1 +1,76 @@
-<p>product-dialog works!</p>
+<h1 mat-dialog-title>Товар {{ data.itemData.id }}</h1>
+<div mat-dialog-content>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Название </mat-label>
+      <input matInput [(ngModel)]="data.itemData.title" name="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Описание </mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.itemData.description"
+        name="description"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Категория </mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.itemData.categoryId"
+        name="categoryId"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Размеры (ш * в * т) </mat-label>
+      <input
+        matInput
+        [(ngModel)]="data.itemData.size.width"
+        name="size.width"
+      />
+      <input
+        matInput
+        [(ngModel)]="data.itemData.size.height"
+        name="size.height"
+      />
+      <input
+        matInput
+        [(ngModel)]="data.itemData.size.length"
+        name="size.length"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Цена </mat-label>
+      <input matInput [(ngModel)]="data.itemData.price" name="price" />
+    </mat-form-field>
+
+    <!--
+    <mat-form-field>
+      <mat-label>Изображения </mat-label>
+      <div>TODO</div>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Опции </mat-label>
+      <div>TODO</div>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Комплектующие </mat-label>
+      <div>TODO</div>
+    </mat-form-field>
+    -->
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Отмена</button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="
+      !data.itemData.title || !data.itemData.categoryId || !data.itemData.price
+    "
+    [mat-dialog-close]="data.itemData"
+    cdkFocusInitial
+  >
+    {{ data.itemData.id ? "Сохранить" : "Создать" }}
+  </button>
+</div>

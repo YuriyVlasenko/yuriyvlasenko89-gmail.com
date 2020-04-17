@@ -10,13 +10,20 @@ import { from } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductCategoriesManagerService {
+  private cache: ProductCategory[] = [];
   constructor(private productCategoriesRepository: ProductCategoriesService) {}
 
   createCategory(category: ProductCategory) {
     return this.productCategoriesRepository.createItem(category);
   }
-  getCategories() {
-    return this.productCategoriesRepository.getItems();
+  getCategories(clearCache = false) {
+    if (this.cache && !clearCache) {
+      return Promise.resolve(this.cache);
+    }
+    return this.productCategoriesRepository.getItems().then((items) => {
+      this.cache = items;
+      return items;
+    });
   }
 
   getCategory({ id, name }) {
