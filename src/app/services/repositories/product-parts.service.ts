@@ -1,22 +1,21 @@
 import { Injectable } from "@angular/core";
 import { SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
+import { DataService } from "./data-service";
+import { ProductPartsDialogComponent } from "src/app/admin/admin-product-parts/product-parts-dialog/product-parts-dialog.component";
 
 export class ProductPart {
   constructor(public id: string, public name: string) {}
 
   static clone(source: ProductPart): ProductPart {
-    return new ProductPart(
-      source.id,
-      source.name
-    );
+    return new ProductPart(source.id, source.name);
   }
 }
 
 @Injectable({
   providedIn: "root",
 })
-export class ProductPartsService {
+export class ProductPartsService implements DataService<ProductPart> {
   private endpoint: string = "";
   private endpointName: string = "productPart";
   constructor(private settings: SettingsService, private client: HttpClient) {
@@ -39,7 +38,7 @@ export class ProductPartsService {
       .get(this.endpoint)
       .toPromise()
       .then((items) => {
-        return items['map']((item) => new ProductPart(item.id, item.name));
+        return items["map"]((item) => new ProductPart(item.id, item.name));
       });
   }
 }

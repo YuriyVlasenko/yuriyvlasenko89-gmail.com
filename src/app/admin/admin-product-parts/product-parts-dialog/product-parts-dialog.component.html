@@ -1,9 +1,11 @@
 <h1 mat-dialog-title>Компонент {{ data.productPart.id }}</h1>
 <div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Название компонента </mat-label>
-    <input matInput [(ngModel)]="data.productPart.name" />
-  </mat-form-field>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Название компонента </mat-label>
+      <input matInput [(ngModel)]="data.productPart.name" name="name" />
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancelClick()">Отмена</button>
