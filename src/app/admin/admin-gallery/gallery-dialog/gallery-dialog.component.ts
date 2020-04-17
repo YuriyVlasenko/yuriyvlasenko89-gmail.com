@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { GalleryDialogData } from '../admin-gallery.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Gallery } from 'src/app/services/repositories/gallery.service';
+import { DialogData } from '../../entity-base-operation';
 
 @Component({
   selector: 'app-gallery-dialog',
@@ -10,7 +11,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class GalleryDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<GalleryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: GalleryDialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData<Gallery>
   ) {}
 
   onCancelClick(): void {

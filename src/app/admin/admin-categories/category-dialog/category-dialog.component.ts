@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CategoryDialogData } from '../admin-categories.component';
+import { ProductCategory } from 'src/app/services/repositories/product-categories.service';
+import { DialogData } from '../../entity-base-operation';
 
 @Component({
   selector: 'app-category-dialog',
@@ -10,7 +11,7 @@ import { CategoryDialogData } from '../admin-categories.component';
 export class CategoryDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CategoryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CategoryDialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData<ProductCategory>
   ) {}
 
   onCancelClick(): void {

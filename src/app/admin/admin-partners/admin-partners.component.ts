@@ -8,10 +8,6 @@ import { EntityBaseOperation } from '../entity-base-operation';
 import { MatDialog } from '@angular/material/dialog';
 import { PartnersDialogComponent } from './partners-dialog/partners-dialog.component';
 
-export interface PartnerDialogData {
-  itemData: Partner;
-}
-
 @Component({
   selector: 'app-admin-partners',
   templateUrl: './admin-partners.component.html',

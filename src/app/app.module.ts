@@ -55,6 +55,7 @@ import { ProductPartsDialogComponent } from './admin/admin-product-parts/product
 import { ProductOptionsDialogComponent } from './admin/admin-product-options/product-options-dialog/product-options-dialog.component';
 import { PartnersDialogComponent } from './admin/admin-partners/partners-dialog/partners-dialog.component';
 import { GalleryDialogComponent } from './admin/admin-gallery/gallery-dialog/gallery-dialog.component';
+import { ProductDialogComponent } from './admin/admin-products/product-dialog/product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { GalleryDialogComponent } from './admin/admin-gallery/gallery-dialog/gal
     ProductOptionsDialogComponent,
     PartnersDialogComponent,
     GalleryDialogComponent,
+    ProductDialogComponent,
   ],
   imports: [
     CommonModule,

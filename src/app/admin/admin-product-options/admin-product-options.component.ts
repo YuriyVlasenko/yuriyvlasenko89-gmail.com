@@ -8,10 +8,6 @@ import { EntityBaseOperation } from '../entity-base-operation';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductOptionsDialogComponent } from './product-options-dialog/product-options-dialog.component';
 
-export interface ProductOptionDialogData {
-  itemData: ProductOption;
-}
-
 @Component({
   selector: 'app-admin-product-options',
   templateUrl: './admin-product-options.component.html',

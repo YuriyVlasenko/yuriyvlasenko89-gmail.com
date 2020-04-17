@@ -7,9 +7,6 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { ProductPartsDialogComponent } from './product-parts-dialog/product-parts-dialog.component';
 import { EntityBaseOperation } from '../entity-base-operation';
-export interface ProductPartDialogData {
-  itemData: ProductPart;
-}
 
 @Component({
   selector: 'app-admin-product-parts',

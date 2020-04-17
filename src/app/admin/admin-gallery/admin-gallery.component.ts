@@ -7,9 +7,6 @@ import {
 import { EntityBaseOperation } from '../entity-base-operation';
 import { MatDialog } from '@angular/material/dialog';
 import { GalleryDialogComponent } from './gallery-dialog/gallery-dialog.component';
-export interface GalleryDialogData {
-  itemData: Gallery;
-}
 
 @Component({
   selector: 'app-admin-gallery',

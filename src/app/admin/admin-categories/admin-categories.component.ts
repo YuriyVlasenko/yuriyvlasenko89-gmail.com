@@ -12,10 +12,6 @@ import {
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 import { EntityBaseOperation } from '../entity-base-operation';
 
-export interface CategoryDialogData {
-  itemData: ProductCategory;
-}
-
 @Component({
   selector: 'app-admin-categories',
   templateUrl: './admin-categories.component.html',

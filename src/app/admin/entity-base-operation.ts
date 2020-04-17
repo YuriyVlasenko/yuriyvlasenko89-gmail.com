@@ -2,6 +2,10 @@ import { DataService } from '../services/repositories/data-service';
 import { TableSettings } from './table/table.component';
 import { MatDialog } from '@angular/material/dialog';
 
+export interface DialogData<T> {
+  itemData: T;
+}
+
 export class EntityBaseOperation<T> {
   dataSource: T[] = [];
   tableSettings: TableSettings;

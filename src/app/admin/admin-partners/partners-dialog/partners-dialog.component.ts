@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PartnerDialogData } from '../admin-partners.component';
+import { Partner } from 'src/app/services/repositories/partners.service';
+import { DialogData } from '../../entity-base-operation';
 
 @Component({
   selector: 'app-partners-dialog',
@@ -10,7 +11,7 @@ import { PartnerDialogData } from '../admin-partners.component';
 export class PartnersDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<PartnersDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: PartnerDialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData<Partner>
   ) {}
 
   onCancelClick(): void {

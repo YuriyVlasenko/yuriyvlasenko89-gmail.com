@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProductOptionDialogData } from '../admin-product-options.component';
+import { DialogData } from '../../entity-base-operation';
+import { ProductOption } from 'src/app/services/repositories/product-options.service';
 
 @Component({
   selector: 'app-product-options-dialog',
@@ -10,7 +11,7 @@ import { ProductOptionDialogData } from '../admin-product-options.component';
 export class ProductOptionsDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ProductOptionsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ProductOptionDialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData<ProductOption>
   ) {}
 
   onCancelClick(): void {
