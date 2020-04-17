@@ -53,6 +53,7 @@ import { TableComponent } from './admin/table/table.component';
 import { CategoryDialogComponent } from './admin/admin-categories/category-dialog/category-dialog.component';
 import { ProductPartsDialogComponent } from './admin/admin-product-parts/product-parts-dialog/product-parts-dialog.component';
 import { ProductOptionsDialogComponent } from './admin/admin-product-options/product-options-dialog/product-options-dialog.component';
+import { PartnersDialogComponent } from './admin/admin-partners/partners-dialog/partners-dialog.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { ProductOptionsDialogComponent } from './admin/admin-product-options/pro
     CategoryDialogComponent,
     ProductPartsDialogComponent,
     ProductOptionsDialogComponent,
+    PartnersDialogComponent,
   ],
   imports: [
     CommonModule,

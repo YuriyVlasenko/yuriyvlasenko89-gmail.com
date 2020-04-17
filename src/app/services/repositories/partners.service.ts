@@ -1,39 +1,70 @@
 import { Injectable } from "@angular/core";
+import { DataService } from "./data-service";
+import { SettingsService } from "./settings.service";
+import { HttpClient } from "@angular/common/http";
 
 export class Partner {
   constructor(
     public id: string,
     public name: string,
+    public region: string,
+    public city: string,
     public address: string,
     public contacts: string,
-    public city: string,
-    public region: string,
     public imageUrl: string
   ) {}
+
+  static clone(source: Partner): Partner {
+    return new Partner(
+      source.id,
+      source.name,
+      source.region,
+      source.city,
+      source.address,
+      source.contacts,
+      source.imageUrl
+    );
+  }
 }
 
 @Injectable({
   providedIn: "root",
 })
-export class PartnersService {
-  constructor() {}
+export class PartnersService implements DataService<Partner> {
+  private endpoint: string = "";
+  private endpointName: string = "partner";
+  constructor(private settings: SettingsService, private client: HttpClient) {
+    this.endpoint = `${this.settings.apiUrl}/${this.endpointName}`;
+  }
+  createItem(data: Partner) {
+    return this.client.post(this.endpoint, data).toPromise();
+  }
+
+  editItem(data: Partner) {
+    return this.client.put(this.endpoint, data).toPromise();
+  }
+
+  deleteItem(id: string) {
+    return this.client.delete(`${this.endpoint}/${id}`).toPromise();
+  }
 
   getItems(): Promise<Partner[]> {
-    // TODO: implement data loading
-    var result = [];
-    for (var i = 0; i < 5; i++) {
-      result.push(
-        new Partner(
-          `${i + 1}`,
-          `partner ${i + 1}`,
-          `address ${i + 1}`,
-          `contacts ${i + 1}`,
-          `city ${i + 1}`,
-          `region ${i + 1}`,
-          "https://styleroom.com.ua/wp-content/uploads/2019/12/404_1-300x300.jpg"
-        )
-      );
-    }
-    return Promise.resolve(result);
+    return this.client
+      .get(this.endpoint)
+      .toPromise()
+      .then((items) => {
+        return items["map"](
+          (item) =>
+            new Partner(
+              item.id,
+              item.name,
+              item.region,
+              item.city,
+              item.address,
+              item.contacts,
+              item.imageUrl
+            )
+        );
+      });
   }
 }

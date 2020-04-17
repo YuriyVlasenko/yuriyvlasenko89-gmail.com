@@ -1,22 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumnSettings, TableSettings } from '../table/table.component';
-import { PartnersService } from 'src/app/services/repositories/partners.service';
+import {
+  PartnersService,
+  Partner,
+} from 'src/app/services/repositories/partners.service';
+import { EntityBaseOperation } from '../entity-base-operation';
+import { MatDialog } from '@angular/material/dialog';
+import { PartnersDialogComponent } from './partners-dialog/partners-dialog.component';
+
+export interface PartnerDialogData {
+  itemData: Partner;
+}
 
 @Component({
   selector: 'app-admin-partners',
   templateUrl: './admin-partners.component.html',
   styleUrls: ['./admin-partners.component.scss'],
 })
-export class AdminPartnersComponent implements OnInit {
+export class AdminPartnersComponent extends EntityBaseOperation<Partner>
+  implements OnInit {
   public tableSettings: TableSettings;
-  public dataSource: object[] = [];
+  public dataSource: Partner[] = [];
 
-  constructor(private partersService: PartnersService) {}
+  constructor(
+    public dialog: MatDialog,
+    private partnersService: PartnersService
+  ) {
+    super(dialog, partnersService, PartnersDialogComponent);
+  }
 
   ngOnInit(): void {
-    this.partersService.getItems().then((partners) => {
-      this.dataSource = partners;
-    });
+    this.loadData();
 
     let columns = [
       new TableColumnSettings('Название', 'name'),
@@ -30,12 +44,13 @@ export class AdminPartnersComponent implements OnInit {
   }
 
   onEdit(item) {
-    console.log('edit', item);
+    this.edit(Partner.clone(item));
   }
+
   onRemove(item) {
-    console.log('remove', item);
+    this.remove(item.id);
   }
-  onCreate(item) {
-    console.log('create', item);
+  onCreate() {
+    this.create(new Partner('', '', '', '', '', '', ''));
   }
 }
