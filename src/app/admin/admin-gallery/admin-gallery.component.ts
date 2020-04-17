@@ -1,37 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { TableSettings, TableColumnSettings } from '../table/table.component';
-import { GalleryService } from 'src/app/services/repositories/gallery.service';
+import {
+  GalleryService,
+  Gallery,
+} from 'src/app/services/repositories/gallery.service';
+import { EntityBaseOperation } from '../entity-base-operation';
+import { MatDialog } from '@angular/material/dialog';
+import { GalleryDialogComponent } from './gallery-dialog/gallery-dialog.component';
+export interface GalleryDialogData {
+  itemData: Gallery;
+}
 
 @Component({
   selector: 'app-admin-gallery',
   templateUrl: './admin-gallery.component.html',
   styleUrls: ['./admin-gallery.component.scss'],
 })
-export class AdminGalleryComponent implements OnInit {
-  public tableSettings: TableSettings;
-  public dataSource: object[] = [];
-
-  constructor(private galleryService: GalleryService) {}
+export class AdminGalleryComponent extends EntityBaseOperation<Gallery>
+  implements OnInit {
+  constructor(public dialog: MatDialog, private galleyService: GalleryService) {
+    super(dialog, galleyService, GalleryDialogComponent);
+  }
 
   ngOnInit(): void {
-    this.galleryService.getItems().then((galleryItems) => {
-      this.dataSource = galleryItems;
-    });
+    this.loadData();
 
     let columns = [
-      new TableColumnSettings('Подпись', 'name'),
+      new TableColumnSettings('Подпись', 'title'),
       new TableColumnSettings('Изображение', 'imageUrl'),
     ];
     this.tableSettings = new TableSettings(columns);
   }
 
   onEdit(item) {
-    console.log('edit', item);
+    this.edit(Gallery.clone(item));
   }
+
   onRemove(item) {
-    console.log('remove', item);
+    this.remove(item.id);
   }
-  onCreate(item) {
-    console.log('create', item);
+  onCreate() {
+    this.create(new Gallery('', '', ''));
   }
 }

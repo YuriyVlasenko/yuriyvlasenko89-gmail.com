@@ -24,8 +24,6 @@ export interface CategoryDialogData {
 export class AdminCategoriesComponent
   extends EntityBaseOperation<ProductCategory>
   implements OnInit {
-  public tableSettings: TableSettings;
-  public dataSource: ProductCategory[] = [];
   constructor(
     public dialog: MatDialog,
     public productCategoriesService: ProductCategoriesService

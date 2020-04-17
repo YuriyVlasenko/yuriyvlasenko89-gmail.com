@@ -54,6 +54,7 @@ import { CategoryDialogComponent } from './admin/admin-categories/category-dialo
 import { ProductPartsDialogComponent } from './admin/admin-product-parts/product-parts-dialog/product-parts-dialog.component';
 import { ProductOptionsDialogComponent } from './admin/admin-product-options/product-options-dialog/product-options-dialog.component';
 import { PartnersDialogComponent } from './admin/admin-partners/partners-dialog/partners-dialog.component';
+import { GalleryDialogComponent } from './admin/admin-gallery/gallery-dialog/gallery-dialog.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { PartnersDialogComponent } from './admin/admin-partners/partners-dialog/
     ProductPartsDialogComponent,
     ProductOptionsDialogComponent,
     PartnersDialogComponent,
+    GalleryDialogComponent,
   ],
   imports: [
     CommonModule,

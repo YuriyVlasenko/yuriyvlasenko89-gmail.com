@@ -19,9 +19,6 @@ export interface PartnerDialogData {
 })
 export class AdminPartnersComponent extends EntityBaseOperation<Partner>
   implements OnInit {
-  public tableSettings: TableSettings;
-  public dataSource: Partner[] = [];
-
   constructor(
     public dialog: MatDialog,
     private partnersService: PartnersService
