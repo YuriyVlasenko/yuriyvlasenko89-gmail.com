@@ -2,11 +2,15 @@ import { DataService } from '../services/repositories/data-service';
 import { TableSettings } from './table/table.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductCategory } from '../services/repositories/product-categories.service';
+import { ProductPart } from '../services/repositories/product-parts.service';
+import { ProductOption } from '../services/repositories/product-options.service';
 
 export interface DialogData<T> {
   itemData: T;
   dictionaries: {
     categories: ProductCategory[];
+    productParts: ProductPart[];
+    productOptions: ProductOption[];
   };
 }
 

@@ -12,6 +12,14 @@ import {
   ProductCategoriesService,
   ProductCategory,
 } from 'src/app/services/repositories/product-categories.service';
+import {
+  ProductOptionsService,
+  ProductOption,
+} from 'src/app/services/repositories/product-options.service';
+import {
+  ProductPartsService,
+  ProductPart,
+} from 'src/app/services/repositories/product-parts.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -22,14 +30,26 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   implements OnInit {
   private categoriesMap = {};
   private categories: ProductCategory[] = [];
+  private productOptions: ProductOption[] = [];
+  private productParts: ProductPart[] = [];
   constructor(
     public dialog: MatDialog,
     private productsService: ProductsService,
-    private productCategoriesService: ProductCategoriesService
+    private productCategoriesService: ProductCategoriesService,
+    private productOptionsService: ProductOptionsService,
+    private productPartsService: ProductPartsService
   ) {
     super(dialog, productsService, ProductDialogComponent, (item) =>
       this.initCategory(item)
     );
+
+    this.productPartsService.getItems().then((productParts) => {
+      this.productParts = productParts;
+    });
+
+    this.productOptionsService.getItems().then((productOptions) => {
+      this.productOptions = productOptions;
+    });
 
     this.productCategoriesService.getItems().then((categories) => {
       this.categories = categories;
@@ -55,7 +75,11 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   onEdit(item) {
     this.edit(Product.clone(item), {
       width: '600px',
-      dictionaries: { categories: this.categories },
+      dictionaries: {
+        categories: this.categories,
+        productParts: this.productParts,
+        productOptions: this.productOptions,
+      },
     });
   }
 
@@ -64,8 +88,25 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   }
   onCreate() {
     this.create(
-      new Product('', '', '', '', 0, [], new ProductSize('', '', ''), [], []),
-      { width: '600px', dictionaries: { categories: this.categories } }
+      new Product(
+        '',
+        '',
+        '',
+        '',
+        0,
+        [],
+        new ProductSize('0', '0', '0'),
+        [],
+        []
+      ),
+      {
+        width: '600px',
+        dictionaries: {
+          categories: this.categories,
+          productParts: this.productParts,
+          productOptions: this.productOptions,
+        },
+      }
     );
   }
 

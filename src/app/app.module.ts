@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -120,6 +121,7 @@ import { ProductDialogComponent } from './admin/admin-products/product-dialog/pr
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

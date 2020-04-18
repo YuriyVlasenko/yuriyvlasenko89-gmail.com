@@ -28,8 +28,8 @@ export class Product {
     public price: number,
     public imageUrls: string[],
     public size: ProductSize,
-    public parts: ProductPart[],
-    public options: ProductOption[]
+    public parts: string[],
+    public options: string[]
   ) {}
 
   static clone(source: Product): Product {

@@ -46,18 +46,31 @@
       <mat-label>Цена </mat-label>
       <input matInput [(ngModel)]="data.itemData.price" name="price" />
     </mat-form-field>
-
+    <div class="checkbox-list">
+      <span>Комплектующие</span>
+      <mat-checkbox
+        name="productParts"
+        *ngFor="let item of productParts"
+        [checked]="item.isChecked"
+        (change)="item.isChecked = !item.isChecked"
+      >
+        {{ item.label }}
+      </mat-checkbox>
+    </div>
+    <div class="checkbox-list">
+      <span>Опции</span>
+      <mat-checkbox
+        name="productOptions"
+        *ngFor="let item of productOptions"
+        [checked]="item.isChecked"
+        (change)="item.isChecked = !item.isChecked"
+      >
+        {{ item.label }}{{ item.isChecked }}
+      </mat-checkbox>
+    </div>
     <!--
     <mat-form-field>
       <mat-label>Изображения </mat-label>
-      <div>TODO</div>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Опции </mat-label>
-      <div>TODO</div>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Комплектующие </mat-label>
       <div>TODO</div>
     </mat-form-field>
     -->
@@ -71,7 +84,7 @@
     [disabled]="
       !data.itemData.title || !data.itemData.categoryId || !data.itemData.price
     "
-    [mat-dialog-close]="data.itemData"
+    (click)="onSubmit()"
     cdkFocusInitial
   >
     {{ data.itemData.id ? "Сохранить" : "Создать" }}
