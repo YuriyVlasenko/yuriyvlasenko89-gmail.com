@@ -42,7 +42,6 @@ export class ProductDialogComponent implements OnInit {
         !!existOptions.find((optionId) => optionId === item.id)
       );
     });
-    console.log(this.productOptions);
     let existParts = this.data.itemData.parts;
     this.productParts = this.data.dictionaries.productParts.map((item) => {
       return new CheckedItem(

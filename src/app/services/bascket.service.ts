@@ -19,7 +19,7 @@ export class Bascket {
   private totalCount: number = 0;
 
   constructor(private items: BascketItem[] = []) {
-    this.notifyThatBasckerChanged()
+    this.notifyThatBasckerChanged();
   }
 
   private notifyThatBasckerChanged() {
@@ -28,7 +28,7 @@ export class Bascket {
 
   public clear() {
     this.items = [];
-    this.notifyThatBasckerChanged()
+    this.notifyThatBasckerChanged();
   }
   public getTotalPrice(): number {
     return this.totalPrice;
@@ -46,15 +46,15 @@ export class Bascket {
     } else {
       this.items.push(new BascketItem(product, count));
     }
-    this.notifyThatBasckerChanged()
+    this.notifyThatBasckerChanged();
   }
   public removeItem(productId: string) {
     this.items = this.items.filter((i) => i.product.id !== productId);
-    this.notifyThatBasckerChanged()
+    this.notifyThatBasckerChanged();
   }
   public changeCount(productId: string, count: number) {
     this.items.find((i) => i.product.id === productId).count = count;
-    this.notifyThatBasckerChanged()
+    this.notifyThatBasckerChanged();
   }
   public addOnChangeHandler(handler) {
     this.onChangeHandlers.push(handler);
@@ -103,7 +103,6 @@ export class BascketService {
   }
 
   private saveBascket() {
-    console.log('saveBascket', this.bascket);
     this.localStorage.setItem(
       StorageKeys.BASCKET,
       this.converBascketToStorageFormat(this.bascket)

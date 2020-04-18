@@ -38,13 +38,12 @@ export class AdminCategoriesComponent
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {
-    console.log('ProductCategory.clone(item)', ProductCategory.clone(item));
-    this.edit(ProductCategory.clone(item));
+    this.edit(ProductCategory.clone(item), {});
   }
   onRemove(item) {
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new ProductCategory('', '', '', ''));
+    this.create(new ProductCategory('', '', '', ''), {});
   }
 }
