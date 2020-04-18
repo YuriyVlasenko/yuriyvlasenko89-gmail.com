@@ -68,6 +68,13 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
       new TableColumnSettings('Описание', 'description'),
       new TableColumnSettings('Категория', 'category'),
       new TableColumnSettings('Цена', 'price'),
+      new TableColumnSettings(
+        'Изображения',
+        'imageUrls',
+        true,
+        undefined,
+        'image'
+      ),
     ];
     this.tableSettings = new TableSettings(columns);
   }

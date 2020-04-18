@@ -1,0 +1,7 @@
+<app-file-uploader (upload)="onUpload($event)"></app-file-uploader>
+<div class="images-container">
+  {{ images | json }}
+  <div class="image-container" *ngFor="let image of images">
+    <img class="image" src="{{ image }}" />
+  </div>
+</div>

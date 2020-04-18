@@ -30,13 +30,13 @@ export class AdminGalleryComponent extends EntityBaseOperation<Gallery>
   }
 
   onEdit(item) {
-    this.edit(Gallery.clone(item));
+    this.edit(Gallery.clone(item), {});
   }
 
   onRemove(item) {
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new Gallery('', '', ''));
+    this.create(new Gallery('', '', ''), {});
   }
 }

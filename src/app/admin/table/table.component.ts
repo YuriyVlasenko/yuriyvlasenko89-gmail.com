@@ -4,7 +4,8 @@ export class TableColumnSettings {
     public label: string,
     public name: string,
     public visible: boolean = true,
-    public getData = (element) => element && element[this.name]
+    public getData = (element) => element && element[this.name],
+    public type: string = 'text'
   ) {}
 }
 

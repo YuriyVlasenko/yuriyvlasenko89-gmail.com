@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -58,6 +59,8 @@ import { ProductOptionsDialogComponent } from './admin/admin-product-options/pro
 import { PartnersDialogComponent } from './admin/admin-partners/partners-dialog/partners-dialog.component';
 import { GalleryDialogComponent } from './admin/admin-gallery/gallery-dialog/gallery-dialog.component';
 import { ProductDialogComponent } from './admin/admin-products/product-dialog/product-dialog.component';
+import { FileUploaderComponent } from './admin/file-uploader/file-uploader.component';
+import { ImageListComponent } from './admin/image-list/image-list.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,8 @@ import { ProductDialogComponent } from './admin/admin-products/product-dialog/pr
     PartnersDialogComponent,
     GalleryDialogComponent,
     ProductDialogComponent,
+    FileUploaderComponent,
+    ImageListComponent,
   ],
   imports: [
     CommonModule,
@@ -122,6 +127,7 @@ import { ProductDialogComponent } from './admin/admin-products/product-dialog/pr
     MatDialogModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
