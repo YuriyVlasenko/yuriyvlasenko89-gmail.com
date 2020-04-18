@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -118,6 +119,7 @@ import { ProductDialogComponent } from './admin/admin-products/product-dialog/pr
     MatTabsModule,
     MatTableModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

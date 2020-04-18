@@ -8,6 +8,10 @@ import {
 import { EntityBaseOperation } from '../entity-base-operation';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import {
+  ProductCategoriesService,
+  ProductCategory,
+} from 'src/app/services/repositories/product-categories.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -16,11 +20,24 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AdminProductsComponent extends EntityBaseOperation<Product>
   implements OnInit {
+  private categoriesMap = {};
+  private categories: ProductCategory[] = [];
   constructor(
     public dialog: MatDialog,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private productCategoriesService: ProductCategoriesService
   ) {
-    super(dialog, productsService, ProductDialogComponent);
+    super(dialog, productsService, ProductDialogComponent, (item) =>
+      this.initCategory(item)
+    );
+
+    this.productCategoriesService.getItems().then((categories) => {
+      this.categories = categories;
+      this.categoriesMap = {};
+      categories.forEach((category) => {
+        this.categoriesMap[category.id] = category.title;
+      });
+    });
   }
 
   ngOnInit(): void {
@@ -36,7 +53,10 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   }
 
   onEdit(item) {
-    this.edit(Product.clone(item));
+    this.edit(Product.clone(item), {
+      width: '600px',
+      dictionaries: { categories: this.categories },
+    });
   }
 
   onRemove(item) {
@@ -44,7 +64,13 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   }
   onCreate() {
     this.create(
-      new Product('', '', '', '', 0, [], new ProductSize('', '', ''), [], [])
+      new Product('', '', '', '', 0, [], new ProductSize('', '', ''), [], []),
+      { width: '600px', dictionaries: { categories: this.categories } }
     );
+  }
+
+  private initCategory(product) {
+    product.category = this.categoriesMap[product.categoryId];
+    return product;
   }
 }

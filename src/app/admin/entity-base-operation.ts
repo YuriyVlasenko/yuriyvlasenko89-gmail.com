@@ -1,9 +1,13 @@
 import { DataService } from '../services/repositories/data-service';
 import { TableSettings } from './table/table.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductCategory } from '../services/repositories/product-categories.service';
 
 export interface DialogData<T> {
   itemData: T;
+  dictionaries: {
+    categories: ProductCategory[];
+  };
 }
 
 export class EntityBaseOperation<T> {
@@ -13,18 +17,18 @@ export class EntityBaseOperation<T> {
   constructor(
     public dialog: MatDialog,
     public dataService: DataService<T>,
-    private dialogComponent
+    private dialogComponent,
+    private mapItem = null
   ) {}
 
   protected loadData() {
     this.dataService.getItems().then((items) => {
-      this.dataSource = items;
+      this.dataSource = this.mapItem ? items.map(this.mapItem) : items;
     });
   }
 
-  protected edit(item) {
-    console.log('show', item);
-    this.showDialog(item).then((dialogResult) => {
+  protected edit(item, dialogSettings) {
+    this.showDialog(item, dialogSettings).then((dialogResult) => {
       if (dialogResult) {
         this.dataService
           .editItem(dialogResult as T)
@@ -53,8 +57,8 @@ export class EntityBaseOperation<T> {
       });
   }
 
-  protected create(item) {
-    this.showDialog(item).then((dialogData) => {
+  protected create(item, dialogSettings) {
+    this.showDialog(item, dialogSettings).then((dialogData) => {
       if (dialogData) {
         this.dataService
           .createItem(dialogData as T)
@@ -69,10 +73,16 @@ export class EntityBaseOperation<T> {
     });
   }
 
-  private showDialog(itemData) {
+  private showDialog(
+    itemData,
+    dialogSettings = { width: '400px', dictionaries: {} }
+  ) {
     let dialogRef = this.dialog.open(this.dialogComponent, {
-      width: '400px',
-      data: { itemData },
+      width: dialogSettings.width || '400px',
+      data: {
+        itemData,
+        dictionaries: dialogSettings && dialogSettings.dictionaries,
+      },
     });
 
     return new Promise((resolve, reject) => {

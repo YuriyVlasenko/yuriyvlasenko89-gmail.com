@@ -14,12 +14,15 @@
       />
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Категория </mat-label>
-      <input
-        matInput
-        [(ngModel)]="data.itemData.categoryId"
-        name="categoryId"
-      />
+      <mat-label>Категория</mat-label>
+      <mat-select [(ngModel)]="data.itemData.categoryId" name="categoryId">
+        <mat-option
+          *ngFor="let category of data.dictionaries.categories"
+          [value]="category.id"
+        >
+          {{ category.title }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Размеры (ш * в * т) </mat-label>

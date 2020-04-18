@@ -13,9 +13,6 @@ export class ProductCategoriesManagerService {
   private cache: ProductCategory[] = [];
   constructor(private productCategoriesRepository: ProductCategoriesService) {}
 
-  createCategory(category: ProductCategory) {
-    return this.productCategoriesRepository.createItem(category);
-  }
   getCategories(clearCache = false) {
     if (this.cache && !clearCache) {
       return Promise.resolve(this.cache);
