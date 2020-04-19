@@ -4,6 +4,8 @@ import { SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
 
 export class Partner {
+  public imageUrls: string[] = [];
+
   constructor(
     public id: string,
     public name: string,
@@ -12,7 +14,9 @@ export class Partner {
     public address: string,
     public contacts: string,
     public imageUrl: string
-  ) {}
+  ) {
+    this.imageUrls = [imageUrl];
+  }
 
   static clone(source: Partner): Partner {
     return new Partner(

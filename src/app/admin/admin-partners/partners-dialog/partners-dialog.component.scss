@@ -5,4 +5,19 @@
   .mat-dialog-actions {
     justify-content: space-between;
   }
+
+  .dialog-form {
+    display: flex;
+    flex-direction: row;
+    .dialog-form-block {
+      width: 47%;
+      &:first-child {
+        padding-right: 5%;
+      }
+
+      .image-list {
+        height: 400px;
+      }
+    }
+  }
 }

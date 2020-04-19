@@ -31,19 +31,30 @@ export class AdminPartnersComponent extends EntityBaseOperation<Partner>
       new TableColumnSettings('Город', 'city'),
       new TableColumnSettings('Адресс', 'address'),
       new TableColumnSettings('Контакты', 'contacts'),
+      new TableColumnSettings(
+        'Изображение',
+        'imageUrls',
+        true,
+        undefined,
+        'image'
+      ),
     ];
 
     this.tableSettings = new TableSettings(columns);
   }
 
   onEdit(item) {
-    this.edit(Partner.clone(item));
+    this.edit(Partner.clone(item), {
+      width: '700px',
+    });
   }
 
   onRemove(item) {
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new Partner('', '', '', '', '', '', ''));
+    this.create(new Partner('', '', '', '', '', '', ''), {
+      width: '700px',
+    });
   }
 }
