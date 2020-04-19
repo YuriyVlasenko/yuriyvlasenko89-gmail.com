@@ -14,7 +14,7 @@ export class ProductCategoriesManagerService {
   constructor(private productCategoriesRepository: ProductCategoriesService) {}
 
   getCategories(clearCache = false) {
-    if (this.cache && !clearCache) {
+    if (this.cache.length && !clearCache) {
       return Promise.resolve(this.cache);
     }
     return this.productCategoriesRepository.getItems().then((items) => {

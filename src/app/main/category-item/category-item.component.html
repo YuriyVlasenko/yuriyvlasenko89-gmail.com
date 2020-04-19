@@ -1,5 +1,5 @@
 <img
-  src="{{ data && data.imageUrl }}"
+  src="{{ data && data.imageUrl | imageSrc }}"
   class="category-image"
   (click)="onClick()"
 />
