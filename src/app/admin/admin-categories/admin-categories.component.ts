@@ -33,7 +33,13 @@ export class AdminCategoriesComponent
     let columns = [
       new TableColumnSettings('Название', 'title'),
       new TableColumnSettings('Имя в адресной строке', 'name'),
-      new TableColumnSettings('Изображение', 'imageUrl'),
+      new TableColumnSettings(
+        'Изображение',
+        'imageUrls',
+        true,
+        undefined,
+        'image'
+      ),
     ];
     this.tableSettings = new TableSettings(columns);
   }

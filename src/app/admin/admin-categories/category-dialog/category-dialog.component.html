@@ -9,6 +9,14 @@
       <mat-label>Url строка </mat-label>
       <input matInput [(ngModel)]="data.itemData.name" name="name" />
     </mat-form-field>
+    <div>Изображениe</div>
+    <app-image-list
+      (add)="onAddImage($event)"
+      [settings]="imageListSettings"
+      [images]="[data.itemData.imageUrl]"
+      (remove)="onRemoveItem($event)"
+    >
+    </app-image-list>
   </form>
 </div>
 <div mat-dialog-actions>

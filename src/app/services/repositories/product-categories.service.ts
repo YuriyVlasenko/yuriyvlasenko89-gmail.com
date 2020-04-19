@@ -3,12 +3,15 @@ import { SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
 
 export class ProductCategory {
+  public imageUrls: string[] = [];
   constructor(
     public id: string,
     public title: string,
     public name: string,
     public imageUrl: string
-  ) {}
+  ) {
+    this.imageUrls = [imageUrl];
+  }
 
   static clone(source: ProductCategory): ProductCategory {
     return new ProductCategory(

@@ -83,8 +83,6 @@ export class EntityBaseOperation<T> {
   ) {
     let dialogRef = this.dialog.open(this.dialogComponent, {
       width: dialogSettings.width || '400px',
-      closeOnNavigation: false,
-      disableClose: true,
       data: {
         itemData,
         dictionaries: dialogSettings && dialogSettings.dictionaries,
