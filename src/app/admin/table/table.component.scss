@@ -1,6 +1,9 @@
 :host {
   table {
     width: 100%;
+    .mat-column-imageUrls {
+      width: 250px;
+    }
     .mat-column-actions {
       width: 100px;
       text-align: center;

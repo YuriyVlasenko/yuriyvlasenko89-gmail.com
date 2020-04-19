@@ -1,0 +1,53 @@
+:host(.table) {
+  width: 250px;
+  display: flex;
+  flex-direction: row-reverse;
+  .images-container {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 200px;
+
+    .image-container {
+      padding: 4px;
+      height: 46px;
+      width: 46px;
+
+      .image {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+:host {
+  width: 100%;
+  .image-uploader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .images-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+
+    .image-container {
+      position: relative;
+      padding: 4px;
+      height: 96px;
+
+      .image {
+        max-width: 200px;
+        max-height: 200px;
+      }
+      .image-remove {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}

@@ -1,75 +1,85 @@
 <h1 mat-dialog-title>Товар {{ data.itemData.id }}</h1>
 <div mat-dialog-content>
-  <form (submit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Название </mat-label>
-      <input matInput [(ngModel)]="data.itemData.title" name="title" />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Описание </mat-label>
-      <input
-        matInput
-        [(ngModel)]="data.itemData.description"
-        name="description"
-      />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Категория</mat-label>
-      <mat-select [(ngModel)]="data.itemData.categoryId" name="categoryId">
-        <mat-option
-          *ngFor="let category of data.dictionaries.categories"
-          [value]="category.id"
+  <form (submit)="onSubmit()" class="dialog-form">
+    <div class="dialog-form-block">
+      <mat-form-field>
+        <mat-label>Название </mat-label>
+        <input matInput [(ngModel)]="data.itemData.title" name="title" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Описание </mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.itemData.description"
+          name="description"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Категория</mat-label>
+        <mat-select [(ngModel)]="data.itemData.categoryId" name="categoryId">
+          <mat-option
+            *ngFor="let category of data.dictionaries.categories"
+            [value]="category.id"
+          >
+            {{ category.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Размеры (ш * в * т) </mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.itemData.size.width"
+          name="size.width"
+        />
+        <input
+          matInput
+          [(ngModel)]="data.itemData.size.height"
+          name="size.height"
+        />
+        <input
+          matInput
+          [(ngModel)]="data.itemData.size.length"
+          name="size.length"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Цена </mat-label>
+        <input matInput [(ngModel)]="data.itemData.price" name="price" />
+      </mat-form-field>
+      <div class="checkbox-list">
+        <span>Комплектующие</span>
+        <mat-checkbox
+          name="productParts"
+          *ngFor="let item of productParts"
+          [checked]="item.isChecked"
+          (change)="item.isChecked = !item.isChecked"
         >
-          {{ category.title }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Размеры (ш * в * т) </mat-label>
-      <input
-        matInput
-        [(ngModel)]="data.itemData.size.width"
-        name="size.width"
-      />
-      <input
-        matInput
-        [(ngModel)]="data.itemData.size.height"
-        name="size.height"
-      />
-      <input
-        matInput
-        [(ngModel)]="data.itemData.size.length"
-        name="size.length"
-      />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Цена </mat-label>
-      <input matInput [(ngModel)]="data.itemData.price" name="price" />
-    </mat-form-field>
-    <div class="checkbox-list">
-      <span>Комплектующие</span>
-      <mat-checkbox
-        name="productParts"
-        *ngFor="let item of productParts"
-        [checked]="item.isChecked"
-        (change)="item.isChecked = !item.isChecked"
-      >
-        {{ item.label }}
-      </mat-checkbox>
+          {{ item.label }}
+        </mat-checkbox>
+      </div>
+      <div class="checkbox-list">
+        <span>Опции</span>
+        <mat-checkbox
+          name="productOptions"
+          *ngFor="let item of productOptions"
+          [checked]="item.isChecked"
+          (change)="item.isChecked = !item.isChecked"
+        >
+          {{ item.label }}{{ item.isChecked }}
+        </mat-checkbox>
+      </div>
     </div>
-    <div class="checkbox-list">
-      <span>Опции</span>
-      <mat-checkbox
-        name="productOptions"
-        *ngFor="let item of productOptions"
-        [checked]="item.isChecked"
-        (change)="item.isChecked = !item.isChecked"
+    <div class="dialog-form-block">
+      <div>Изображения</div>
+      <app-image-list
+        (add)="onAddImage($event)"
+        [settings]="imageListSettings"
+        [images]="data.itemData.imageUrls"
+        (remove)="onRemoveItem($event)"
       >
-        {{ item.label }}{{ item.isChecked }}
-      </mat-checkbox>
+      </app-image-list>
     </div>
-    <div>Изображения</div>
-    <app-image-list [images]="data.itemData.imageUrls"></app-image-list>
   </form>
 </div>
 <div mat-dialog-actions>

@@ -1,14 +1,29 @@
 :host {
+  .dialog-form {
+    display: flex;
+    flex-direction: row;
+
+    .dialog-form-block {
+      width: 47%;
+      &:first-child {
+        padding-right: 5%;
+      }
+      .checkbox-list {
+        display: flex;
+        flex-direction: column;
+        max-height: 200px;
+        overflow: auto;
+      }
+
+      .image-list {
+        height: 400px;
+      }
+    }
+  }
   .mat-form-field {
     width: 100%;
   }
   .mat-dialog-actions {
     justify-content: space-between;
-  }
-  .checkbox-list {
-    display: flex;
-    flex-direction: column;
-    max-height: 200px;
-    overflow: auto;
   }
 }

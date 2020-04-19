@@ -32,6 +32,7 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   private categories: ProductCategory[] = [];
   private productOptions: ProductOption[] = [];
   private productParts: ProductPart[] = [];
+
   constructor(
     public dialog: MatDialog,
     private productsService: ProductsService,
@@ -81,7 +82,7 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
 
   onEdit(item) {
     this.edit(Product.clone(item), {
-      width: '600px',
+      width: '1000px',
       dictionaries: {
         categories: this.categories,
         productParts: this.productParts,

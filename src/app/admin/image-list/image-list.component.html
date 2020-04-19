@@ -1,7 +1,20 @@
-<app-file-uploader (upload)="onUpload($event)"></app-file-uploader>
+<app-file-uploader
+  *ngIf="settings && settings.canAdd"
+  class="image-uploader"
+  (upload)="onUpload($event)"
+></app-file-uploader>
 <div class="images-container">
-  {{ images | json }}
-  <div class="image-container" *ngFor="let image of images">
+  <div class="image-container" *ngFor="let image of images; index as i">
     <img class="image" src="{{ image }}" />
+    <button
+      class="image-remove"
+      *ngIf="settings && settings.canDelete"
+      type="button"
+      mat-icon-button
+      color="warn"
+      (click)="onRemove(i)"
+    >
+      <mat-icon>remove_circle</mat-icon>
+    </button>
   </div>
 </div>

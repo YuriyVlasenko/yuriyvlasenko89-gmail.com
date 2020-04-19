@@ -9,8 +9,11 @@
         {{ column.getData(element) }}
       </div>
       <div *ngIf="column.type === 'image'">
-        {{ column.getData(element) | json }}
-        <app-image-list [images]="column.getData(element)"></app-image-list>
+        <app-image-list
+          class="table"
+          [settings]="imageListSettings"
+          [images]="column.getData(element)"
+        ></app-image-list>
       </div>
     </td>
   </ng-container>

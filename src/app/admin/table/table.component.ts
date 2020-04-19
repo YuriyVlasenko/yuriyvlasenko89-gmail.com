@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ImageListSettings } from '../image-list/image-list.component';
 export class TableColumnSettings {
   constructor(
     public label: string,
@@ -35,6 +36,11 @@ export class TableComponent implements OnInit {
   @Output('create') create = new EventEmitter();
   @Output('edit') edit = new EventEmitter();
   @Output('remove') remove = new EventEmitter();
+
+  public imageListSettings: ImageListSettings = {
+    canDelete: false,
+    canAdd: false,
+  };
 
   constructor() {}
 

@@ -29,13 +29,13 @@ export class AdminProductPartsComponent extends EntityBaseOperation<ProductPart>
   }
 
   onEdit(item) {
-    this.edit(ProductPart.clone(item));
+    this.edit(ProductPart.clone(item), {});
   }
 
   onRemove(item) {
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new ProductPart('', ''));
+    this.create(new ProductPart('', ''), {});
   }
 }

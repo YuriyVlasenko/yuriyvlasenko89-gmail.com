@@ -6,6 +6,7 @@ import {
 import { DialogData } from '../../entity-base-operation';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductOption } from 'src/app/services/repositories/product-options.service';
+import { ImageListSettings } from '../../image-list/image-list.component';
 
 class CheckedItem {
   constructor(
@@ -23,6 +24,10 @@ class CheckedItem {
 export class ProductDialogComponent implements OnInit {
   public productOptions: CheckedItem[] = [];
   public productParts: CheckedItem[] = [];
+  public imageListSettings: ImageListSettings = {
+    canAdd: true,
+    canDelete: true,
+  };
 
   constructor(
     public dialogRef: MatDialogRef<ProductDialogComponent>,
@@ -50,6 +55,12 @@ export class ProductDialogComponent implements OnInit {
         !!existParts.find((partId) => partId === item.id)
       );
     });
+  }
+  onAddImage(imageId) {
+    console.log('imageId', imageId);
+  }
+  onRemoveItem(index) {
+    console.log('removeImage', index);
   }
 
   onSubmit() {

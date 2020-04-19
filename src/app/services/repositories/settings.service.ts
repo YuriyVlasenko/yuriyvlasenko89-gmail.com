@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class SettingsService {
-  public apiUrl = "http://localhost:8080/api";
+  public baseUrl = "http://localhost:8080";
+  public apiUrl = `${this.baseUrl}/api`;
+  public imagesUrl = `${this.baseUrl}/images/`;
   constructor() {}
 }
