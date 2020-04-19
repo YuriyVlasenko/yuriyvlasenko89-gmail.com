@@ -5,7 +5,7 @@
 ></app-file-uploader>
 <div class="images-container">
   <div class="image-container" *ngFor="let image of images; index as i">
-    <img class="image" src="{{ image }}" />
+    <img class="image" src="{{ image | imageSrc }}" />
     <button
       class="image-remove"
       *ngIf="settings && settings.canDelete"

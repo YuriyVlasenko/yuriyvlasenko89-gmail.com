@@ -6,6 +6,10 @@ import { Injectable } from "@angular/core";
 export class SettingsService {
   public baseUrl = "http://localhost:8080";
   public apiUrl = `${this.baseUrl}/api`;
-  public imagesUrl = `${this.baseUrl}/images/`;
+  public imagesUrl = `${this.baseUrl}/images`;
   constructor() {}
+
+  public buildImageUrl(imageId) {
+    return `${this.imagesUrl}/${imageId}`;
+  }
 }

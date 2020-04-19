@@ -61,6 +61,7 @@ import { GalleryDialogComponent } from './admin/admin-gallery/gallery-dialog/gal
 import { ProductDialogComponent } from './admin/admin-products/product-dialog/product-dialog.component';
 import { FileUploaderComponent } from './admin/file-uploader/file-uploader.component';
 import { ImageListComponent } from './admin/image-list/image-list.component';
+import { ImageSrcPipe } from './shared/image-src.pipe';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { ImageListComponent } from './admin/image-list/image-list.component';
     ProductDialogComponent,
     FileUploaderComponent,
     ImageListComponent,
+    ImageSrcPipe,
   ],
   imports: [
     CommonModule,

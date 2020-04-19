@@ -7,6 +7,7 @@ import { DialogData } from '../../entity-base-operation';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductOption } from 'src/app/services/repositories/product-options.service';
 import { ImageListSettings } from '../../image-list/image-list.component';
+import { ImageManagerService } from '../../image-manager.service';
 
 class CheckedItem {
   constructor(
@@ -31,7 +32,8 @@ export class ProductDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ProductDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData<Product>
+    @Inject(MAT_DIALOG_DATA) public data: DialogData<Product>,
+    private imageManager: ImageManagerService
   ) {}
 
   onCancelClick(): void {
@@ -62,7 +64,17 @@ export class ProductDialogComponent implements OnInit {
     }
   }
   onRemoveItem(index) {
-    console.log('removeImage', index);
+    let itemData = this.data.itemData;
+    let imageUrl = itemData.imageUrls[index];
+
+    this.imageManager
+      .removeFile(imageUrl)
+      .then(() => {
+        itemData.imageUrls.splice(index, 1);
+      })
+      .catch((error) => {
+        console.log('remove image error', error);
+      });
   }
 
   onSubmit() {

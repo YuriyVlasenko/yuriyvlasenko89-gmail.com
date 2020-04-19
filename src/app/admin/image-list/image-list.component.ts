@@ -8,6 +8,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { EOPNOTSUPP } from 'constants';
+import { SettingsService } from 'src/app/services/repositories/settings.service';
 
 export interface ImageListSettings {
   canDelete: boolean;
@@ -20,7 +21,7 @@ export interface ImageListSettings {
   styleUrls: ['./image-list.component.scss'],
   host: { class: 'image-list' },
 })
-export class ImageListComponent implements OnInit, OnChanges {
+export class ImageListComponent implements OnInit {
   @Input('images') images: string[] = [];
   @Input('settings') settings: ImageListSettings;
   @Output('remove') remove = new EventEmitter<number>();
@@ -29,8 +30,6 @@ export class ImageListComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit(): void {}
-
-  ngOnChanges() {}
 
   onUpload(fileName: string) {
     this.add.emit(fileName);

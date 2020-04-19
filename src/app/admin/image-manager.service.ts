@@ -6,27 +6,35 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ImageManagerService {
+  private endpoint: string = '';
   constructor(
     private settings: SettingsService,
     private httpClient: HttpClient
-  ) {}
+  ) {
+    this.endpoint = `${this.settings.apiUrl}/image`;
+  }
 
   uploadFile(file) {
     const formData = new FormData();
     formData.append('file', file.data);
     file.inProgress = true;
     return this.sendToServer(formData).then((response) => {
-      let fileName = response['body'];
-      return `${this.settings.imagesUrl}/${fileName}`;
+      return response['body'];
     });
   }
 
-  removeFile(imageId) {}
+  removeFile(imageUrl) {
+    console.log('imageUrl', imageUrl);
+    let paths = imageUrl.split('/') || [''];
+    let imageId = paths[paths.length - 1];
+    return this.httpClient
+      .delete<any>(`${this.endpoint}/${imageId}`)
+      .toPromise();
+  }
 
   private sendToServer(formData) {
-    const serverUrl = `${this.settings.apiUrl}/image`;
     return this.httpClient
-      .post<any>(serverUrl, formData, {
+      .post<any>(this.endpoint, formData, {
         reportProgress: true,
         observe: 'events',
       })
