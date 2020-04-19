@@ -57,7 +57,9 @@ export class ProductDialogComponent implements OnInit {
     });
   }
   onAddImage(imageId) {
-    console.log('imageId', imageId);
+    if (imageId) {
+      this.data.itemData.imageUrls.push(imageId);
+    }
   }
   onRemoveItem(index) {
     console.log('removeImage', index);
