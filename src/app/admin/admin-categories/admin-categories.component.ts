@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableSettings, TableColumnSettings } from '../table/table.component';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import {
   ProductCategory,
   ProductCategoriesService,

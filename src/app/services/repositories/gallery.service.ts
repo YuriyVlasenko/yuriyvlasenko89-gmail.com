@@ -4,11 +4,14 @@ import { SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
 
 export class Gallery {
+  public imageUrls: string[] = [];
   constructor(
     public id: string,
     public title: string,
     public imageUrl: string
-  ) {}
+  ) {
+    this.imageUrls = [imageUrl];
+  }
 
   static clone(source: Gallery): Gallery {
     return new Gallery(source.id, source.title, source.imageUrl);
