@@ -14,3 +14,14 @@ body {
   align-items: center;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* ngx-gallery styles start */
+.ngx-gallery-thumbnail:not(.ngx-gallery-active) {
+  border: none !important;
+}
+
+.ngx-gallery-thumbnail.ngx-gallery-active {
+  border: 1px solid white !important;
+}
+
+/* ngx-gallery styles end */

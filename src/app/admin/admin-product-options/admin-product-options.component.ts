@@ -30,13 +30,13 @@ export class AdminProductOptionsComponent
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {
-    this.edit(ProductOption.clone(item));
+    this.edit(ProductOption.clone(item), {});
   }
 
   onRemove(item) {
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new ProductOption('', ''));
+    this.create(new ProductOption('', ''), {});
   }
 }

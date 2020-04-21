@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,7 +16,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
-import { Angular2ImageGalleryModule } from 'angular2-image-gallery';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxImageGalleryModule } from 'ngx-image-gallery';
 import { CommonModule } from '@angular/common';
@@ -62,6 +62,7 @@ import { ProductDialogComponent } from './admin/admin-products/product-dialog/pr
 import { FileUploaderComponent } from './admin/file-uploader/file-uploader.component';
 import { ImageListComponent } from './admin/image-list/image-list.component';
 import { ImageSrcPipe } from './shared/image-src.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -123,13 +124,14 @@ import { ImageSrcPipe } from './shared/image-src.pipe';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    Angular2ImageGalleryModule,
     MatTabsModule,
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
     MatCheckboxModule,
     MatProgressBarModule,
+    NgxGalleryModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

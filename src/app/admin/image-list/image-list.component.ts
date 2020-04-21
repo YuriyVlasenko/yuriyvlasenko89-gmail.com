@@ -1,14 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  HostBinding,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { EOPNOTSUPP } from 'constants';
-import { SettingsService } from 'src/app/services/repositories/settings.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export interface ImageListSettings {
   canDelete: boolean;

@@ -1,6 +1,4 @@
 import { Injectable } from "@angular/core";
-import { ProductPart } from "./product-parts.service";
-import { ProductOption } from "./product-options.service";
 import { DataService } from "./data-service";
 import { SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
