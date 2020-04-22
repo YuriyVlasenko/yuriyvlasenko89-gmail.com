@@ -1,7 +1,20 @@
 :host {
   display: flex;
-  align-items: center;
-  padding: 2em;
+  justify-content: center;
+  width: 100%;
+  padding: 1em 2em;
   font-size: 1.5em;
-  background-color: lightcyan;
+
+  .partners-filter-field {
+    padding-right: 20px;
+  }
+
+  .partner-content {
+    display: flex;
+    flex-direction: row;
+    .partner-image {
+    }
+    .partner-contacts {
+    }
+  }
 }
