@@ -19,13 +19,11 @@ export class PartnersComponent implements OnInit {
     this.partnersManager
       .getPartners()
       .then((partners) => {
-        console.log('partners', partners);
         this.partners = partners;
         this.allPartners = partners;
         return this.partnersManager.getPartnersRegions();
       })
       .then((regions) => {
-        console.log('regions', regions);
         this.regions = regions;
       });
   }

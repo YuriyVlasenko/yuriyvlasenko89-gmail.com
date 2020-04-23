@@ -4,7 +4,9 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-
+  .products-list-message {
+    font-size: 1.3em;
+  }
   .product-item {
     max-width: 28%;
     padding: 10px 1.5%;

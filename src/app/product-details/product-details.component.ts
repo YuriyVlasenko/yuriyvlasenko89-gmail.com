@@ -9,6 +9,7 @@ import {
   GALLERY_IMAGE,
 } from 'ngx-image-gallery';
 import { BascketService, Bascket } from '../services/bascket.service';
+import { SettingsService } from '../services/repositories/settings.service';
 
 @Component({
   selector: 'app-product-details',
@@ -36,7 +37,8 @@ export class ProductDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private productsManager: ProductsManagerService,
-    private bascketService: BascketService
+    private bascketService: BascketService,
+    private settings: SettingsService
   ) {}
 
   ngOnInit(): void {
@@ -73,9 +75,10 @@ export class ProductDetailsComponent implements OnInit {
     this.product = product;
 
     this.galleryImages = this.product.imageUrls.map((imageUrl) => {
+      let url = this.settings.buildImageUrl(imageUrl);
       return {
-        url: imageUrl,
-        thumbnailUrl: imageUrl,
+        url,
+        thumbnailUrl: url,
       };
     });
     setTimeout(() => {
