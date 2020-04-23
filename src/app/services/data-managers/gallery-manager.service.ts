@@ -7,14 +7,19 @@ import { SettingsService } from '../repositories/settings.service';
   providedIn: 'root',
 })
 export class GalleryManagerService {
+  private cache: NgxGalleryImage[] = [];
+
   constructor(
     private galleryService: GalleryService,
     private settings: SettingsService
   ) {}
 
-  getGalleryImages(): Promise<NgxGalleryImage[]> {
+  getGalleryImages(clearCache = false): Promise<NgxGalleryImage[]> {
+    if (this.cache.length && !clearCache) {
+      return Promise.resolve(this.cache);
+    }
     return this.galleryService.getItems().then((galleryItems) => {
-      return galleryItems.map((galleryItem) => {
+      let images = galleryItems.map((galleryItem) => {
         let url = this.settings.buildImageUrl(galleryItem.imageUrl);
         return new NgxGalleryImage({
           small: url,
@@ -23,6 +28,8 @@ export class GalleryManagerService {
           label: galleryItem.title,
         });
       });
+      this.cache = images;
+      return images;
     });
   }
 }

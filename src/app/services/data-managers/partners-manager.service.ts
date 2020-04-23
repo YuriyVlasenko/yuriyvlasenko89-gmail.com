@@ -13,11 +13,18 @@ export class PartnerRegion {
   providedIn: 'root',
 })
 export class PartnersManagerService {
+  private cache: Partner[] = [];
   private regionCityMap = null;
   constructor(private partnersService: PartnersService) {}
 
-  getPartners(): Promise<Partner[]> {
-    return this.partnersService.getItems();
+  getPartners(clearCache = false): Promise<Partner[]> {
+    if (this.cache.length && !clearCache) {
+      return Promise.resolve(this.cache);
+    }
+    return this.partnersService.getItems().then((items) => {
+      this.cache = items;
+      return items;
+    });
   }
 
   getPartnersRegions() {

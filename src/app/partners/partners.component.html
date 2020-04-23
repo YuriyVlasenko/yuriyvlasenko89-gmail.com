@@ -1,27 +1,37 @@
 <mat-card>
-  <mat-card-header>
-    <mat-form-field class="partners-filter-field">
-      <mat-label>Область</mat-label>
-      <mat-select (selectionChange)="onRegionChanged($event.value)">
-        <mat-option *ngFor="let region of regions" [value]="region">
-          {{ region }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="partners-filter-field">
-      <mat-label>Город</mat-label>
-      <mat-select (selectionChange)="onCityChanged($event.value)">
-        <mat-option *ngFor="let city of cities" [value]="city">
-          {{ city }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <mat-card-header style="flex-direction: column;">
+    <div class="partners-header-text">
+      Вы можете купить представленные на сайте товары у наших партнеров
+    </div>
+    <div>
+      <mat-form-field class="partners-filter-field">
+        <mat-label>Область</mat-label>
+        <mat-select (selectionChange)="onRegionChanged($event.value)">
+          <mat-option *ngFor="let region of regions" [value]="region">
+            {{ region }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="partners-filter-field">
+        <mat-label>Город</mat-label>
+        <mat-select (selectionChange)="onCityChanged($event.value)">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content class="partners-list">
     <mat-card class="partner-content" *ngFor="let partner of partners">
+      <div class="partner-content-name">{{ partner.name }}</div>
       <app-image class="partner-image" [src]="partner.imageUrls"></app-image>
       <div class="partner-contacts">
-        <div></div>
+        <div>{{ partner.region }}, {{ partner.city }}</div>
+        <div>{{ partner.address }}</div>
+        <div>
+          <strong>{{ partner.contacts }}</strong>
+        </div>
       </div>
     </mat-card>
   </mat-card-content>

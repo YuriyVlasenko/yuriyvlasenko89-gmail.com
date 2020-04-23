@@ -1,20 +1,49 @@
 :host {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
   padding: 1em 2em;
   font-size: 1.5em;
 
+  .partners-header-text {
+    padding-bottom: 0.5em;
+  }
   .partners-filter-field {
     padding-right: 20px;
   }
 
-  .partner-content {
+  .partners-list {
     display: flex;
     flex-direction: row;
-    .partner-image {
-    }
-    .partner-contacts {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .partner-content {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      margin-bottom: 20px;
+
+      .partner-content-name {
+        font-size: 1.5em;
+        padding: 0 0.5em 0.5em 0.5em;
+        text-align: center;
+      }
+      .partner-image {
+        display: flex;
+        width: 100%;
+      }
+      .partner-contacts {
+        display: flex;
+        flex-direction: column;
+
+        div {
+          padding: 10px;
+          font-size: 1.25em;
+        }
+      }
     }
   }
 }

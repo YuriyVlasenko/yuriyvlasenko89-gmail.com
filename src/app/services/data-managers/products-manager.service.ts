@@ -5,10 +5,17 @@ import { ProductsService, Product } from '../repositories/products.service';
   providedIn: 'root',
 })
 export class ProductsManagerService {
+  private cache: Product[] = [];
   constructor(private productsRepository: ProductsService) {}
 
-  getProducts(): Promise<Product[]> {
-    return this.productsRepository.getItems();
+  getProducts(clearCache = false): Promise<Product[]> {
+    if (this.cache.length && !clearCache) {
+      return Promise.resolve(this.cache);
+    }
+    return this.productsRepository.getItems().then((products) => {
+      this.cache = products;
+      return products;
+    });
   }
 
   getProductsByCategory(categoryId: string): Promise<Product[]> {
