@@ -7,7 +7,7 @@
 </app-bascket-item>
 <div class="bascket-total">
   <div class="bascket-total-price">
-    Сумма заказа: {{ getTotalPrice().toFixed(2) }} грн.
+    Сумма заказа: {{ getTotalPrice() | currency }}
   </div>
   <div
     class="bascket-total-order"

@@ -63,6 +63,7 @@ import { FileUploaderComponent } from './admin/file-uploader/file-uploader.compo
 import { ImageListComponent } from './admin/image-list/image-list.component';
 import { ImageSrcPipe } from './shared/image-src.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { CurrencyPipe } from './shared/currency.pipe';
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import { HttpClientModule } from '@angular/common/http';
     FileUploaderComponent,
     ImageListComponent,
     ImageSrcPipe,
+    CurrencyPipe,
   ],
   imports: [
     CommonModule,

@@ -62,11 +62,6 @@ export class ProductDetailsComponent implements OnInit {
     // return this.slider && this.slider.activeImageIndex || -1;
   }
 
-  public getProductPrice() {
-    let price = (this.product && this.product.price) || 0;
-    return `${price.toFixed(2)} грн.`;
-  }
-
   public buyProduct() {
     this.bascket.addItem(this.product, 1);
   }

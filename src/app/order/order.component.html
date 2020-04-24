@@ -57,13 +57,12 @@
         <strong>{{ orderItem.product.title }}</strong>
       </div>
       <div>
-        {{ orderItem.count }} од. x
-        {{ orderItem.product.price.toFixed(2) }} грн. =
-        {{ orderItem.getPrice().toFixed(2) }} грн
+        {{ orderItem.count }} од. x {{ orderItem.product.price | currency }} =
+        {{ orderItem.getPrice() | currency }}
       </div>
     </div>
     <div class="order-details-summary">
-      Сумма заказа: {{ totalPrice.toFixed(2) }} грн.
+      Сумма заказа: {{ totalPrice | currency }}
     </div>
   </mat-card-content>
 </mat-card>

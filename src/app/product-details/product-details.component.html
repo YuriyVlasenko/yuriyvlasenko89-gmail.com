@@ -7,7 +7,7 @@
 </ngx-image-gallery>
 <div class="product-view" *ngIf="product">
   <div class="product-description-price">
-    <span>{{ getProductPrice() }} </span>
+    <span>{{ product.price | currency }} </span>
     <button
       mat-raised-button
       color="primary"

@@ -1,7 +1,7 @@
 <div class="product-description">
   <app-image (click)="goToProduct()" [src]="data.product.imageUrls"></app-image>
   <div class="product-title">{{ data.product.title }}</div>
-  <div class="product-price">{{ data.product.getFormatedPrice() }}</div>
+  <div class="product-price">{{ data.product.price | currency }}</div>
 </div>
 <div class="product-actions">
   <div class="product-count">

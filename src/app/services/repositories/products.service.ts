@@ -44,10 +44,6 @@ export class Product {
     );
   }
 
-  getFormatedPrice() {
-    return `${this.price.toFixed(2)} грн.`;
-  }
-
   isMatchSearch(searchPhrase) {
     return (
       this.title.toLowerCase().includes(searchPhrase.toLowerCase()) ||

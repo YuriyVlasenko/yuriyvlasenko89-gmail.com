@@ -11,6 +11,6 @@
       />
     </svg>
   </div>
-  <div class="bascket-total">{{ getTotalPrice() }} грн.</div>
+  <div class="bascket-total">{{ getTotalPrice() | currency }}</div>
   <div class="bascket-amount">({{ getTotalCount() }} од.)</div>
 </div>
