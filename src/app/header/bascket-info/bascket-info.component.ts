@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import routerPaths from '../../routerPaths.const';
 import { BascketService, Bascket } from 'src/app/services/bascket.service';
@@ -10,7 +10,6 @@ import { BascketService, Bascket } from 'src/app/services/bascket.service';
 })
 export class BascketInfoComponent implements OnInit {
   private bascket: Bascket = new Bascket();
-
   constructor(private router: Router, private basketService: BascketService) {}
 
   ngOnInit(): void {
@@ -18,7 +17,6 @@ export class BascketInfoComponent implements OnInit {
       this.bascket = bascket;
     });
   }
-
   getTotalPrice() {
     return this.bascket.getTotalPrice();
   }

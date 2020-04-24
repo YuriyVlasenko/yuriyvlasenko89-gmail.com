@@ -85,6 +85,7 @@ export class Bascket {
 })
 export class BascketService {
   private bascket: Bascket;
+  private loadingPromise: Promise<Bascket>;
   constructor(
     private localStorage: LocalStorageService,
     private productsService: ProductsService
@@ -111,9 +112,12 @@ export class BascketService {
 
   private parseBascketFromStorageFormat(rawData): Promise<Bascket> {
     if (!rawData || !rawData.items) {
-      return Promise.resolve(new Bascket());
+      this.loadingPromise = Promise.resolve(new Bascket());
     }
-    return this.productsService.getItems().then((products) => {
+    if (this.loadingPromise) {
+      return this.loadingPromise;
+    }
+    this.loadingPromise = this.productsService.getItems().then((products) => {
       let bascketItems = rawData.items
         .map((item) => {
           let product = products.find((p) => p.id === item.productId);
@@ -128,6 +132,7 @@ export class BascketService {
         });
       return new Bascket(bascketItems);
     });
+    return this.loadingPromise;
   }
 
   private converBascketToStorageFormat(bascket: Bascket) {
