@@ -5,7 +5,10 @@
   height: 100%;
   width: 100%;
   padding: 0 5vw;
-
+  .bascket-is-empty {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
   .bascket-item {
     margin-top: 1em;
   }

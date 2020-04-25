@@ -1,42 +1,67 @@
 <mat-card class="order-customer">
   <mat-card-title>Оформление заказа</mat-card-title>
   <mat-card-content>
-    <form
-      *ngIf="orderItems.length"
-      [formGroup]="checkoutForm"
-      (ngSubmit)="onSubmit(checkoutForm.value)"
-      class="order-form"
-    >
+    <form *ngIf="orderItems.length" (ngSubmit)="onSubmit()" class="order-form">
       <mat-form-field>
         <mat-label>Имя и фамилия</mat-label>
-        <input matInput id="buyer" type="text" formControlName="buyer" />
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="order.buyer"
+          name="buyer"
+          required
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Телефон</mat-label>
-        <input matInput id="phone" type="tel" formControlName="phone" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input type="email" matInput id="email" formControlName="email" />
+        <input
+          matInput
+          type="tel"
+          [(ngModel)]="order.phone"
+          name="phone"
+          required
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Область</mat-label>
-        <input matInput id="region" type="text" formControlName="region" />
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="order.region"
+          name="region"
+          required
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Город</mat-label>
-        <input matInput id="city" type="text" formControlName="city" />
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="order.city"
+          name="city"
+          required
+        />
       </mat-form-field>
-
       <mat-form-field>
         <mat-label>Отделение доставки</mat-label>
-        <input matInput id="deliveryDepartment" type="text" />
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="order.deliveryDepartment"
+          name="deliveryDepartment"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Примечание</mat-label>
-        <input matInput id="notes" type="text" formControlName="notes" />
+        <input matInput type="text" [(ngModel)]="order.notes" name="notes" />
       </mat-form-field>
-      <button class="button" mat-raised-button color="primary" type="submit">
+      <button
+        class="button"
+        [disabled]="!order.isValid()"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
         Подтвердить заказ
       </button>
     </form>

@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import {
   BascketService,
   Bascket,
   BascketItem,
 } from '../services/bascket.service';
+import { ProductOrder } from '../services/repositories/product-orders.service';
+import { ProductOrdersManagerService } from '../services/data-managers/product-orders-manager.service';
 
 @Component({
   selector: 'app-order',
@@ -12,25 +13,19 @@ import {
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  public checkoutForm;
+  public order: ProductOrder = new ProductOrder('', '', '', '', '', '', '');
   public orderItems: BascketItem[] = [];
   public totalPrice: number = 0;
   public orderId: string = '';
   private basket: Bascket;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private basketService: BascketService
-  ) {
-    this.checkoutForm = this.formBuilder.group({
-      buyer: '',
-      phone: '',
-      email: '',
-      city: '',
-      region: '',
-      deliveryDepartment: '',
-      notes: '',
-    });
+    private basketService: BascketService,
+    private productOrdersManagerService: ProductOrdersManagerService
+  ) {}
+  public isOrderValid() {
+    this.order;
+    return true;
   }
 
   ngOnInit(): void {
@@ -41,11 +36,11 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  onSubmit(customerData) {
-    this.basket.clear();
-    this.checkoutForm.reset();
-    this.orderItems = [];
-
-    console.warn('Your order has been submitted', customerData);
+  onSubmit() {
+    // this.order.
+    // this.basket.clear();
+    // this.checkoutForm.reset();
+    // this.orderItems = [];
+    // console.warn('Your order has been submitted', customerData);
   }
 }

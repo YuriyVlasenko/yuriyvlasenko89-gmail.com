@@ -5,7 +5,10 @@
   (remove)="onRemoveProduct($event)"
 >
 </app-bascket-item>
-<div class="bascket-total">
+<div *ngIf="!bascketItems.length" class="bascket-is-empty">
+  Сначала добавьте товары в корзину
+</div>
+<div class="bascket-total" *ngIf="bascketItems.length">
   <div class="bascket-total-price">
     Сумма заказа: {{ getTotalPrice() | currency }}
   </div>
