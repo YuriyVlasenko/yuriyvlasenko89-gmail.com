@@ -2,6 +2,13 @@ import { Injectable } from "@angular/core";
 import { SettingsService } from "./settings.service";
 import { HttpClient } from "@angular/common/http";
 
+export class OrderProduct {
+  public total: number = 0;
+  constructor(public id: string, public price: number, public count: number) {
+    this.total = this.price * this.count;
+  }
+}
+
 export class ProductOrder {
   constructor(
     public id: string,
@@ -10,7 +17,8 @@ export class ProductOrder {
     public region: string,
     public city: string,
     public deliveryDepartment: string,
-    public notes: string
+    public notes: string,
+    public products: OrderProduct[]
   ) {}
 
   public isValid(): boolean {
@@ -24,7 +32,8 @@ export class ProductOrder {
       source.region,
       source.city,
       source.deliveryDepartment,
-      source.notes
+      source.notes,
+      source.products
     );
   }
 }
@@ -34,7 +43,7 @@ export class ProductOrder {
 })
 export class ProductOrdersService {
   private endpoint: string = "";
-  private endpointName: string = "productOrder";
+  private endpointName: string = "order";
 
   constructor(private settings: SettingsService, private client: HttpClient) {
     this.endpoint = `${this.settings.apiUrl}/${this.endpointName}`;
@@ -62,7 +71,14 @@ export class ProductOrdersService {
               item.region,
               item.city,
               item.deliveryDepartment,
-              item.notes
+              item.notes,
+              item.products.map((product) => {
+                new OrderProduct(
+                  product["id"],
+                  product["price"],
+                  product["count"]
+                );
+              })
             )
         );
       });

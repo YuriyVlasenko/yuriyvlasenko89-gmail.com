@@ -69,7 +69,8 @@
       Сначала добавьте товары в корзину
     </div>
     <div *ngIf="orderId" class="order-created">
-      Ваш заказ {{ orderId }} успешно оформлени. <br />
+      Ваш заказ № <span class="order-number">{{ orderId }} </span>успешно
+      оформлени. <br />
       Ожидайте звонка менеджера.
     </div>
   </mat-card-content>

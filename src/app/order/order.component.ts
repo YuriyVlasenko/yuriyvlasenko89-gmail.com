@@ -4,7 +4,10 @@ import {
   Bascket,
   BascketItem,
 } from '../services/bascket.service';
-import { ProductOrder } from '../services/repositories/product-orders.service';
+import {
+  ProductOrder,
+  OrderProduct,
+} from '../services/repositories/product-orders.service';
 import { ProductOrdersManagerService } from '../services/data-managers/product-orders-manager.service';
 
 @Component({
@@ -13,7 +16,7 @@ import { ProductOrdersManagerService } from '../services/data-managers/product-o
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  public order: ProductOrder = new ProductOrder('', '', '', '', '', '', '');
+  public order: ProductOrder = new ProductOrder('', '', '', '', '', '', '', []);
   public orderItems: BascketItem[] = [];
   public totalPrice: number = 0;
   public orderId: string = '';
@@ -33,14 +36,28 @@ export class OrderComponent implements OnInit {
       this.basket = basket;
       this.orderItems = this.basket.getItems();
       this.totalPrice = this.basket.getTotalPrice();
+      this.order.products = this.orderItems.map(
+        (orderItem) =>
+          new OrderProduct(
+            orderItem.product.id,
+            orderItem.product.price,
+            orderItem.count
+          )
+      );
     });
   }
 
   onSubmit() {
-    // this.order.
-    // this.basket.clear();
-    // this.checkoutForm.reset();
-    // this.orderItems = [];
-    // console.warn('Your order has been submitted', customerData);
+    console.log(this.order);
+    this.productOrdersManagerService
+      .createOrder(this.order)
+      .then((orderId) => {
+        this.orderId = orderId + '';
+        this.basket.clear();
+        this.orderItems = [];
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
