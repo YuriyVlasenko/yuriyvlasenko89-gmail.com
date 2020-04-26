@@ -13,4 +13,4 @@ export class SettingsService {
   public buildImageUrl(imageId) {
     return `${this.imagesUrl}/${imageId}`;
   }
-}
+

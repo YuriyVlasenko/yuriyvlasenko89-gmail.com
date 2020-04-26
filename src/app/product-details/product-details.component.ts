@@ -9,7 +9,7 @@ import {
   GALLERY_IMAGE,
 } from 'ngx-image-gallery';
 import { BascketService, Bascket } from '../services/bascket.service';
-import { SettingsService } from '../services/repositories/settings.service';
+import { SettingsService } from '../services/settings.service';
 
 @Component({
   selector: 'app-product-details',

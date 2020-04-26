@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Партнер {{ data.itemData.id }}</h1>
+<div mat-dialog-content>
+  <form (submit)="onSubmit()" class="dialog-form">
+    <div class="dialog-form-block">
+      <mat-form-field>
+        <mat-label>Статус </mat-label>
+        <mat-select [(ngModel)]="data.itemData.status" name="status">
+          <mat-option
+            *ngFor="let status of orderStatuses"
+            [value]="status.id"
+            >{{ status.title }}</mat-option
+          >
+        </mat-select>
+        <input matInput [(ngModel)]="data.itemData.buyer" name="buyer" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Покупатель </mat-label>
+        <input matInput [(ngModel)]="data.itemData.buyer" name="buyer" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label> Телефон </mat-label>
+        <input matInput [(ngModel)]="data.itemData.phone" name="phone" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Регион </mat-label>
+        <input matInput [(ngModel)]="data.itemData.region" name="region" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Город </mat-label>
+        <input matInput [(ngModel)]="data.itemData.city" name="city" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Отделение службы доставки </mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.itemData.deliveryDepartment"
+          name="deliveryDepartment"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label> Примечание </mat-label>
+        <input matInput [(ngModel)]="data.itemData.phone" name="phone" />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Отмена</button>
+  <button
+    mat-button
+    color="primary"
+    [disabled]="
+      !data.itemData.buyer ||
+      !data.itemData.phone ||
+      !data.itemData.city ||
+      !data.itemData.region
+    "
+    [mat-dialog-close]="data.itemData"
+    cdkFocusInitial
+  >
+    {{ data.itemData.id ? "Сохранить" : "Создать" }}
+  </button>
+</div>

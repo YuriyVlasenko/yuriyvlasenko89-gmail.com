@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { DataService } from "./data-service";
-import { SettingsService } from "./settings.service";
+import { SettingsService } from "../settings.service";
 import { HttpClient } from "@angular/common/http";
 import { ProductCategoriesService } from "./product-categories.service";
 

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SettingsService } from "./settings.service";
+import { SettingsService } from "../settings.service";
 import { HttpClient } from "@angular/common/http";
 import { DataService } from "./data-service";
 import { ProductPartsDialogComponent } from "src/app/admin/admin-product-parts/product-parts-dialog/product-parts-dialog.component";

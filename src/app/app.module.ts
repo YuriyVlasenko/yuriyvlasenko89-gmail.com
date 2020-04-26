@@ -64,6 +64,7 @@ import { ImageListComponent } from './admin/image-list/image-list.component';
 import { ImageSrcPipe } from './shared/image-src.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { CurrencyPipe } from './shared/currency.pipe';
+import { OrdersDialogComponent } from './admin/admin-orders/orders-dialog/orders-dialog.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { CurrencyPipe } from './shared/currency.pipe';
     ImageListComponent,
     ImageSrcPipe,
     CurrencyPipe,
+    OrdersDialogComponent,
   ],
   imports: [
     CommonModule,

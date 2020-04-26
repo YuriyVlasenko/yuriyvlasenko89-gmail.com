@@ -16,7 +16,18 @@ import { ProductOrdersManagerService } from '../services/data-managers/product-o
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  public order: ProductOrder = new ProductOrder('', '', '', '', '', '', '', []);
+  public order: ProductOrder = new ProductOrder(
+    '',
+    '',
+    '',
+    '',
+    1,
+    '',
+    '',
+    '',
+    '',
+    []
+  );
   public orderItems: BascketItem[] = [];
   public totalPrice: number = 0;
   public orderId: string = '';

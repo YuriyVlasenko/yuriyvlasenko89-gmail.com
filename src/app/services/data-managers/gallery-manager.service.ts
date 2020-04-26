@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GalleryService } from '../repositories/gallery.service';
 import { NgxGalleryImage } from '@kolkov/ngx-gallery';
-import { SettingsService } from '../repositories/settings.service';
+import { SettingsService } from '../settings.service';
 
 @Injectable({
   providedIn: 'root',

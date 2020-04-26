@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SettingsService } from '../services/repositories/settings.service';
+import { SettingsService } from '../services/settings.service';
 
 @Pipe({
   name: 'imageSrc',
