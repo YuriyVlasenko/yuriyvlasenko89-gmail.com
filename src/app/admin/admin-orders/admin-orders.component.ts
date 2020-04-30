@@ -39,12 +39,31 @@ export class AdminOrdersComponent extends EntityBaseOperation<ProductOrder>
   }
 
   onEdit(item) {
-    console.log('edit', item);
+    console.log('item', item);
+    this.edit(ProductOrder.clone(item), {
+      width: '700px',
+    });
   }
   onRemove(item) {
-    console.log('remove', item);
+    this.remove(item.id);
   }
   onCreate(item) {
-    console.log('create', item);
+    this.create(
+      new ProductOrder(
+        '',
+        new Date().toISOString(),
+        '',
+        '',
+        1,
+        0,
+        '',
+        '',
+        '',
+        []
+      ),
+      {
+        width: '700px',
+      }
+    );
   }
 }

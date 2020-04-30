@@ -20,7 +20,7 @@ export class ProductOrder {
     public buyer: string,
     public phone: string,
     public status: number,
-    public region: string,
+    public region: number,
     public city: string,
     public deliveryDepartment: string,
     public notes: string,
@@ -83,12 +83,12 @@ export class ProductOrdersService {
             item.buyer,
             item.phone,
             item.status,
-            item.region,
+            ++item.region,
             item.city,
             item.deliveryDepartment,
             item.notes,
             item.products.map((product) => {
-              new OrderProduct(
+              return new OrderProduct(
                 product["id"],
                 product["price"],
                 product["count"]

@@ -24,7 +24,7 @@ export class OrderComponent implements OnInit {
     '',
     '',
     1,
-    '',
+    0,
     '',
     '',
     '',
@@ -33,7 +33,7 @@ export class OrderComponent implements OnInit {
   public orderItems: BascketItem[] = [];
   public totalPrice: number = 0;
   public orderId: string = '';
-  public regions: KeyValueMap<number, string>[] = []
+  public regions: KeyValueMap<number, string>[] = [];
   private basket: Bascket;
 
   constructor(
@@ -41,7 +41,7 @@ export class OrderComponent implements OnInit {
     private productOrdersManagerService: ProductOrdersManagerService,
     private dictionaryService: DictionaryService
   ) {
-    this.regions = this.dictionaryService.regions
+    this.regions = this.dictionaryService.regions;
   }
   public isOrderValid() {
     this.order;
