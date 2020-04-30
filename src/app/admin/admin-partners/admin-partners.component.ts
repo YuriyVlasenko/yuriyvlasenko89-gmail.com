@@ -27,7 +27,7 @@ export class AdminPartnersComponent extends EntityBaseOperation<Partner>
 
     let columns = [
       new TableColumnSettings('Название', 'name'),
-      new TableColumnSettings('Область', 'region'),
+      new TableColumnSettings('Область', 'regionName'),
       new TableColumnSettings('Город', 'city'),
       new TableColumnSettings('Адресс', 'address'),
       new TableColumnSettings('Контакты', 'contacts'),
@@ -53,7 +53,7 @@ export class AdminPartnersComponent extends EntityBaseOperation<Partner>
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new Partner('', '', '', '', '', '', ''), {
+    this.create(new Partner('', '', 0, '', '', '', ''), {
       width: '700px',
     });
   }

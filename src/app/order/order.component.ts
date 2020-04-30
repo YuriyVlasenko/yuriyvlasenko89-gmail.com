@@ -9,6 +9,8 @@ import {
   OrderProduct,
 } from '../services/repositories/product-orders.service';
 import { ProductOrdersManagerService } from '../services/data-managers/product-orders-manager.service';
+import { DictionaryService } from '../services/dictionary.service';
+import { KeyValueMap } from '../services/key-value-map';
 
 @Component({
   selector: 'app-order',
@@ -31,12 +33,16 @@ export class OrderComponent implements OnInit {
   public orderItems: BascketItem[] = [];
   public totalPrice: number = 0;
   public orderId: string = '';
+  public regions: KeyValueMap<number, string>[] = []
   private basket: Bascket;
 
   constructor(
     private basketService: BascketService,
-    private productOrdersManagerService: ProductOrdersManagerService
-  ) {}
+    private productOrdersManagerService: ProductOrdersManagerService,
+    private dictionaryService: DictionaryService
+  ) {
+    this.regions = this.dictionaryService.regions
+  }
   public isOrderValid() {
     this.order;
     return true;

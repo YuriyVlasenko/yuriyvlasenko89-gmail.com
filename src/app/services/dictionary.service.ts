@@ -1,13 +1,32 @@
 import { Injectable } from '@angular/core';
 import { KeyValue } from '@angular/common';
 import { KeyValueMap } from './key-value-map';
+import { TransitiveCompileNgModuleMetadata } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DictionaryService {
   public regions: KeyValue<number, string>[] = [];
-  constructor() {}
+  public regionaMap = {};
+  public orderStatuses: KeyValue<number, string>[] = [];
+  public orderStatusesMap = {};
+  constructor() {
+    this.initRegions();
+    this.initOrderStatuses();
+  }
+
+  private initOrderStatuses() {
+    this.orderStatuses = [
+      new KeyValueMap(1, 'новий'),
+      new KeyValueMap(2, 'в роботі'),
+      new KeyValueMap(3, 'виконаний'),
+      new KeyValueMap(0, 'відхиленій'),
+    ];
+    this.orderStatuses.forEach((orderStatus) => {
+      this.orderStatusesMap[orderStatus.key] = orderStatus.value;
+    });
+  }
 
   private initRegions() {
     this.regions = [
@@ -36,5 +55,8 @@ export class DictionaryService {
       new KeyValueMap(23, 'Чернівецька'),
       new KeyValueMap(24, 'Чернігівська'),
     ];
+    this.regions.forEach((region) => {
+      this.regionaMap[region.key] = region.value;
+    });
   }
 }

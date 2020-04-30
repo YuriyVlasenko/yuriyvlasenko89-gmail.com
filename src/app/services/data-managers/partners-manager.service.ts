@@ -60,7 +60,7 @@ export class PartnersManagerService {
     return this.getPartners().then((partners) => {
       this.regionCityMap = {};
       partners.forEach((partner) => {
-        let region = partner.region.toLowerCase();
+        let region = partner.regionName.toLowerCase();
         let city = partner.city.toLowerCase();
         this.regionCityMap[region] = this.regionCityMap[region] || {};
         this.regionCityMap[region][city] = true;

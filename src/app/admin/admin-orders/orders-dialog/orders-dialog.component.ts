@@ -2,10 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {
   ProductOrder,
   ProductOrdersService,
-  OrderStatus,
 } from 'src/app/services/repositories/product-orders.service';
 import { DialogData } from '../../entity-base-operation';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DictionaryService } from 'src/app/services/dictionary.service';
+import { KeyValueMap } from 'src/app/services/key-value-map';
 
 @Component({
   selector: 'app-orders-dialog',
@@ -13,11 +14,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./orders-dialog.component.scss'],
 })
 export class OrdersDialogComponent implements OnInit {
-  public orderStatuses: OrderStatus[] = [];
+  public orderStatuses: KeyValueMap<number, string>[] = [];
   constructor(
     public dialogRef: MatDialogRef<OrdersDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData<ProductOrder>,
-    private productOrdersService: ProductOrdersService
+    private productOrdersService: ProductOrdersService,
+    private dictionaryService: DictionaryService
   ) {}
 
   onCancelClick(): void {
@@ -25,7 +27,7 @@ export class OrdersDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orderStatuses = this.productOrdersService.getStatuses();
+    this.orderStatuses = this.dictionaryService.orderStatuses;
   }
 
   onSubmit() {

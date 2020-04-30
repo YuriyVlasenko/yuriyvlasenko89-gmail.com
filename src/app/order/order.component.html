@@ -24,13 +24,11 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Область</mat-label>
-        <input
-          type="text"
-          matInput
-          [(ngModel)]="order.region"
-          name="region"
-          required
-        />
+        <mat-select name="region" [(ngModel)]="order.region" required>
+          <mat-option *ngFor="let region of regions" [value]="region.key">{{
+            region.value
+          }}</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Город</mat-label>

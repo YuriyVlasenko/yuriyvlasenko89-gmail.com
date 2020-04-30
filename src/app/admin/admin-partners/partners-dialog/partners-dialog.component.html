@@ -7,8 +7,12 @@
         <input matInput [(ngModel)]="data.itemData.name" name="name" />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Регион </mat-label>
-        <input matInput [(ngModel)]="data.itemData.region" name="region" />
+        <mat-label>Область</mat-label>
+        <mat-select name="region" [(ngModel)]="data.itemData.region" required>
+          <mat-option *ngFor="let region of regions" [value]="region.key">{{
+            region.value
+          }}</mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Город </mat-label>

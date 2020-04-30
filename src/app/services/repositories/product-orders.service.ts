@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SettingsService } from "../settings.service";
 import { HttpClient } from "@angular/common/http";
-import { KeyValueMap } from "../key-value-map";
+import { DictionaryService } from "../dictionary.service";
 
 export class OrderProduct {
   public total: number = 0;
@@ -12,6 +12,7 @@ export class OrderProduct {
 
 export class ProductOrder {
   public statusName: string = "";
+  public regionName: string = "";
   public total: number = 0;
   constructor(
     public id: string,
@@ -51,23 +52,14 @@ export class ProductOrder {
 export class ProductOrdersService {
   private endpoint: string = "";
   private endpointName: string = "order";
-  private orderStatuseMap = {};
-  private orderStatuses: KeyValueMap<number, string>[] = [
-    new KeyValueMap(1, "новый"),
-    new KeyValueMap(2, "в работе"),
-    new KeyValueMap(3, "завершен"),
-    new KeyValueMap(0, "отклонен"),
-  ];
+  private;
 
-  constructor(private settings: SettingsService, private client: HttpClient) {
+  constructor(
+    private settings: SettingsService,
+    private client: HttpClient,
+    private dictionaryService: DictionaryService
+  ) {
     this.endpoint = `${this.settings.apiUrl}/${this.endpointName}`;
-    this.orderStatuses.forEach((status) => {
-      this.orderStatuseMap[status.key] = status.value;
-    });
-  }
-
-  getStatuses(): KeyValueMap<number, string>[] {
-    return this.orderStatuses;
   }
 
   createItem(data: ProductOrder) {
@@ -104,7 +96,10 @@ export class ProductOrdersService {
             })
           );
           order.total = item.total;
-          order.statusName = this.orderStatuseMap[item.status];
+          order.regionName = this.dictionaryService.regionaMap[item.region];
+          order.statusName = this.dictionaryService.orderStatusesMap[
+            item.status
+          ];
           return order;
         });
       });

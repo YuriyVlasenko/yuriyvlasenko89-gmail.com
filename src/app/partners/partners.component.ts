@@ -47,7 +47,7 @@ export class PartnersComponent implements OnInit {
     let filteredItems = this.allPartners;
     if (region) {
       filteredItems = filteredItems.filter((partner) => {
-        return partner.region.toLowerCase() === region.toLowerCase();
+        return partner.regionName.toLowerCase() === region.toLowerCase();
       });
     }
     if (city) {

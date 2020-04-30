@@ -29,7 +29,7 @@ export class AdminOrdersComponent extends EntityBaseOperation<ProductOrder>
       new TableColumnSettings('Дата', 'date'),
       new TableColumnSettings('Покупатель', 'buyer'),
       new TableColumnSettings('Телефон', 'phone'),
-      new TableColumnSettings('Область', 'region'),
+      new TableColumnSettings('Область', 'regionName'),
       new TableColumnSettings('Город', 'city'),
       new TableColumnSettings('Отделение', 'deliveryDepartment'),
       new TableColumnSettings('Сумма', 'total'),

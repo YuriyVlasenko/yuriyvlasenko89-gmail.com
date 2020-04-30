@@ -2,14 +2,16 @@ import { Injectable } from "@angular/core";
 import { DataService } from "./data-service";
 import { SettingsService } from "../settings.service";
 import { HttpClient } from "@angular/common/http";
+import { DictionaryService } from "../dictionary.service";
 
 export class Partner {
   public imageUrls: string[] = [];
+  public regionName: string;
 
   constructor(
     public id: string,
     public name: string,
-    public region: string,
+    public region: number,
     public city: string,
     public address: string,
     public contacts: string,
@@ -37,7 +39,11 @@ export class Partner {
 export class PartnersService implements DataService<Partner> {
   private endpoint: string = "";
   private endpointName: string = "partner";
-  constructor(private settings: SettingsService, private client: HttpClient) {
+  constructor(
+    private settings: SettingsService,
+    private client: HttpClient,
+    private dictionaryService: DictionaryService
+  ) {
     this.endpoint = `${this.settings.apiUrl}/${this.endpointName}`;
   }
   createItem(data: Partner) {
@@ -57,18 +63,21 @@ export class PartnersService implements DataService<Partner> {
       .get(this.endpoint)
       .toPromise()
       .then((items) => {
-        return items["map"](
-          (item) =>
-            new Partner(
-              item.id,
-              item.name,
-              item.region,
-              item.city,
-              item.address,
-              item.contacts,
-              item.imageUrl
-            )
-        );
+        return items["map"]((item) => {
+          let partner = new Partner(
+            item.id,
+            item.name,
+            ++item.region,
+            item.city,
+            item.address,
+            item.contacts,
+            item.imageUrl
+          );
+          partner.regionName = this.dictionaryService.regionaMap[
+            partner.region
+          ];
+          return partner;
+        });
       });
   }
 }
