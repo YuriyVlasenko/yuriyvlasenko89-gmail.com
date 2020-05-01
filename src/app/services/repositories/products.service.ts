@@ -79,7 +79,6 @@ export class ProductsService implements DataService<Product> {
   }
 
   findItems(searchPhrase): Promise<Product[]> {
-    // TODO: implement
     return this.getItems().then((products) => {
       return products.filter((product) => product.isMatchSearch(searchPhrase));
     });

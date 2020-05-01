@@ -49,11 +49,12 @@
     </mat-tab>
     <mat-tab label="Товари">
       <div class="order-add-products">
-        <app-search></app-search>
+        <app-search (search)="onSearch($event)" class="primary"></app-search>
         <app-product-item
           *ngFor="let product of products"
           [data]="product"
           (choose)="onChooseProduct($event)"
+          class="flat"
         ></app-product-item>
       </div>
       <div class="order-products-block">
