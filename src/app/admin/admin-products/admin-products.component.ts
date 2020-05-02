@@ -66,6 +66,7 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
 
     let columns = [
       new TableColumnSettings('Название', 'title'),
+      new TableColumnSettings('Код', 'code'),
       new TableColumnSettings('Описание', 'description'),
       new TableColumnSettings('Категория', 'category'),
       new TableColumnSettings('Цена', 'price'),
@@ -97,6 +98,7 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
   onCreate() {
     this.create(
       new Product(
+        '',
         '',
         '',
         '',

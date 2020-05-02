@@ -1,6 +1,7 @@
 <app-bascket-item
   *ngFor="let item of bascketItems"
   [data]="item"
+  class="wide"
   (changeCount)="onChangeCount($event)"
   (remove)="onRemoveProduct($event)"
 >

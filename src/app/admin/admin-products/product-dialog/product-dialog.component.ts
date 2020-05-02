@@ -1,11 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-  ProductSize,
-  Product,
-} from 'src/app/services/repositories/products.service';
+import { Product } from 'src/app/services/repositories/products.service';
 import { DialogData } from '../../entity-base-operation';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ProductOption } from 'src/app/services/repositories/product-options.service';
 import { ImageListSettings } from '../../image-list/image-list.component';
 import { ImageManagerService } from '../../image-manager.service';
 

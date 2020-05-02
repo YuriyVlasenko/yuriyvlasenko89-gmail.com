@@ -13,7 +13,6 @@ import {
   Product,
 } from 'src/app/services/repositories/products.service';
 import { BascketItem } from 'src/app/services/bascket.service';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-orders-dialog',

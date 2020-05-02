@@ -7,6 +7,10 @@
         <input matInput [(ngModel)]="data.itemData.title" name="title" />
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Код </mat-label>
+        <input matInput [(ngModel)]="data.itemData.code" name="code" />
+      </mat-form-field>
+      <mat-form-field>
         <mat-label>Описание </mat-label>
         <input
           matInput
@@ -88,7 +92,10 @@
     mat-button
     color="primary"
     [disabled]="
-      !data.itemData.title || !data.itemData.categoryId || !data.itemData.price
+      !data.itemData.title ||
+      !data.itemData.code ||
+      !data.itemData.categoryId ||
+      !data.itemData.price
     "
     (click)="onSubmit()"
     cdkFocusInitial

@@ -21,6 +21,7 @@ export class Product {
   constructor(
     public id: string,
     public title: string,
+    public code: string,
     public description: string,
     public categoryId: string,
     public price: number,
@@ -34,6 +35,7 @@ export class Product {
     return new Product(
       source.id,
       source.title,
+      source.code,
       source.description,
       source.categoryId,
       source.price,
@@ -45,9 +47,11 @@ export class Product {
   }
 
   isMatchSearch(searchPhrase) {
+    searchPhrase = searchPhrase.toLowerCase();
     return (
-      this.title.toLowerCase().includes(searchPhrase.toLowerCase()) ||
-      this.description.toLowerCase().includes(searchPhrase.toLowerCase())
+      this.code.toLowerCase().includes(searchPhrase) ||
+      this.title.toLowerCase().includes(searchPhrase) ||
+      this.description.toLowerCase().includes(searchPhrase)
     );
   }
 }
@@ -83,28 +87,17 @@ export class ProductsService implements DataService<Product> {
       return products.filter((product) => product.isMatchSearch(searchPhrase));
     });
   }
-  /*
- source.id,
-      source.title,
-      source.description,
-      source.categoryId,
-      source.price,
-      [...source.imageUrls],
-      ProductSize.clone(source.size),
-      [...source.parts],
-      [...source.options]
-*/
-
   getItems(): Promise<Product[]> {
     return this.client
       .get(this.endpoint)
       .toPromise()
-      .then((items) => {
-        return items["map"](
+      .then((rawItems) => {
+        let items = rawItems["map"](
           (item) =>
             new Product(
               item.id,
               item.title,
+              item.code,
               item.description,
               item.categoryId,
               item.price,
@@ -114,6 +107,7 @@ export class ProductsService implements DataService<Product> {
               item.options
             )
         );
+        return items;
       });
   }
 }
