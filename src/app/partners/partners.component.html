@@ -8,7 +8,7 @@
         <mat-label>Область</mat-label>
         <mat-select (selectionChange)="onRegionChanged($event.value)">
           <mat-option *ngFor="let region of regions" [value]="region">
-            {{ region }}
+            <span style="text-transform: capitalize;">{{ region }}</span>
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -16,7 +16,7 @@
         <mat-label>Населений пункт</mat-label>
         <mat-select (selectionChange)="onCityChanged($event.value)">
           <mat-option *ngFor="let city of cities" [value]="city">
-            {{ city }}
+            <span style="text-transform: capitalize;">{{ city }}</span>
           </mat-option>
         </mat-select>
       </mat-form-field>

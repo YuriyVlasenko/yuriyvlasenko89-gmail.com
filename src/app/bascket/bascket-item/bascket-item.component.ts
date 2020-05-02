@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 export class BascketItemComponent implements OnInit, OnChanges {
   public imageUrl: string;
   public faTrash = faTrash;
+  @Input('skipNavigation') skipNavigation: boolean = false;
   @Input('data') data: BascketItem;
   @Output('changeCount') changeCount = new EventEmitter<object>();
   @Output('remove') remove = new EventEmitter<string>();
@@ -45,6 +46,9 @@ export class BascketItemComponent implements OnInit, OnChanges {
   }
 
   goToProduct() {
+    if (this.skipNavigation) {
+      return;
+    }
     this.router.navigateByUrl(`${routerPaths.PRODUCT}/${this.data.product.id}`);
   }
 }

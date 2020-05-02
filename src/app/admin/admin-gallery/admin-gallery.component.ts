@@ -24,6 +24,7 @@ export class AdminGalleryComponent extends EntityBaseOperation<Gallery>
 
     let columns = [
       new TableColumnSettings('Підпис', 'title'),
+      new TableColumnSettings('Порядок', 'order'),
       new TableColumnSettings('Фото', 'imageUrls', true, undefined, 'image'),
     ];
     this.tableSettings = new TableSettings(columns);
@@ -37,6 +38,6 @@ export class AdminGalleryComponent extends EntityBaseOperation<Gallery>
     this.remove(item.id);
   }
   onCreate() {
-    this.create(new Gallery('', '', ''), {});
+    this.create(new Gallery('', '', 0, ''), {});
   }
 }

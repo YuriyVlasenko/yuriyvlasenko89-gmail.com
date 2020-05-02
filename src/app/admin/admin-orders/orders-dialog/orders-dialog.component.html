@@ -63,6 +63,7 @@
       <div class="order-products-block">
         <app-bascket-item
           *ngFor="let basketItem of basketItems"
+          [skipNavigation]="true"
           [data]="basketItem"
           (remove)="onRemoveProduct($event)"
         >

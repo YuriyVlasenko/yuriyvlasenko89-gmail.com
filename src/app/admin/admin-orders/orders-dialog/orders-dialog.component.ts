@@ -13,6 +13,7 @@ import {
   Product,
 } from 'src/app/services/repositories/products.service';
 import { BascketItem } from 'src/app/services/bascket.service';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-orders-dialog',
@@ -30,7 +31,8 @@ export class OrdersDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData<ProductOrder>,
     private productOrdersService: ProductOrdersService,
     private dictionaryService: DictionaryService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private popupService: PopupService
   ) {}
 
   onCancelClick(): void {
@@ -84,8 +86,9 @@ export class OrdersDialogComponent implements OnInit {
       (bi) => bi.product.id === product.id
     );
     if (basketProduct) {
-      console.log('already exist', basketProduct);
-      // TODO: show message
+      this.popupService.showMessage(
+        `${basketProduct.product.title} уже добавлен`
+      );
       return;
     }
     this.basketItems.push(new BascketItem(product, 1));
