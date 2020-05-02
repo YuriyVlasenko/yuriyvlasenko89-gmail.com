@@ -48,6 +48,9 @@
       </form>
     </mat-tab>
     <mat-tab label="Товари">
+      <div style="text-align: right;">
+        <strong>Сума замовлення {{ getTotalPrice() | currency }}</strong>
+      </div>
       <div class="order-add-products">
         <app-search (search)="onSearch($event)" class="primary"></app-search>
         <app-product-item
@@ -61,7 +64,6 @@
         <app-bascket-item
           *ngFor="let basketItem of basketItems"
           [data]="basketItem"
-          (changeCount)="onChangeCount($event)"
           (remove)="onRemoveProduct($event)"
         >
         </app-bascket-item>
@@ -80,8 +82,8 @@
       !data.itemData.city ||
       !data.itemData.region
     "
-    [mat-dialog-close]="data.itemData"
     cdkFocusInitial
+    (click)="onSubmit()"
   >
     {{ data.itemData.id ? "Сохранить" : "Создать" }}
   </button>

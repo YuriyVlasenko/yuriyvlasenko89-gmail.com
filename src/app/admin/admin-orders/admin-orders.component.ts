@@ -39,7 +39,6 @@ export class AdminOrdersComponent extends EntityBaseOperation<ProductOrder>
   }
 
   onEdit(item) {
-    console.log('item', item);
     this.edit(ProductOrder.clone(item), {
       width: '700px',
     });

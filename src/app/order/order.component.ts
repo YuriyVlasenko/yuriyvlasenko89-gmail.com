@@ -65,7 +65,6 @@ export class OrderComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.order);
     this.productOrdersManagerService
       .createOrder(this.order)
       .then((orderId) => {

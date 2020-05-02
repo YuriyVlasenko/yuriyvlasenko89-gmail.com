@@ -24,7 +24,6 @@ export class ImageManagerService {
   }
 
   removeFile(imageUrl) {
-    console.log('imageUrl', imageUrl);
     let paths = imageUrl.split('/') || [''];
     let imageId = paths[paths.length - 1];
     return this.httpClient

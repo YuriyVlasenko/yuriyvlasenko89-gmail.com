@@ -40,6 +40,7 @@ export class BascketItemComponent implements OnInit, OnChanges {
   }
 
   onChangeCount(count) {
+    this.data.count = count;
     this.changeCount.emit({ productId: this.data.product.id, count: count });
   }
 

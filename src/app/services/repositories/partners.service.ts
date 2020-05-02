@@ -67,7 +67,7 @@ export class PartnersService implements DataService<Partner> {
           let partner = new Partner(
             item.id,
             item.name,
-            ++item.region,
+            +item.region,
             item.city,
             item.address,
             item.contacts,

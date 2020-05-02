@@ -83,7 +83,7 @@ export class ProductOrdersService {
             item.buyer,
             item.phone,
             item.status,
-            ++item.region,
+            +item.region,
             item.city,
             item.deliveryDepartment,
             item.notes,

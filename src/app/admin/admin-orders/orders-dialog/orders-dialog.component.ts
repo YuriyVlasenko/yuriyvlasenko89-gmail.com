@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {
   ProductOrder,
   ProductOrdersService,
+  OrderProduct,
 } from 'src/app/services/repositories/product-orders.service';
 import { DialogData } from '../../entity-base-operation';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -12,6 +13,7 @@ import {
   Product,
 } from 'src/app/services/repositories/products.service';
 import { BascketItem } from 'src/app/services/bascket.service';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-orders-dialog',
@@ -53,25 +55,25 @@ export class OrdersDialogComponent implements OnInit {
           return new BascketItem(bascketProduct, orderProduct.count);
         })
         .filter((b) => b != null);
-      console.log('this.basketItems', this.basketItems);
     });
   }
 
   onSubmit() {
+    this.data.itemData.products = this.basketItems.map((bi) => {
+      return new OrderProduct(bi.product.id, bi.product.price, bi.count);
+    });
+    this.data.itemData.total = this.getTotalPrice();
     this.dialogRef.close(this.data.itemData);
   }
 
-  onChangeCount(data) {
-    console.log('data', data);
+  getTotalPrice() {
     let total = 0;
-    this.basketItems.find((bi) => (bi.product.id = data.productId)).count =
-      data.count;
-
     this.basketItems.forEach((bi) => {
       total += bi.product.price * bi.count;
     });
-    console.log(total);
+    return total;
   }
+
   onRemoveProduct(productId) {
     this.basketItems = this.basketItems.filter(
       (bi) => bi.product.id !== productId
