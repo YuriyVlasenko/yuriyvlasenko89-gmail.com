@@ -65,18 +65,12 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
     this.loadData();
 
     let columns = [
-      new TableColumnSettings('Название', 'title'),
+      new TableColumnSettings('Назва', 'title'),
       new TableColumnSettings('Код', 'code'),
-      new TableColumnSettings('Описание', 'description'),
-      new TableColumnSettings('Категория', 'category'),
-      new TableColumnSettings('Цена', 'price'),
-      new TableColumnSettings(
-        'Изображения',
-        'imageUrls',
-        true,
-        undefined,
-        'image'
-      ),
+      new TableColumnSettings('Опис', 'description'),
+      new TableColumnSettings('Категорія', 'category'),
+      new TableColumnSettings('Ціна', 'price'),
+      new TableColumnSettings('Фото', 'imageUrls', true, undefined, 'image'),
     ];
     this.tableSettings = new TableSettings(columns);
   }

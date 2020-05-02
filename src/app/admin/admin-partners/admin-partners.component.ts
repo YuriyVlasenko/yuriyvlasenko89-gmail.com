@@ -26,11 +26,11 @@ export class AdminPartnersComponent extends EntityBaseOperation<Partner>
     this.loadData();
 
     let columns = [
-      new TableColumnSettings('Название', 'name'),
+      new TableColumnSettings('Назва', 'name'),
       new TableColumnSettings('Область', 'regionName'),
-      new TableColumnSettings('Город', 'city'),
-      new TableColumnSettings('Адресс', 'address'),
-      new TableColumnSettings('Контакты', 'contacts'),
+      new TableColumnSettings('Населений пункт', 'city'),
+      new TableColumnSettings('Адреса', 'address'),
+      new TableColumnSettings('Контакти', 'contacts'),
       new TableColumnSettings(
         'Изображение',
         'imageUrls',

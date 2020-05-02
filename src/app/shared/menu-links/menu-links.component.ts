@@ -18,13 +18,13 @@ export class MenuLinksComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.menuLinks.push(new MenuLink('Главная', [`${routerPaths.BASE}`]));
+    this.menuLinks.push(new MenuLink('Головна', [`${routerPaths.BASE}`]));
     this.menuLinks.push(new MenuLink('Галерея', [`${routerPaths.GALLERY}`]));
     this.menuLinks.push(
-      new MenuLink('Наши партнеры', [`${routerPaths.PARTNERS}`])
+      new MenuLink('Наші партнери', [`${routerPaths.PARTNERS}`])
     );
     this.menuLinks.push(
-      new MenuLink('Доставка и оплата', [`${routerPaths.DELIVERY}`])
+      new MenuLink('Доставка та оплата', [`${routerPaths.DELIVERY}`])
     );
   }
 }

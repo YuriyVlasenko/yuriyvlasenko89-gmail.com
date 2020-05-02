@@ -23,14 +23,8 @@ export class AdminGalleryComponent extends EntityBaseOperation<Gallery>
     this.loadData();
 
     let columns = [
-      new TableColumnSettings('Подпись', 'title'),
-      new TableColumnSettings(
-        'Изображение',
-        'imageUrls',
-        true,
-        undefined,
-        'image'
-      ),
+      new TableColumnSettings('Підпис', 'title'),
+      new TableColumnSettings('Фото', 'imageUrls', true, undefined, 'image'),
     ];
     this.tableSettings = new TableSettings(columns);
   }

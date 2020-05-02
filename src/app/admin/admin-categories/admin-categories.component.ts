@@ -27,15 +27,9 @@ export class AdminCategoriesComponent
     this.loadData();
 
     let columns = [
-      new TableColumnSettings('Название', 'title'),
-      new TableColumnSettings('Имя в адресной строке', 'name'),
-      new TableColumnSettings(
-        'Изображение',
-        'imageUrls',
-        true,
-        undefined,
-        'image'
-      ),
+      new TableColumnSettings('Назва', 'title'),
+      new TableColumnSettings('Назва URL', 'name'),
+      new TableColumnSettings('Фото', 'imageUrls', true, undefined, 'image'),
     ];
     this.tableSettings = new TableSettings(columns);
   }

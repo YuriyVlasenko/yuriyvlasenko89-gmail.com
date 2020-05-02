@@ -25,14 +25,14 @@ export class AdminOrdersComponent extends EntityBaseOperation<ProductOrder>
   ngOnInit(): void {
     this.loadData();
     let columns = [
-      new TableColumnSettings('Заказ', 'id'),
+      new TableColumnSettings('Замовлення', 'id'),
       new TableColumnSettings('Дата', 'date'),
-      new TableColumnSettings('Покупатель', 'buyer'),
+      new TableColumnSettings('Покупець', 'buyer'),
       new TableColumnSettings('Телефон', 'phone'),
       new TableColumnSettings('Область', 'regionName'),
-      new TableColumnSettings('Город', 'city'),
-      new TableColumnSettings('Отделение', 'deliveryDepartment'),
-      new TableColumnSettings('Сумма', 'total'),
+      new TableColumnSettings('Населений пункт', 'city'),
+      new TableColumnSettings('Відділення', 'deliveryDepartment'),
+      new TableColumnSettings('Сума', 'total'),
       new TableColumnSettings('Статус', 'statusName'),
     ];
     this.tableSettings = new TableSettings(columns);

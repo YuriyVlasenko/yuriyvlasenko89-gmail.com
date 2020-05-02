@@ -24,7 +24,7 @@ export class AdminProductPartsComponent extends EntityBaseOperation<ProductPart>
 
   ngOnInit(): void {
     this.loadData();
-    let columns = [new TableColumnSettings('Название компонента', 'name')];
+    let columns = [new TableColumnSettings('Назва компоненту', 'name')];
     this.tableSettings = new TableSettings(columns);
   }
 

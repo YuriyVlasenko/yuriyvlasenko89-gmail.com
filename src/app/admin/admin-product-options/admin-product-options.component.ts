@@ -26,7 +26,7 @@ export class AdminProductOptionsComponent
   ngOnInit(): void {
     this.loadData();
 
-    let columns = [new TableColumnSettings('Название опции', 'name')];
+    let columns = [new TableColumnSettings('Назва опції', 'name')];
     this.tableSettings = new TableSettings(columns);
   }
   onEdit(item) {

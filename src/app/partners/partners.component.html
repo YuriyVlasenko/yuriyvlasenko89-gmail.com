@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header style="flex-direction: column;">
     <div class="partners-header-text">
-      Вы можете купить представленные на сайте товары у наших партнеров
+      Товари представлені на сайті ви можете придбаті у наших партнерів:
     </div>
     <div>
       <mat-form-field class="partners-filter-field">
@@ -13,7 +13,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="partners-filter-field">
-        <mat-label>Город</mat-label>
+        <mat-label>Населений пункт</mat-label>
         <mat-select (selectionChange)="onCityChanged($event.value)">
           <mat-option *ngFor="let city of cities" [value]="city">
             {{ city }}
