@@ -7,6 +7,7 @@ import {
 import { EntityBaseOperation } from '../entity-base-operation';
 import { MatDialog } from '@angular/material/dialog';
 import { GalleryDialogComponent } from './gallery-dialog/gallery-dialog.component';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-admin-gallery',
@@ -15,8 +16,12 @@ import { GalleryDialogComponent } from './gallery-dialog/gallery-dialog.componen
 })
 export class AdminGalleryComponent extends EntityBaseOperation<Gallery>
   implements OnInit {
-  constructor(public dialog: MatDialog, private galleyService: GalleryService) {
-    super(dialog, galleyService, GalleryDialogComponent);
+  constructor(
+    public dialog: MatDialog,
+    galleyService: GalleryService,
+    popupService: PopupService
+  ) {
+    super(dialog, galleyService, GalleryDialogComponent, popupService);
   }
 
   ngOnInit(): void {

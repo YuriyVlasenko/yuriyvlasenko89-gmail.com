@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { stringify } from 'querystring';
 
 export enum PopupType {
   INFO = 1,
@@ -24,6 +25,9 @@ export class PopupService {
   }
 
   showMessage(message: string, popupType: PopupType = PopupType.INFO) {
+    if (typeof message === 'object') {
+      message = JSON.stringify(message);
+    }
     this.snackBar.open(message, null, {
       duration: 5000,
       panelClass: this.getClassByPopupType(popupType),

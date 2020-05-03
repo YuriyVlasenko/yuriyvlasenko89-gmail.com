@@ -7,6 +7,9 @@ import { SettingsService } from '../services/settings.service';
 export class ImageSrcPipe implements PipeTransform {
   constructor(private settings: SettingsService) {}
   transform(value: unknown, ...args: unknown[]): unknown {
-    return this.settings.buildImageUrl(value);
+    if (value) {
+      return this.settings.buildImageUrl(value);
+    }
+    return '../../assets/noImage.png';
   }
 }

@@ -4,6 +4,7 @@ import { ProductCategory } from 'src/app/services/repositories/product-categorie
 import { DialogData } from '../../entity-base-operation';
 import { ImageManagerService } from '../../image-manager.service';
 import { ImageListSettings } from '../../image-list/image-list.component';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-category-dialog',
@@ -19,7 +20,8 @@ export class CategoryDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CategoryDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData<ProductCategory>,
-    private imageManager: ImageManagerService
+    private imageManager: ImageManagerService,
+    private popupService: PopupService
   ) {}
 
   onCancelClick(): void {
@@ -35,11 +37,11 @@ export class CategoryDialogComponent implements OnInit {
   onRemoveItem() {
     this.imageManager
       .removeFile(this.data.itemData.imageUrl)
-      .then(() => {
+      .then(({ error }) => {
+        if (error) {
+          return;
+        }
         this.data.itemData.imageUrl = '';
-      })
-      .catch((error) => {
-        console.log('remove image error', error);
       });
   }
 

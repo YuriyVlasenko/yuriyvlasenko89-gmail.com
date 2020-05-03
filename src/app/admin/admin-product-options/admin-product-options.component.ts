@@ -7,6 +7,7 @@ import {
 import { EntityBaseOperation } from '../entity-base-operation';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductOptionsDialogComponent } from './product-options-dialog/product-options-dialog.component';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-admin-product-options',
@@ -18,9 +19,15 @@ export class AdminProductOptionsComponent
   implements OnInit {
   constructor(
     public dialog: MatDialog,
-    private productOptionsService: ProductOptionsService
+    productOptionsService: ProductOptionsService,
+    popupService: PopupService
   ) {
-    super(dialog, productOptionsService, ProductOptionsDialogComponent);
+    super(
+      dialog,
+      productOptionsService,
+      ProductOptionsDialogComponent,
+      popupService
+    );
   }
 
   ngOnInit(): void {

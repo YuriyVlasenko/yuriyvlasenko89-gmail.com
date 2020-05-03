@@ -7,6 +7,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { OrdersDialogComponent } from './orders-dialog/orders-dialog.component';
 import { EntityBaseOperation } from '../entity-base-operation';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-admin-orders',
@@ -17,9 +18,10 @@ export class AdminOrdersComponent extends EntityBaseOperation<ProductOrder>
   implements OnInit {
   constructor(
     public dialog: MatDialog,
-    private productOrderService: ProductOrdersService
+    productOrderService: ProductOrdersService,
+    popupService: PopupService
   ) {
-    super(dialog, productOrderService, OrdersDialogComponent);
+    super(dialog, productOrderService, OrdersDialogComponent, popupService);
   }
 
   ngOnInit(): void {

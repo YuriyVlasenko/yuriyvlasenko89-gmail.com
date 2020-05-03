@@ -10,6 +10,7 @@ import {
 } from 'ngx-image-gallery';
 import { BascketService, Bascket } from '../services/bascket.service';
 import { SettingsService } from '../services/settings.service';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'app-product-details',
@@ -38,7 +39,8 @@ export class ProductDetailsComponent implements OnInit {
     private router: Router,
     private productsManager: ProductsManagerService,
     private bascketService: BascketService,
-    private settings: SettingsService
+    private settings: SettingsService,
+    private popupService: PopupService
   ) {}
 
   ngOnInit(): void {
@@ -48,8 +50,7 @@ export class ProductDetailsComponent implements OnInit {
     let productId = this.activatedRoute.snapshot.paramMap.get('productId');
     this.productsManager.getProduct(productId).then((product) => {
       if (!product) {
-        // TODO: show message
-        console.log('product not found', productId);
+        this.popupService.showWarnMessage(`product not found ${productId}`);
         this.router.navigateByUrl(routerPaths.BASE);
         return;
       }

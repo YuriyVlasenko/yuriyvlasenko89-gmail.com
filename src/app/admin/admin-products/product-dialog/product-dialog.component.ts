@@ -63,14 +63,12 @@ export class ProductDialogComponent implements OnInit {
     let itemData = this.data.itemData;
     let imageUrl = itemData.imageUrls[index];
 
-    this.imageManager
-      .removeFile(imageUrl)
-      .then(() => {
-        itemData.imageUrls.splice(index, 1);
-      })
-      .catch((error) => {
-        console.log('remove image error', error);
-      });
+    this.imageManager.removeFile(imageUrl).then(({ error }) => {
+      if (error) {
+        return;
+      }
+      itemData.imageUrls.splice(index, 1);
+    });
   }
 
   onSubmit() {

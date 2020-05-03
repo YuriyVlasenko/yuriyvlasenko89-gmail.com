@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SettingsService } from '../services/settings.service';
 import { HttpClient } from '@angular/common/http';
+import { PopupService } from '../services/popup.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,8 @@ export class ImageManagerService {
   private endpoint: string = '';
   constructor(
     private settings: SettingsService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private popupService: PopupService
   ) {
     this.endpoint = `${this.settings.apiUrl}/image`;
   }
@@ -28,7 +30,13 @@ export class ImageManagerService {
     let imageId = paths[paths.length - 1];
     return this.httpClient
       .delete<any>(`${this.endpoint}/${imageId}`)
-      .toPromise();
+      .toPromise()
+      .catch((error) => {
+        this.popupService.showErrorMessage(
+          'Ошибка удаления изображения ' + JSON.stringify(error)
+        );
+        return { error };
+      });
   }
 
   private sendToServer(formData) {

@@ -20,6 +20,7 @@ import {
   ProductPartsService,
   ProductPart,
 } from 'src/app/services/repositories/product-parts.service';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -38,10 +39,15 @@ export class AdminProductsComponent extends EntityBaseOperation<Product>
     private productsService: ProductsService,
     private productCategoriesService: ProductCategoriesService,
     private productOptionsService: ProductOptionsService,
-    private productPartsService: ProductPartsService
+    private productPartsService: ProductPartsService,
+    popupService: PopupService
   ) {
-    super(dialog, productsService, ProductDialogComponent, (item) =>
-      this.initCategory(item)
+    super(
+      dialog,
+      productsService,
+      ProductDialogComponent,
+      popupService,
+      (item) => this.initCategory(item)
     );
 
     this.productPartsService.getItems().then((productParts) => {

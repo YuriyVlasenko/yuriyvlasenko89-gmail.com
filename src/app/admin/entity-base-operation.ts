@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductCategory } from '../services/repositories/product-categories.service';
 import { ProductPart } from '../services/repositories/product-parts.service';
 import { ProductOption } from '../services/repositories/product-options.service';
+import { PopupService } from '../services/popup.service';
 
 export interface DialogData<T> {
   itemData: T;
@@ -22,6 +23,7 @@ export class EntityBaseOperation<T> {
     public dialog: MatDialog,
     public dataService: DataService<T>,
     private dialogComponent,
+    private popupService: PopupService,
     private mapItem = null
   ) {}
 
@@ -40,8 +42,7 @@ export class EntityBaseOperation<T> {
             this.loadData();
           })
           .catch((error) => {
-            // TODO: show alert
-            console.log('error', error);
+            this.popupService.showErrorMessage(error);
           });
       }
     });
@@ -56,8 +57,7 @@ export class EntityBaseOperation<T> {
         );
       })
       .catch((error) => {
-        // TODO: show alert
-        console.log('error', error);
+        this.popupService.showErrorMessage(error);
       });
   }
 
@@ -70,8 +70,7 @@ export class EntityBaseOperation<T> {
             this.loadData();
           })
           .catch((error) => {
-            // TODO: show alert
-            console.log('error', error);
+            this.popupService.showErrorMessage(error);
           });
       }
     });

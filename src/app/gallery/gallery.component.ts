@@ -25,7 +25,7 @@ export class GalleryComponent implements OnInit {
         layout: 'thumbnails-top',
         imageSize: 'contain',
         width: '80%',
-        height: '600px',
+        height: '100%',
         thumbnailsPercent: 20,
         thumbnailsColumns: 6,
         thumbnailsRows: 1,
@@ -35,7 +35,7 @@ export class GalleryComponent implements OnInit {
       {
         breakpoint: 800,
         width: '100%',
-        height: '600px',
+        height: '100%',
         imagePercent: 80,
         thumbnailsColumns: 3,
         thumbnailsPercent: 20,

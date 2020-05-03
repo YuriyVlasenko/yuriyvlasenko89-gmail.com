@@ -11,6 +11,7 @@ import {
 import { ProductOrdersManagerService } from '../services/data-managers/product-orders-manager.service';
 import { DictionaryService } from '../services/dictionary.service';
 import { KeyValueMap } from '../services/key-value-map';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'app-order',
@@ -39,7 +40,8 @@ export class OrderComponent implements OnInit {
   constructor(
     private basketService: BascketService,
     private productOrdersManagerService: ProductOrdersManagerService,
-    private dictionaryService: DictionaryService
+    private dictionaryService: DictionaryService,
+    private popupService: PopupService
   ) {
     this.regions = this.dictionaryService.regions;
   }
@@ -73,7 +75,7 @@ export class OrderComponent implements OnInit {
         this.orderItems = [];
       })
       .catch((error) => {
-        console.log(error);
+        this.popupService.showErrorMessage(error);
       });
   }
 }

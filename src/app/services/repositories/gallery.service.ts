@@ -46,7 +46,6 @@ export class GalleryService implements DataService<Gallery> {
       .get(this.endpoint)
       .toPromise()
       .then((items) => {
-        console.log(items);
         return items["map"](
           (item) =>
             new Gallery(item.id, item.title, +item.order || 0, item.imageUrl)

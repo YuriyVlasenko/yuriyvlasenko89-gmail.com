@@ -39,11 +39,11 @@ export class GalleryDialogComponent implements OnInit {
   onRemoveItem() {
     this.imageManager
       .removeFile(this.data.itemData.imageUrl)
-      .then(() => {
+      .then(({ error }) => {
+        if (error) {
+          return;
+        }
         this.data.itemData.imageUrl = '';
-      })
-      .catch((error) => {
-        console.log('remove image error', error);
       });
   }
 }

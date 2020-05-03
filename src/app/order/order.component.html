@@ -1,9 +1,9 @@
 <mat-card class="order-customer">
-  <mat-card-title>Оформление заказа</mat-card-title>
+  <mat-card-title>Оформлення замовлення</mat-card-title>
   <mat-card-content>
     <form *ngIf="orderItems.length" (ngSubmit)="onSubmit()" class="order-form">
       <mat-form-field>
-        <mat-label>Имя и фамилия</mat-label>
+        <mat-label>Ім'я та прізвище</mat-label>
         <input
           matInput
           type="text"
@@ -31,7 +31,7 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Город</mat-label>
+        <mat-label>Населений пункт</mat-label>
         <input
           matInput
           type="text"
@@ -41,7 +41,7 @@
         />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Отделение доставки</mat-label>
+        <mat-label>Відділення доставки</mat-label>
         <input
           matInput
           type="text"
@@ -50,7 +50,7 @@
         />
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Примечание</mat-label>
+        <mat-label>Примітки</mat-label>
         <input matInput type="text" [(ngModel)]="order.notes" name="notes" />
       </mat-form-field>
       <button
@@ -60,21 +60,21 @@
         color="primary"
         type="submit"
       >
-        Подтвердить заказ
+        Підтвердити замовлення
       </button>
     </form>
     <div *ngIf="!orderItems.length && !orderId" class="order-is-empty">
-      Сначала добавьте товары в корзину
+      Спочатку додайте товари в кошик
     </div>
     <div *ngIf="orderId" class="order-created">
-      Ваш заказ № <span class="order-number">{{ orderId }} </span>успешно
-      оформлени. <br />
-      Ожидайте звонка менеджера.
+      Ваше замовлення № <span class="order-number">{{ orderId }} </span> вдало
+      оформлено. <br />
+      Очікуйте дзвінка менеджера.
     </div>
   </mat-card-content>
 </mat-card>
 <mat-card class="order-details" *ngIf="orderItems.length">
-  <mat-card-title>Ваш заказ</mat-card-title>
+  <mat-card-title>Ваше замовлення</mat-card-title>
   <mat-card-content>
     <div *ngFor="let orderItem of orderItems" class="order-item">
       <div>
@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="order-details-summary">
-      Сумма заказа: {{ totalPrice | currency }}
+      Сума замовлення: {{ totalPrice | currency }}
     </div>
   </mat-card-content>
 </mat-card>

@@ -7,6 +7,7 @@ import {
 } from 'src/app/services/repositories/product-categories.service';
 import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 import { EntityBaseOperation } from '../entity-base-operation';
+import { PopupService } from 'src/app/services/popup.service';
 
 @Component({
   selector: 'app-admin-categories',
@@ -18,9 +19,15 @@ export class AdminCategoriesComponent
   implements OnInit {
   constructor(
     public dialog: MatDialog,
-    public productCategoriesService: ProductCategoriesService
+    productCategoriesService: ProductCategoriesService,
+    popupService: PopupService
   ) {
-    super(dialog, productCategoriesService, CategoryDialogComponent);
+    super(
+      dialog,
+      productCategoriesService,
+      CategoryDialogComponent,
+      popupService
+    );
   }
 
   ngOnInit(): void {
