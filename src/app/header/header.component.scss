@@ -11,6 +11,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 5vw;
+    .site-info_userd-data {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   .menu {

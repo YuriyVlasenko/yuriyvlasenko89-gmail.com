@@ -1,0 +1,6 @@
+<div *ngIf="getCurrentUser()">
+  <span>{{ getCurrentUser().login }}</span>
+  <button mat-icon-button (click)="signOut()" title="Вийти з системи">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
+</div>

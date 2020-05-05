@@ -10,11 +10,18 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { OrderComponent } from './order/order.component';
 import { AdminComponent } from './admin/admin.component';
 import { PartnersComponent } from './partners/partners.component';
+import { LoginComponent } from './login/login.component';
+import { AdminGuard } from './admin/admin.guard';
 
 const routes: Routes = [
   {
     path: RouterPaths.ADMIN,
     component: AdminComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: RouterPaths.LOGIN,
+    component: LoginComponent,
   },
   {
     path: RouterPaths.ORDER,
@@ -53,6 +60,8 @@ const routes: Routes = [
     component: MainComponent,
     pathMatch: 'full',
   },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

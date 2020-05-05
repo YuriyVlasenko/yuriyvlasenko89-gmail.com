@@ -63,9 +63,13 @@ import { ProductDialogComponent } from './admin/admin-products/product-dialog/pr
 import { FileUploaderComponent } from './admin/file-uploader/file-uploader.component';
 import { ImageListComponent } from './admin/image-list/image-list.component';
 import { ImageSrcPipe } from './shared/image-src.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CurrencyPipe } from './shared/currency.pipe';
 import { OrdersDialogComponent } from './admin/admin-orders/orders-dialog/orders-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './interceptors/JwtInterceptor';
+import { ErrorInterceptor } from './interceptors/errorInterceptor';
+import { UserInfoComponent } from './header/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +117,8 @@ import { OrdersDialogComponent } from './admin/admin-orders/orders-dialog/orders
     ImageSrcPipe,
     CurrencyPipe,
     OrdersDialogComponent,
+    LoginComponent,
+    UserInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -139,7 +145,10 @@ import { OrdersDialogComponent } from './admin/admin-orders/orders-dialog/orders
     HttpClientModule,
     MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
