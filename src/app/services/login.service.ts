@@ -37,10 +37,10 @@ export class LoginService {
     let loginPromise = this.client
       .post(`${this.endpoint}/login`, { login, password })
       .toPromise();
-    return loginPromise.then((token) => {
+    return loginPromise.then((tokenData) => {
       let userData = {
         login,
-        token,
+        token: tokenData['token'],
       };
       this.localStorageService.setItem(userStorageKey, userData);
       return userData;
