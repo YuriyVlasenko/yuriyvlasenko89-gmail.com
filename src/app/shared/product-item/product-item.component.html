@@ -3,7 +3,7 @@
   src="{{ imageUrl | imageSrc }}"
   (click)="chooseProduct()"
 />
-<div class="product-name" (click)="chooseProduct()">{{ data.title }}</div>
+<div class="product-name" (click)="chooseProduct()">{{ data.title }} (код: {{data.code}})</div>
 <div class="product-price">{{ data.price | currency }}</div>
 <button mat-icon-button class="product-buy-action" (click)="buyProduct()">
   <mat-icon>add_shopping_cart</mat-icon>

@@ -12,8 +12,7 @@ export class ContactsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.contacts.push({ number: '095-690-7-666' });
-    this.contacts.push({ number: '095-690-7-666' });
-    this.contacts.push({ number: '095-690-7-666' });
+    this.contacts.push({ number: '097-859-17-67' });
+    this.contacts.push({ number: '050-195-93-37' });
   }
 }

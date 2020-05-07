@@ -78,7 +78,7 @@
   <mat-card-content>
     <div *ngFor="let orderItem of orderItems" class="order-item">
       <div>
-        <strong>{{ orderItem.product.title }}</strong>
+        <strong>{{ orderItem.product.title }} (код {{orderItem.product.code}})</strong>
       </div>
       <div>
         {{ orderItem.count }} од. x {{ orderItem.product.price | currency }} =
